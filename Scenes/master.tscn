@@ -2,6 +2,13 @@
 
 [ext_resource type="Material" uid="uid://m8326m50smh5" path="res://Assets/Materials/test_grid_gray.tres" id="1_dla66"]
 [ext_resource type="PackedScene" uid="uid://dkxgf5ykudbxe" path="res://Scenes/player.tscn" id="2_ui57x"]
+[ext_resource type="PackedScene" uid="uid://bexei880yacly" path="res://Scenes/balloon_vehicle.tscn" id="3_ui57x"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2xxif"]
+material = ExtResource("1_dla66")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_et0fo"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dla66"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -16,31 +23,28 @@ sky = SubResource("Sky_ui57x")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_2xxif"]
-material = ExtResource("1_dla66")
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_et0fo"]
-data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
-
 [node name="Master" type="Node3D" unique_id=925668592]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1673396798]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
-metadata/_edit_lock_ = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1096933158]
-environment = SubResource("Environment_2xxif")
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=705273356]
 transform = Transform3D(41.62596, 0, 0, 0, 41.62596, 0, 0, 0, 41.62596, 0, 0, 0)
 mesh = SubResource("PlaneMesh_2xxif")
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground" unique_id=1139955677]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D" unique_id=1347175671]
 shape = SubResource("ConcavePolygonShape3D_et0fo")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1096933158]
+environment = SubResource("Environment_2xxif")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=86133595]
+transform = Transform3D(-0.77714586, -0.30028582, 0.5530576, 0, 0.8788171, 0.47715878, -0.6293205, 0.37082198, -0.68296903, 0, 0, 0)
+shadow_enabled = true
+
 [node name="Player" parent="." unique_id=674056149 instance=ExtResource("2_ui57x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="BalloonVehicle" parent="." unique_id=58244521 instance=ExtResource("3_ui57x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07545018, 0.025, -3.787043)
