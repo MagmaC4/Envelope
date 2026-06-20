@@ -31,35 +31,26 @@ func begin_sway():
 	tween.tween_property(self, "rotation:z", 0.0, 3.0 )
 	tween.tween_property(self, "rotation:z", deg_to_rad(-15), 3.0 )
 	tween.tween_property(self, "rotation:z", 0.0, 3.0 )
-	
-# Make player position local to the vehicle 
-func _on_cabin_trigger_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player"):
+
+func _on_cabin_trigger_area_entered(area: Area3D) -> void:
+	if area.is_in_group("PlayerTwin"):
 		print("Vehicle entered")
 		var vehicle_node = self
-		body.reparent(vehicle_node, true)
+		reparent_player(area, vehicle_node)
 		
-		# Smoothly reset local rotation to zero
-		var tween = create_tween()
-		tween.tween_property(body,"rotation", Vector3.ZERO, 0.5)
+func _on_cabin_trigger_area_exited(area: Area3D) -> void:
+	if area.is_in_group("PlayerTwin"):
+		print("Vehicle exited")
+		var world_node = get_tree().current_scene
+		reparent_player(area, world_node)
 		
-# Make player position local to the world
-func _on_cabin_trigger_body_exited(body: Node3D) -> void:
-	pass
-	#if body.is_in_group("Player"):
-		#print("Vehicle exited")
-		#var world_node = get_tree().current_scene
-		#reparent_player(body, world_node)
-	
-		
-		
-func reparent_player(body: CharacterBody3D, parent: Node3D):
+func reparent_player(area: Area3D, parent: Node3D):
 # Turn off Area3D monitoring so when scene tree changes,
 # the player doesn't send an Area Exited signal
-	cabin_trigger.set_deferred("monitoring", false)
-	body.call_deferred("reparent", parent, true)
-	await get_tree().create_timer(0.1).timeout
-	cabin_trigger.set_deferred("monitoring", true)
+	var player = area.player
+	player.reparent(parent, true)
 	
-	
+	# Smoothly reset local rotation to zero
+	var tween = create_tween()
+	tween.tween_property(player,"rotation", Vector3.ZERO, 0.5)
 		

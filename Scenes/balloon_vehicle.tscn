@@ -100,10 +100,12 @@ transform = Transform3D(9.734291, 0, 0, 0, 9.734291, 0, 0, 0, 9.734291, 0, 8.776
 shape = SubResource("SphereShape3D_qbobt")
 
 [node name="CabinTrigger" type="Area3D" parent="." unique_id=504987787]
+visible = false
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CabinTrigger" unique_id=1665337693]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019798279, 1.418437, 0.008178711)
 shape = SubResource("BoxShape3D_qbobt")
 
-[connection signal="body_entered" from="CabinTrigger" to="." method="_on_cabin_trigger_body_entered"]
-[connection signal="body_exited" from="CabinTrigger" to="." method="_on_cabin_trigger_body_exited"]
+[connection signal="area_entered" from="CabinTrigger" to="." method="_on_cabin_trigger_area_entered"]
+[connection signal="area_exited" from="CabinTrigger" to="." method="_on_cabin_trigger_area_exited"]
