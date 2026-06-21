@@ -15,7 +15,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var rope = $Rope
+	rope.global_rotation = Vector3.ZERO
 
 # Use Tweens (lightweight animation keyframes) to move balloon up and down
 func begin_up_down():

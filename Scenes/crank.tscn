@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bobw2u4sa5rgm" path="res://Scripts/crank.gd" id="1_tkptf"]
 [ext_resource type="PackedScene" uid="uid://dt52awidakbkb" path="res://Assets/Models/crank.glb" id="1_vfiox"]
-[ext_resource type="AudioStream" uid="uid://bxbulgaf54r4j" path="res://Assets/Sound/crank_3.mp3" id="2_wditd"]
+[ext_resource type="AudioStream" uid="uid://byqyv1eps2syd" path="res://Assets/Sound/crank_2.mp3" id="2_wditd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_selfg"]
 size = Vector3(1.8486938, 0.920166, 0.8748169)
@@ -33,4 +33,5 @@ shape = SubResource("WorldBoundaryShape3D_rrneo")
 stream = ExtResource("2_wditd")
 attenuation_model = 1
 max_db = 0.0
+pitch_scale = 3.0
 parameters/looping = true
