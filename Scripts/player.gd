@@ -26,7 +26,7 @@ func handle_raycast() -> void:
 	var col = ray_cast.get_collider()
 	
 	# Change crosshair if item is grabbable
-	if col and col.is_in_group("Grabbable"):
+	if (col and col.is_in_group("Grabbable")) or is_cranking:
 		crosshair_main.visible = false
 		crosshair_grab.visible = true
 	else:
@@ -35,35 +35,19 @@ func handle_raycast() -> void:
 	
 	# Check if player is looking at crank
 	if col and col.is_in_group("Crank"):
-		# Enable cranking state
+		# Enable player's cranking state
 		if Input.is_action_pressed("grab"):
 			crank = col.get_parent()
 			is_cranking = true
 
 func handle_crank(delta):
+	# Let crank know to rotate towards player mouse
 	var view_pos = crank_ray.get_collision_point()
-	var view_dir = crank.global_transform.affine_inverse() * view_pos
-	view_dir = view_dir.normalized()
-	var handle = crank.get_node("Handle")
-	var handle_dir = -handle.transform.basis.z.normalized()
-	var angle_to = handle_dir.angle_to(view_dir)
-	var signed_angle_to = handle_dir.signed_angle_to(view_dir, crank.transform.basis.x.normalized())
-	handle.rotate_x(signed_angle_to * delta * 5)
-	print("=================================================")
-	print("View Dir: " + str(view_dir))
-	print("Crank Dir: " + str(handle_dir))
-	print("Angle: " + str(angle_to))
-	print("Signed Angle: " + str(signed_angle_to))
-
-	# Play crank audio
-	var audio : AudioStreamPlayer3D = crank.get_node("AudioStreamPlayer3D")
-	if not audio.playing:
-		audio.play()
+	crank.handle_rotation(view_pos, delta)
 	
 	# Stop cranking when player releases grab
 	if Input.is_action_just_released("grab"):
 		is_cranking = false
-		audio.stop()
 		
 	
 func handle_movement(delta):
