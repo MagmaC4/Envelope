@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://dkxgf5ykudbxe"]
 
-[ext_resource type="Script" uid="uid://b17vxcw4ug5jq" path="res://Scripts/player_movement.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://b17vxcw4ug5jq" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://4w1m8h5kodfe" path="res://Scripts/camera_control.gd" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://c74uk0ertlwob" path="res://Assets/UI_Textures/grab_1.png" id="3_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://cvg3wd3ovah1x" path="res://Assets/UI_Textures/crosshair.png" id="3_vgqql"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_f60y1"]
 
@@ -14,8 +16,54 @@ script = ExtResource("1_v0iea")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("2_cvnsp")
 
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=885855428]
+target_position = Vector3(0, 0, -3)
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1771865676]
 mesh = SubResource("CapsuleMesh_f60y1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1217961235]
 shape = SubResource("CapsuleShape3D_v0iea")
+
+[node name="UI" type="Control" parent="." unique_id=1030611202]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CrosshairMain" type="TextureRect" parent="UI" unique_id=1083045652]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vgqql")
+expand_mode = 1
+
+[node name="CrosshairGrab" type="TextureRect" parent="UI" unique_id=1112811633]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_6t5aa")
+expand_mode = 1

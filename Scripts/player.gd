@@ -1,12 +1,57 @@
 extends CharacterBody3D
 
+
+# Interaction
+@onready var ray_cast : RayCast3D = $Camera3D/RayCast3D
+@onready var crosshair_main : TextureRect = $UI/CrosshairMain
+@onready var crosshair_grab : TextureRect = $UI/CrosshairGrab
+var is_cranking := false
+var crank : Node3D
+
+
+# Movement
+@onready var camera : Camera3D = $Camera3D
 var SPEED = 3.5
 const JUMP_VELOCITY = 4.5
-@onready var camera : Camera3D = $Camera3D
+
 
 func _physics_process(delta: float) -> void:		
-	# Player movement
 	handle_movement(delta)
+	handle_raycast()
+	if is_cranking:
+		handle_crank()
+	
+func handle_raycast() -> void:
+	var col = ray_cast.get_collider()
+	
+	# Change crosshair if item is grabbable
+	if col and col.is_in_group("Grabbable"):
+		crosshair_main.visible = false
+		crosshair_grab.visible = true
+	else:
+		crosshair_main.visible = true
+		crosshair_grab.visible = false
+	
+	# Check if player is looking at crank
+	if col and col.is_in_group("Crank"):
+		# Enable cranking state
+		if Input.is_action_pressed("grab"):
+			crank = col.get_parent()
+			is_cranking = true
+
+func handle_crank():
+	# Rotate crank
+	crank.rotate_x(0.1)
+	
+	# Play crank audio
+	var audio : AudioStreamPlayer3D = crank.get_node("AudioStreamPlayer3D")
+	if not audio.playing:
+		audio.play()
+	
+	# Stop cranking when player releases grab
+	if Input.is_action_just_released("grab"):
+		is_cranking = false
+		audio.stop()
 	
 func handle_movement(delta):
 	# Add the gravity.

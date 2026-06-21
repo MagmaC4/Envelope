@@ -3,6 +3,10 @@
 [ext_resource type="Material" uid="uid://cp4f1k41unanv" path="res://Assets/Materials/test_grid_brown.tres" id="1_7b8gh"]
 [ext_resource type="Script" uid="uid://5ypa5onyceiy" path="res://Scripts/balloon_vehicle.gd" id="1_h2duu"]
 [ext_resource type="Texture2D" uid="uid://cg1ta2cg0d528" path="res://Assets/Materials/balloon_1.jpeg" id="2_qbobt"]
+[ext_resource type="Texture2D" uid="uid://db5xsek3jdycq" path="res://Assets/Materials/test_grid.png" id="4_5tuot"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qbobt"]
+size = Vector3(1.8789711, 3.1889954, 1.9432068)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wn7uu"]
 material = ExtResource("1_7b8gh")
@@ -33,11 +37,25 @@ material = SubResource("StandardMaterial3D_h2duu")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qbobt"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qbobt"]
-size = Vector3(1.9177399, 2.8164673, 2.017334)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgw8h"]
+albedo_color = Color(0.45262197, 0.45262197, 0.45262197, 1)
+albedo_texture = ExtResource("4_5tuot")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3nuav"]
+material = SubResource("StandardMaterial3D_sgw8h")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gmxq1"]
+size = Vector3(2.048706, 0.4154663, 2.080017)
 
 [node name="BalloonVehicle" type="Node3D" unique_id=58244521 groups=["Vehicle"]]
 script = ExtResource("1_h2duu")
+
+[node name="CabinTrigger" type="Area3D" parent="." unique_id=504987787]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CabinTrigger" unique_id=1665337693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00658226, 1.604701, 0.0022125244)
+shape = SubResource("BoxShape3D_qbobt")
 
 [node name="Cabin" type="StaticBody3D" parent="." unique_id=113087274]
 
@@ -99,13 +117,19 @@ mesh = SubResource("SphereMesh_5tuot")
 transform = Transform3D(9.734291, 0, 0, 0, 9.734291, 0, 0, 0, 9.734291, 0, 8.776963, 0)
 shape = SubResource("SphereShape3D_qbobt")
 
-[node name="CabinTrigger" type="Area3D" parent="." unique_id=504987787]
-visible = false
-metadata/_edit_group_ = true
+[node name="Burner" type="StaticBody3D" parent="." unique_id=1984842240]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CabinTrigger" unique_id=1665337693]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019798279, 1.418437, 0.008178711)
-shape = SubResource("BoxShape3D_qbobt")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Burner" unique_id=1144893484]
+transform = Transform3D(2.2085514, 0, 0, 0, 0.16790104, 0, 0, 0, 2.2085514, 0, 3.4318733, 0)
+mesh = SubResource("CylinderMesh_3nuav")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Burner" unique_id=530969997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005493164, 3.4466743, 0.02432251)
+shape = SubResource("BoxShape3D_gmxq1")
+
+[node name="LeftPropeller" type="StaticBody3D" parent="." unique_id=638508089]
+
+[node name="RightPropeller" type="StaticBody3D" parent="." unique_id=1827879541]
 
 [connection signal="area_entered" from="CabinTrigger" to="." method="_on_cabin_trigger_area_entered"]
 [connection signal="area_exited" from="CabinTrigger" to="." method="_on_cabin_trigger_area_exited"]

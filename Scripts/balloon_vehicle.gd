@@ -52,5 +52,5 @@ func reparent_player(area: Area3D, parent: Node3D):
 	
 	# Smoothly reset local rotation to zero
 	var tween = create_tween()
-	tween.tween_property(player,"rotation", Vector3.ZERO, 0.5)
+	tween.tween_property(player,"rotation", Vector3.ZERO, 0.5).set_trans(Tween.TRANS_SINE)
 		
