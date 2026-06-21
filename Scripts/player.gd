@@ -32,6 +32,12 @@ func handle_raycast() -> void:
 	else:
 		crosshair_main.visible = true
 		crosshair_grab.visible = false
+		
+	# Send grab signal to Grabbable objects
+	if col and col.is_in_group("Grabbable") and Input.is_action_just_pressed("grab"):
+		# using heuristic that area is direct child of a scripted object 
+		var grabbable_object = col.get_parent() 
+		grabbable_object.handle_grab()
 	
 	# Check if player is looking at crank
 	if col and col.is_in_group("Crank"):

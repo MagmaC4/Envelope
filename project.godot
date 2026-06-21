@@ -15,6 +15,11 @@ run/main_scene="uid://t36gu0pei00o"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [global_group]
 
 Player=""
@@ -22,6 +27,7 @@ PlayerTwin=""
 Crank=""
 Grabbable=""
 Vehicle=""
+Rope=""
 
 [input]
 

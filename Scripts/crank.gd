@@ -40,6 +40,7 @@ func handle_rotation(view_pos: Vector3, delta: float) -> void:
 	
 	# Debug prints
 	print("=================================================")
+	print("CRANK INFORMATION")
 	print("View Dir: " + str(view_dir))
 	print("Crank Dir: " + str(handle_dir))
 	print("Angle: " + str(angle_to))
@@ -68,6 +69,10 @@ func handle_rotation(view_pos: Vector3, delta: float) -> void:
 # residual rotation after letting go of the handle
 func handle_floaty_rotation(delta):
 	handle.rotate_x(floaty_rotation * delta * 5)
+	
+# ignore this blame ben
+func handle_grab():
+	pass
 	
 		
 func add_power(num : float):
