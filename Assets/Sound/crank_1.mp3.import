@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/crank_1.mp3-f0c3576afdf235c4be7ebbec1057ed08.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0.0
 bpm=0.0
 beat_count=0

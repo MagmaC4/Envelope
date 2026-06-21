@@ -1,22 +1,34 @@
 [gd_scene format=3 uid="uid://cwvqpd34u8etg"]
 
 [ext_resource type="PackedScene" uid="uid://dt52awidakbkb" path="res://Assets/Models/crank.glb" id="1_vfiox"]
-[ext_resource type="AudioStream" uid="uid://bsr4ao0qybj7r" path="res://Assets/Sound/crank_4.mp3" id="2_wditd"]
+[ext_resource type="AudioStream" uid="uid://bxbulgaf54r4j" path="res://Assets/Sound/crank_3.mp3" id="2_wditd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_selfg"]
 size = Vector3(1.8486938, 0.920166, 0.8748169)
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rrneo"]
+
 [node name="Crank" type="Node3D" unique_id=1887970496 groups=["Crank", "Grabbable"]]
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1337888276 groups=["Crank", "Grabbable"]]
+[node name="Handle" type="Area3D" parent="." unique_id=1337888276 groups=["Crank", "Grabbable"]]
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=254676297]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Handle" unique_id=254676297]
 transform = Transform3D(0.99997705, 0, 0, 0, 0.99997705, 0, 0, 0, 0.99997705, 0.5756054, 0.004272938, -3.0288944)
 shape = SubResource("BoxShape3D_selfg")
 
-[node name="Model" parent="." unique_id=584376246 instance=ExtResource("1_vfiox")]
+[node name="Model" parent="Handle" unique_id=584376246 instance=ExtResource("1_vfiox")]
+
+[node name="GrabPlane" type="Area3D" parent="." unique_id=976073909]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrabPlane" unique_id=528486645]
+transform = Transform3D(-2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_rrneo")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=311791073]
 stream = ExtResource("2_wditd")
+attenuation_model = 1
+max_db = 0.0
 parameters/looping = true

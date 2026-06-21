@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 # Interaction
 @onready var ray_cast : RayCast3D = $Camera3D/RayCast3D
+@onready var crank_ray : RayCast3D = $Camera3D/CrankRay
 @onready var crosshair_main : TextureRect = $UI/CrosshairMain
 @onready var crosshair_grab : TextureRect = $UI/CrosshairGrab
 var is_cranking := false
@@ -19,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	handle_movement(delta)
 	handle_raycast()
 	if is_cranking:
-		handle_crank()
+		handle_crank(delta)
 	
 func handle_raycast() -> void:
 	var col = ray_cast.get_collider()
@@ -39,10 +40,21 @@ func handle_raycast() -> void:
 			crank = col.get_parent()
 			is_cranking = true
 
-func handle_crank():
-	# Rotate crank
-	crank.rotate_x(0.1)
-	
+func handle_crank(delta):
+	var view_pos = crank_ray.get_collision_point()
+	var view_dir = crank.global_transform.affine_inverse() * view_pos
+	view_dir = view_dir.normalized()
+	var handle = crank.get_node("Handle")
+	var handle_dir = -handle.transform.basis.z.normalized()
+	var angle_to = handle_dir.angle_to(view_dir)
+	var signed_angle_to = handle_dir.signed_angle_to(view_dir, crank.transform.basis.x.normalized())
+	handle.rotate_x(signed_angle_to * delta * 5)
+	print("=================================================")
+	print("View Dir: " + str(view_dir))
+	print("Crank Dir: " + str(handle_dir))
+	print("Angle: " + str(angle_to))
+	print("Signed Angle: " + str(signed_angle_to))
+
 	# Play crank audio
 	var audio : AudioStreamPlayer3D = crank.get_node("AudioStreamPlayer3D")
 	if not audio.playing:
@@ -52,6 +64,7 @@ func handle_crank():
 	if Input.is_action_just_released("grab"):
 		is_cranking = false
 		audio.stop()
+		
 	
 func handle_movement(delta):
 	# Add the gravity.

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://5ypa5onyceiy" path="res://Scripts/balloon_vehicle.gd" id="1_h2duu"]
 [ext_resource type="Texture2D" uid="uid://cg1ta2cg0d528" path="res://Assets/Materials/balloon_1.jpeg" id="2_qbobt"]
 [ext_resource type="Texture2D" uid="uid://db5xsek3jdycq" path="res://Assets/Materials/test_grid.png" id="4_5tuot"]
+[ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/crank.tscn" id="5_sgw8h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbobt"]
 size = Vector3(1.8789711, 3.1889954, 1.9432068)
@@ -51,6 +52,7 @@ size = Vector3(2.048706, 0.4154663, 2.080017)
 script = ExtResource("1_h2duu")
 
 [node name="CabinTrigger" type="Area3D" parent="." unique_id=504987787]
+visible = false
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CabinTrigger" unique_id=1665337693]
@@ -130,6 +132,9 @@ shape = SubResource("BoxShape3D_gmxq1")
 [node name="LeftPropeller" type="StaticBody3D" parent="." unique_id=638508089]
 
 [node name="RightPropeller" type="StaticBody3D" parent="." unique_id=1827879541]
+
+[node name="Crank" parent="." unique_id=1887970496 instance=ExtResource("5_sgw8h")]
+transform = Transform3D(0.15588367, 0, 0, 0, 0.15588367, 0, 0, 0, 0.15588367, -0.9, 0.5, 0)
 
 [connection signal="area_entered" from="CabinTrigger" to="." method="_on_cabin_trigger_area_entered"]
 [connection signal="area_exited" from="CabinTrigger" to="." method="_on_cabin_trigger_area_exited"]

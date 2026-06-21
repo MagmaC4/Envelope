@@ -65,6 +65,11 @@ grab={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Everything"
+3d_physics/layer_2="Crank Plane"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
