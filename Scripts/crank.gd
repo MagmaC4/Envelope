@@ -15,7 +15,7 @@ func _ready() -> void:
 	# multiply power by -1 if engine is on left
 	if on_left: power_sign = -1
 	audio.play()
-	audio.volume_db = -80
+	audio.volume_db = -100
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -59,7 +59,7 @@ func handle_rotation(view_pos: Vector3, delta: float) -> void:
 	if Input.is_action_just_released("grab"):
 		# Set audio to 0 (smoothly)
 		var audio_tween = create_tween()
-		audio_tween.tween_property(audio, "volume_db", -80, TWEEN_TIME)
+		audio_tween.tween_property(audio, "volume_db", -100, TWEEN_TIME)
 		
 		# Keep crank rotating briefly after letting go
 		floaty_rotation = signed_angle_to
