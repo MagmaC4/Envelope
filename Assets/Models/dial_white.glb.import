@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ccemvhd3ybexe"
-path="res://.godot/imported/dial_1.glb-0d34e5c7c662c0231b6abe6cd48675bb.scn"
+uid="uid://dk1us3db2284u"
+path="res://.godot/imported/dial_white.glb-529bacbffe9b9e16615c7af511a8bfe2.scn"
 
 [deps]
 
-source_file="res://Assets/Models/dial_1.glb"
-dest_files=["res://.godot/imported/dial_1.glb-0d34e5c7c662c0231b6abe6cd48675bb.scn"]
+source_file="res://Assets/Models/dial_white.glb"
+dest_files=["res://.godot/imported/dial_white.glb-529bacbffe9b9e16615c7af511a8bfe2.scn"]
 
 [params]
 

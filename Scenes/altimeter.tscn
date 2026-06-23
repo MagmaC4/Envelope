@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbgax75uq11j7" path="res://Scripts/gauge.gd" id="1_w5wo2"]
 [ext_resource type="PackedScene" uid="uid://dq6eo8eqdg1k5" path="res://Assets/Models/gauge_1.glb" id="2_gpdat"]
-[ext_resource type="PackedScene" uid="uid://ccemvhd3ybexe" path="res://Assets/Models/dial_1.glb" id="3_uwp2g"]
+[ext_resource type="PackedScene" uid="uid://dk1us3db2284u" path="res://Assets/Models/dial_white.glb" id="3_w5wo2"]
 
 [node name="Altimeter" type="Node3D" unique_id=1666856832]
 script = ExtResource("1_w5wo2")
@@ -10,4 +10,4 @@ is_clockwise = true
 
 [node name="gauge_1" parent="." unique_id=1404530338 instance=ExtResource("2_gpdat")]
 
-[node name="dial" parent="." unique_id=509035106 instance=ExtResource("3_uwp2g")]
+[node name="dial" parent="." unique_id=1331375477 instance=ExtResource("3_w5wo2")]
