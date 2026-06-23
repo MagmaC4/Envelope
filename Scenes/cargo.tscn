@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cca03e7123hgk"]
+
+[ext_resource type="Script" uid="uid://gnubkpr7muow" path="res://Scenes/car.gd" id="1_bsr63"]
+[ext_resource type="Texture2D" uid="uid://pysipl78thpm" path="res://Assets/icon.svg" id="1_u37pa"]
+
+[node name="Cargo" type="Node2D" unique_id=606868880]
+
+[node name="Car" type="Node2D" parent="." unique_id=1712162832]
+position = Vector2(953, 548)
+script = ExtResource("1_bsr63")
+mag = 10.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Car" unique_id=2066627654]
+texture = ExtResource("1_u37pa")
