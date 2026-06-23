@@ -24,6 +24,14 @@ background_mode = 2
 sky = SubResource("Sky_ui57x")
 tonemap_mode = 2
 glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.42745098, 0.58431375, 0.57254905, 1)
+fog_density = 1.0
+fog_sky_affect = 0.5
+fog_depth_curve = 4.381883
+fog_depth_begin = 2849.2
+fog_depth_end = 4000.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2xxif"]
 material = ExtResource("1_dla66")
