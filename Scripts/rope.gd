@@ -39,7 +39,7 @@ func handle_grab():
 	
 	# decrease ignite volume so sound doesn't clip on repeated rope pulls
 	audio_ignite.play()
-	audio_ignite.volume_db = 0
+	
 	
 	# move rope down when grabbed
 	var position_tween = create_tween()
@@ -51,7 +51,7 @@ func handle_grab():
 	RopeArea.add_to_group("Grabbable", false)
 	
 func handle_burner(delta: float) -> void:
-	power += delta * burner_level * 10
+	power += delta * burner_level * 15
 	power -= delta * 10
 	power = clamp(power, 0, MAX_POWER)
 	

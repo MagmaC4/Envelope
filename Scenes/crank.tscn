@@ -3,11 +3,17 @@
 [ext_resource type="Script" uid="uid://bobw2u4sa5rgm" path="res://Scripts/crank.gd" id="1_tkptf"]
 [ext_resource type="PackedScene" uid="uid://dt52awidakbkb" path="res://Assets/Models/crank.glb" id="1_vfiox"]
 [ext_resource type="AudioStream" uid="uid://byqyv1eps2syd" path="res://Assets/Sound/crank_2.mp3" id="2_wditd"]
+[ext_resource type="Script" uid="uid://3o67itkl3o0q" path="res://Scripts/progress_bar.gd" id="4_owcch"]
+[ext_resource type="Texture2D" uid="uid://5bd4nfefv4mj" path="res://Assets/Textures/arrow_2_under.png" id="5_owcch"]
+[ext_resource type="Texture2D" uid="uid://rabolwv4efoj" path="res://Assets/Textures/arrow_2_fill.png" id="6_gg46c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_selfg"]
 size = Vector3(1.8486938, 0.920166, 0.8748169)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rrneo"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rh4jp"]
+viewport_path = NodePath("ProgressBar/SubViewport")
 
 [node name="Crank" type="Node3D" unique_id=1887970496 groups=["Crank", "Grabbable"]]
 script = ExtResource("1_tkptf")
@@ -35,3 +41,22 @@ attenuation_model = 1
 max_db = 0.0
 pitch_scale = 3.0
 parameters/looping = true
+
+[node name="ProgressBar" type="Node3D" parent="." unique_id=466959004]
+script = ExtResource("4_owcch")
+
+[node name="SubViewport" type="SubViewport" parent="ProgressBar" unique_id=997462020]
+transparent_bg = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ProgressBar/SubViewport" unique_id=115856287]
+offset_right = 40.0
+offset_bottom = 40.0
+fill_mode = 4
+radial_initial_angle = 270.0
+radial_fill_degrees = 90.0
+texture_under = ExtResource("5_owcch")
+texture_progress = ExtResource("6_gg46c")
+
+[node name="Sprite3D" type="Sprite3D" parent="ProgressBar" unique_id=905794194]
+transform = Transform3D(-1.7229498e-08, 0, 0.39416498, 0, 0.39416498, 0, -0.39416498, 0, -1.7229498e-08, -0.4, 0, 0)
+texture = SubResource("ViewportTexture_rh4jp")

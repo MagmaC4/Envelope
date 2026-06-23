@@ -41,7 +41,6 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="PlayerTwin" parent="." unique_id=41360756 instance=ExtResource("3_et0fo")]
-visible = false
 
 [node name="BalloonVehicle" parent="." unique_id=58244521 instance=ExtResource("3_ui57x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07545018, 0.5049819, -3.787043)

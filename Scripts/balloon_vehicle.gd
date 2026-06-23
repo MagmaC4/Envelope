@@ -2,6 +2,9 @@ extends Node3D
 
 # Local Movement
 @onready var cabin_trigger: Area3D = $CabinTrigger
+@onready var left_crank: Node3D = $Crank
+@onready var right_crank: Node3D = $Crank2
+@onready var rope: Node3D = $Rope
 
 # Move up and down
 @onready var start_pos = position
@@ -17,6 +20,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var rope = $Rope
 	rope.global_rotation = Vector3.ZERO
+	
 
 # Use Tweens (lightweight animation keyframes) to move balloon up and down
 func begin_up_down():

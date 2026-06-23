@@ -1,14 +1,21 @@
 extends Node3D
 
+# Children
 @onready var handle := $Handle
 @onready var audio := $AudioStreamPlayer3D
+
+# Generate power when cranking, adding power depends on direction
 @export var on_left : bool = false
 var MAX_POWER := 100.0
 var power := 0.0
 var power_sign = 1 
+
+# Rotating after letting go
 var TWEEN_TIME := 0.5
 var floaty_rotation := 0.0
 
+# Miscellaneous
+var print_timer := 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,21 +46,25 @@ func handle_rotation(view_pos: Vector3, delta: float) -> void:
 	add_power(power_sign * signed_angle_to * delta * 10)
 	
 	# Debug prints
-	print("=================================================")
-	print("CRANK INFORMATION")
-	print("View Dir: " + str(view_dir))
-	print("Crank Dir: " + str(handle_dir))
-	print("Angle: " + str(angle_to))
-	print("Signed Angle: " + str(signed_angle_to))
-	print("Power: " + str(power))
+	print_timer += delta
+	if (print_timer >= 1.0):
+		print_timer = 0.0
+		print("=================================================")
+		print("CRANK INFORMATION")
+		print("View Dir: " + str(view_dir))
+		print("Crank Dir: " + str(handle_dir))
+		print("Angle: " + str(angle_to))
+		print("Signed Angle: " + str(signed_angle_to))
+		print("Power: " + str(power))
+		print("Audio Volume db: " + str(audio.volume_db))
+		print("Audio Pitch: " + str(audio.pitch_scale))
 
 	# Increase volume and pitch of crank audio based on magnitude of angle
 	audio.volume_db = lerp(-40, 0, power_sign * signed_angle_to / (PI / 2))
 	audio.volume_db = clamp(audio.volume_db, -40, 0)
 	audio.pitch_scale = lerp(0.5, 2.0, power_sign * signed_angle_to / (PI / 2))
 	audio.pitch_scale = clamp(audio.pitch_scale, 0.5, 1.5)
-	print("Audio Volume db: " + str(audio.volume_db))
-	print("Audio Pitch: " + str(audio.pitch_scale))
+	
 	
 	# Reset crank when no longer grabbing
 	if Input.is_action_just_released("grab"):
