@@ -1,16 +1,14 @@
 extends Node3D
 
-# Local Movement
+# Nodes
 @onready var cabin_trigger: Area3D = $CabinTrigger
 @onready var left_crank: Node3D = $Crank
 @onready var right_crank: Node3D = $Crank2
 @onready var rope: Node3D = $Rope
 
-# Move up and down
+# Tween
 @onready var start_pos = position
 @onready var end_pos = start_pos + 3 * Vector3.UP
-var direction_up = true
-var can_move = true
 
 # Gauges
 @onready var altimeter = $Altimeter
@@ -22,12 +20,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var rope = $Rope
-	rope.global_rotation = Vector3.ZERO
 	
+	# Rope falls down to earth
+	rope.global_rotation = Vector3.ZERO
 	# Set altimeter gauge's value with height
 	altimeter.value = global_position.y
-	
 	# Set thermometer gauge's value with burner power
 	thermometer.value = rope.power
 

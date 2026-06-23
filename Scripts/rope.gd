@@ -23,7 +23,8 @@ var TWEEN_DURATION = 0.25
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	audio_burner.play()
-	print_burner_info()
+	audio_burner.volume_db = -100
+	# print_burner_info()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

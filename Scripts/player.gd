@@ -4,8 +4,8 @@ extends CharacterBody3D
 # Interaction
 @onready var ray_cast : RayCast3D = $Camera3D/RayCast3D
 @onready var crank_ray : RayCast3D = $Camera3D/CrankRay
-@onready var crosshair_main : TextureRect = $UI/CrosshairMain
-@onready var crosshair_grab : TextureRect = $UI/CrosshairGrab
+signal hovering_grabbable(is_hovering: bool)
+var was_hovering := false
 var is_cranking := false
 var crank : Node3D
 
@@ -25,13 +25,12 @@ func _physics_process(delta: float) -> void:
 func handle_raycast() -> void:
 	var col = ray_cast.get_collider()
 	
-	# Change crosshair if item is grabbable
-	if (col and col.is_in_group("Grabbable")) or is_cranking:
-		crosshair_main.visible = false
-		crosshair_grab.visible = true
-	else:
-		crosshair_main.visible = true
-		crosshair_grab.visible = false
+	# Change crosshair if item is grabbable (send signal)
+	var is_hovering = (col and col.is_in_group("Grabbable")) or is_cranking
+	# Emit signal only on state change
+	if is_hovering != was_hovering:
+		hovering_grabbable.emit(is_hovering)
+		was_hovering = is_hovering
 		
 	# Send grab signal to Grabbable objects
 	if col and col.is_in_group("Grabbable") and Input.is_action_just_pressed("grab"):

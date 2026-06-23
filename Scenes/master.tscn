@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ymqqkd6ygbrp" path="res://Scenes/player_twin.tscn" id="3_et0fo"]
 [ext_resource type="PackedScene" uid="uid://bexei880yacly" path="res://Scenes/balloon_vehicle.tscn" id="3_ui57x"]
 [ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/crank.tscn" id="5_et0fo"]
+[ext_resource type="PackedScene" uid="uid://bb3tq1pjqb0ab" path="res://Scenes/UI.tscn" id="6_selfg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dla66"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -65,3 +66,5 @@ mesh = SubResource("BoxMesh_et0fo")
 [node name="Crank" parent="Environment" unique_id=1887970496 instance=ExtResource("5_et0fo")]
 transform = Transform3D(0.31617248, 0, 0, 0, 0.31617248, 0, 0, 0, 0.31617248, -12.229397, 1.9744546, -5.3874636)
 on_left = true
+
+[node name="UI" parent="." unique_id=749720162 instance=ExtResource("6_selfg")]

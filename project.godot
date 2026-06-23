@@ -28,6 +28,7 @@ Crank=""
 Grabbable=""
 Vehicle=""
 Rope=""
+UI=""
 
 [input]
 
