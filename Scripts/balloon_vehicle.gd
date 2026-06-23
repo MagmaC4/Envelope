@@ -5,23 +5,29 @@ extends Node3D
 @onready var left_crank: Node3D = $Crank
 @onready var right_crank: Node3D = $Crank2
 @onready var rope: Node3D = $Rope
+var debug = false
 
 # Move up and down
 @onready var start_pos = position
 @onready var end_pos = start_pos + 3 * Vector3.UP
 var direction_up = true
 var can_move = true
-
+var vertical_vel = 0.0
+var UP_SPEED = .1
+var GRAVITY = 5
 # Gauges
 @onready var altimeter = $Altimeter
 @onready var thermometer = $Thermometer
 
 func _ready() -> void:
-	begin_up_down()
-	begin_sway()
+	#begin_up_down()
+	#begin_sway()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	
 	var rope = $Rope
 	rope.global_rotation = Vector3.ZERO
 	
@@ -30,6 +36,19 @@ func _process(delta: float) -> void:
 	
 	# Set thermometer gauge's value with burner power
 	thermometer.value = rope.power
+	handle_up(delta)
+	
+func handle_up(delta):
+	vertical_vel = rope.power * UP_SPEED * delta 
+	vertical_vel -= GRAVITY * delta
+	position.y += vertical_vel
+	global_position.y = clamp(global_position.y, 0.5, 50)
+	if (global_position.y < .5):
+		vertical_vel = 0
+	if debug:
+		print(global_position)
+		print(vertical_vel)
+
 
 # Use Tweens (lightweight animation keyframes) to move balloon up and down
 func begin_up_down():

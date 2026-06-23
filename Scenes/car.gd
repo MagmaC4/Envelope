@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	print("left ", left_engine)
 	print("right ", right_engine)
 		
-	#alculate Forces 
+	#calculate Forces 
 	var total_force = mag * (left_engine + right_engine)
 	var cw_torque = mag * left_engine
 	var ccw_torque = mag * right_engine
@@ -36,8 +36,9 @@ func _physics_process(delta: float) -> void:
 	w += torque * delta
 	
 	# Decay so they approach 0 when untouched
-	speed = move_toward(speed, 0.0, 3 * delta)
+	speed = move_toward(speed, 0.0, 10 * delta)
 	w = move_toward(w, 0.0, 4.5 * delta)
+	
 	
 	position += Vector2.from_angle(rotation) * speed * delta
 	rotate(w * delta)

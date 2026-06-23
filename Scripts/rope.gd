@@ -12,6 +12,7 @@ var is_burner_on := false
 var BURNER_LEVEL_DURATION := 5.0
 var MAX_BURNER_LEVEL := 3
 var burner_level := 0 # States: 0, 1, 2, 3
+var debug = false
 
 
 # Tween stuff
@@ -23,7 +24,8 @@ var TWEEN_DURATION = 0.25
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	audio_burner.play()
-	print_burner_info()
+	if debug:
+		print_burner_info()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

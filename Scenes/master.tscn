@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ymqqkd6ygbrp" path="res://Scenes/player_twin.tscn" id="3_et0fo"]
 [ext_resource type="PackedScene" uid="uid://bexei880yacly" path="res://Scenes/balloon_vehicle.tscn" id="3_ui57x"]
 [ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/crank.tscn" id="5_et0fo"]
+[ext_resource type="PackedScene" uid="uid://dl3d3mmx6rht5" path="res://Scenes/balloon_vehicle2.tscn" id="6_selfg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dla66"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -39,6 +40,7 @@ shadow_enabled = true
 
 [node name="Player" parent="." unique_id=674056149 instance=ExtResource("2_ui57x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
 
 [node name="PlayerTwin" parent="." unique_id=41360756 instance=ExtResource("3_et0fo")]
 
@@ -65,3 +67,6 @@ mesh = SubResource("BoxMesh_et0fo")
 [node name="Crank" parent="Environment" unique_id=1887970496 instance=ExtResource("5_et0fo")]
 transform = Transform3D(0.31617248, 0, 0, 0, 0.31617248, 0, 0, 0, 0.31617248, -12.229397, 1.9744546, -5.3874636)
 on_left = true
+
+[node name="BalloonVehicle2" parent="." unique_id=1617002507 instance=ExtResource("6_selfg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.952217, 0.7978153, -2.2687242)

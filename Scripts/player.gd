@@ -64,6 +64,11 @@ func handle_movement(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("move_jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY	
+		
+	if get_parent() is AnimatableBody3D:
+		platform_floor_layers = 0 
+	else:
+		platform_floor_layers = 1
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

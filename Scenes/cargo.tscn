@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cca03e7123hgk"]
+[gd_scene format=3 uid="uid://chl53b1t7l5la"]
 
 [ext_resource type="Script" uid="uid://gnubkpr7muow" path="res://Scenes/car.gd" id="1_bsr63"]
 [ext_resource type="Texture2D" uid="uid://pysipl78thpm" path="res://Assets/icon.svg" id="1_u37pa"]
