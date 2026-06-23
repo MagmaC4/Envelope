@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ci8ndsk1o5y4u"]
+
+[ext_resource type="Script" uid="uid://dbgax75uq11j7" path="res://Scripts/gauge.gd" id="1_01ygc"]
+[ext_resource type="PackedScene" uid="uid://dr6hhyigen7og" path="res://Assets/Models/gauge_2.glb" id="1_f5lcp"]
+[ext_resource type="PackedScene" uid="uid://ccemvhd3ybexe" path="res://Assets/Models/dial_1.glb" id="2_01ygc"]
+
+[node name="Thermometer" type="Node3D" unique_id=618017343]
+script = ExtResource("1_01ygc")
+
+[node name="gauge_2" parent="." unique_id=1529723465 instance=ExtResource("1_f5lcp")]
+
+[node name="dial" parent="." unique_id=498527153 instance=ExtResource("2_01ygc")]

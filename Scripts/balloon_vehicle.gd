@@ -12,6 +12,10 @@ extends Node3D
 var direction_up = true
 var can_move = true
 
+# Gauges
+@onready var altimeter = $Altimeter
+@onready var thermometer = $Thermometer
+
 func _ready() -> void:
 	begin_up_down()
 	begin_sway()
@@ -21,6 +25,11 @@ func _process(delta: float) -> void:
 	var rope = $Rope
 	rope.global_rotation = Vector3.ZERO
 	
+	# Set altimeter gauge's value with height
+	altimeter.value = global_position.y
+	
+	# Set thermometer gauge's value with burner power
+	thermometer.value = rope.power
 
 # Use Tweens (lightweight animation keyframes) to move balloon up and down
 func begin_up_down():
