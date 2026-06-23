@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bexei880yacly" path="res://Scenes/balloon_vehicle.tscn" id="3_ui57x"]
 [ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/crank.tscn" id="5_et0fo"]
 [ext_resource type="PackedScene" uid="uid://bb3tq1pjqb0ab" path="res://Scenes/UI.tscn" id="6_selfg"]
+[ext_resource type="Script" uid="uid://b1g3cwlfw2uy6" path="res://addons/zylann.hterrain/hterrain.gd" id="7_qwuhp"]
+[ext_resource type="Resource" uid="uid://ucquhpg5u2a2" path="res://Terrain_Data/data.hterrain" id="8_4ttbv"]
+[ext_resource type="Script" uid="uid://dfjwxkr2ghrqf" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="9_80ytr"]
+[ext_resource type="Texture2D" uid="uid://bpow1is3o58l8" path="res://Assets/Materials/Grass005_1K-PNG_Color.png" id="9_ovr7t"]
+[ext_resource type="Texture2D" uid="uid://f24bdk3bclb4" path="res://Assets/Materials/Grass005_1K-PNG_NormalGL.png" id="10_5vn6p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dla66"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -29,6 +34,11 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 [sub_resource type="BoxMesh" id="BoxMesh_et0fo"]
 material = ExtResource("1_dla66")
 
+[sub_resource type="Resource" id="Resource_ovr7t"]
+script = ExtResource("9_80ytr")
+mode = 0
+textures = [[ExtResource("9_ovr7t")], [ExtResource("10_5vn6p")]]
+
 [node name="Master" type="Node3D" unique_id=925668592]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1096933158]
@@ -49,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07545018, 0.5049819, -3.78
 [node name="Environment" type="Node3D" parent="." unique_id=1017786431]
 
 [node name="Ground" type="MeshInstance3D" parent="Environment" unique_id=705273356]
-transform = Transform3D(41.62596, 0, 0, 0, 41.62596, 0, 0, 0, 41.62596, 0, 0, 0)
+transform = Transform3D(18.457094, 0, 0, 0, 18.457094, 0, 0, 0, 18.457094, 0, 0, 0)
 mesh = SubResource("PlaneMesh_2xxif")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
@@ -66,5 +76,26 @@ mesh = SubResource("BoxMesh_et0fo")
 [node name="Crank" parent="Environment" unique_id=1887970496 instance=ExtResource("5_et0fo")]
 transform = Transform3D(0.31617248, 0, 0, 0, 0.31617248, 0, 0, 0, 0.31617248, -12.229397, 1.9744546, -5.3874636)
 on_left = true
+
+[node name="HTerrain" type="Node3D" parent="Environment" unique_id=1768751334]
+script = ExtResource("7_qwuhp")
+map_scale = Vector3(20, 20, 20)
+centered = true
+_terrain_data = ExtResource("8_4ttbv")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_ovr7t")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 5.0
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+shader_params/u_tile_reduction = Vector4(1, 1, 1, 1)
+metadata/_custom_type_script = "uid://b1g3cwlfw2uy6"
 
 [node name="UI" parent="." unique_id=749720162 instance=ExtResource("6_selfg")]
