@@ -2,15 +2,28 @@
 
 [ext_resource type="Material" uid="uid://m8326m50smh5" path="res://Assets/Materials/test_grid_gray.tres" id="1_dla66"]
 [ext_resource type="PackedScene" uid="uid://dkxgf5ykudbxe" path="res://Scenes/player.tscn" id="2_ui57x"]
+[ext_resource type="RDShaderFile" uid="uid://dx1y5cye1m1hu" path="res://addons/SunshineClouds2/SunshineCloudsCompute.glsl" id="2_yf7u1"]
 [ext_resource type="PackedScene" uid="uid://ymqqkd6ygbrp" path="res://Scenes/player_twin.tscn" id="3_et0fo"]
+[ext_resource type="CompressedTexture3D" uid="uid://dei12lsgrjpyu" path="res://addons/SunshineClouds2/NoiseTextures/curl_noise_varied.tga" id="3_u8bos"]
 [ext_resource type="PackedScene" uid="uid://bexei880yacly" path="res://Scenes/balloon_vehicle.tscn" id="3_ui57x"]
+[ext_resource type="CompressedTexture3D" uid="uid://b3uyfsp4in821" path="res://addons/SunshineClouds2/NoiseTextures/bluenoise_Dither.png" id="4_r0be3"]
+[ext_resource type="Texture2D" uid="uid://de2nsujnhdlg0" path="res://addons/SunshineClouds2/NoiseTextures/ExtraLargeScaleNoise.tres" id="5_agr8a"]
 [ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/crank.tscn" id="5_et0fo"]
 [ext_resource type="PackedScene" uid="uid://bb3tq1pjqb0ab" path="res://Scenes/UI.tscn" id="6_selfg"]
+[ext_resource type="Texture2D" uid="uid://g02m2ewpwusq" path="res://addons/SunshineClouds2/NoiseTextures/HeightGradient.tres" id="6_vwkcb"]
+[ext_resource type="NoiseTexture3D" uid="uid://6ed3lvlpbqmg" path="res://addons/SunshineClouds2/NoiseTextures/LargeScaleNoise.tres" id="7_ip3g7"]
 [ext_resource type="Script" uid="uid://b1g3cwlfw2uy6" path="res://addons/zylann.hterrain/hterrain.gd" id="7_qwuhp"]
 [ext_resource type="Resource" uid="uid://ucquhpg5u2a2" path="res://Terrain_Data/data.hterrain" id="8_4ttbv"]
+[ext_resource type="NoiseTexture3D" uid="uid://dxyewgt7o40m0" path="res://addons/SunshineClouds2/NoiseTextures/MediumScaleNoise.tres" id="8_kbld1"]
+[ext_resource type="RDShaderFile" uid="uid://cqhejbalsrvjp" path="res://addons/SunshineClouds2/SunshineCloudsPostCompute.glsl" id="9_3qwss"]
 [ext_resource type="Script" uid="uid://dfjwxkr2ghrqf" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="9_80ytr"]
 [ext_resource type="Texture2D" uid="uid://bpow1is3o58l8" path="res://Assets/Materials/Grass005_1K-PNG_Color.png" id="9_ovr7t"]
 [ext_resource type="Texture2D" uid="uid://f24bdk3bclb4" path="res://Assets/Materials/Grass005_1K-PNG_NormalGL.png" id="10_5vn6p"]
+[ext_resource type="RDShaderFile" uid="uid://crfpk8ta4qxsk" path="res://addons/SunshineClouds2/SunshineCloudsPreCompute.glsl" id="10_u0e42"]
+[ext_resource type="Script" uid="uid://dnblgqynq1t7l" path="res://addons/SunshineClouds2/SunshineClouds.gd" id="11_dpmlj"]
+[ext_resource type="NoiseTexture3D" uid="uid://bnck2kxeg5bkg" path="res://addons/SunshineClouds2/NoiseTextures/SmallScaleNoise.tres" id="12_amom7"]
+[ext_resource type="Script" uid="uid://djusduuxf0voj" path="res://addons/SunshineClouds2/SunshineCloudsDriver.gd" id="12_ovr7t"]
+[ext_resource type="Script" uid="uid://bxlm4e5qfb7uu" path="res://addons/SunshineClouds2/SunshineCloudEffector.gd" id="13_5vn6p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dla66"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -33,6 +46,36 @@ fog_depth_curve = 4.381883
 fog_depth_begin = 2849.2
 fog_depth_end = 4000.0
 
+[sub_resource type="CompositorEffect" id="CompositorEffect_kv3pf"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 3
+access_resolved_color = true
+access_resolved_depth = true
+needs_motion_vectors = true
+needs_normal_roughness = false
+script = ExtResource("11_dpmlj")
+clouds_coverage = 0.786
+atmospheric_density = 0.532
+lighting_density = 1.056
+dither_noise = ExtResource("4_r0be3")
+height_gradient = ExtResource("6_vwkcb")
+extra_large_noise_patterns = ExtResource("5_agr8a")
+large_scale_noise = ExtResource("7_ip3g7")
+medium_scale_noise = ExtResource("8_kbld1")
+small_scale_noise = ExtResource("12_amom7")
+curl_noise = ExtResource("3_u8bos")
+dither_speed = 15.0
+pre_pass_compute_shader = ExtResource("10_u0e42")
+compute_shader = ExtResource("2_yf7u1")
+post_pass_compute_shader = ExtResource("9_3qwss")
+wind_direction = Vector3(1, 0, 1)
+directional_lights_data = Array[Vector4]([Vector4(0.5530577, 0.47715884, -0.6829691, 12), Vector4(1, 1, 1, 1)])
+
+[sub_resource type="Compositor" id="Compositor_2mjr2"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_kv3pf")])
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_2xxif"]
 material = ExtResource("1_dla66")
 
@@ -49,8 +92,11 @@ textures = [[ExtResource("9_ovr7t")], [ExtResource("10_5vn6p")]]
 
 [node name="Master" type="Node3D" unique_id=925668592]
 
+[node name="UI" parent="." unique_id=749720162 instance=ExtResource("6_selfg")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1096933158]
 environment = SubResource("Environment_2xxif")
+compositor = SubResource("Compositor_2mjr2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=86133595]
 transform = Transform3D(-0.77714586, -0.30028582, 0.5530576, 0, 0.8788171, 0.47715878, -0.6293205, 0.37082198, -0.68296903, 0, 0, 0)
@@ -106,4 +152,15 @@ shader_params/u_triplanar = false
 shader_params/u_tile_reduction = Vector4(1, 1, 1, 1)
 metadata/_custom_type_script = "uid://b1g3cwlfw2uy6"
 
-[node name="UI" parent="." unique_id=749720162 instance=ExtResource("6_selfg")]
+[node name="SunshineCloudsDriverGD" type="Node" parent="Environment" unique_id=974680235 node_paths=PackedStringArray("tracked_directional_lights")]
+script = ExtResource("12_ovr7t")
+update_continuously = true
+clouds_resource = SubResource("CompositorEffect_kv3pf")
+ambience_sample_environment = SubResource("Environment_2xxif")
+tracked_directional_lights = [NodePath("../../DirectionalLight3D")]
+tracked_directional_light_shadow_steps = Array[int]([12])
+metadata/_custom_type_script = "uid://djusduuxf0voj"
+
+[node name="SunshineCloudsEffector" type="Node3D" parent="Environment" unique_id=1590115809]
+script = ExtResource("13_5vn6p")
+metadata/_custom_type_script = "uid://bxlm4e5qfb7uu"
