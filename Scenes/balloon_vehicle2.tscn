@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dl3d3mmx6rht5"]
+[gd_scene format=3 uid="uid://bq3efham7nrqb"]
 
 [ext_resource type="Script" uid="uid://nwx2gq0nr5td" path="res://Scripts/balloon_vehicle2.gd" id="1_npksa"]
 [ext_resource type="Material" uid="uid://cp4f1k41unanv" path="res://Assets/Materials/test_grid_brown.tres" id="2_fpift"]
@@ -66,7 +66,7 @@ size = Vector3(0.35, 0.05, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hr7pi"]
 size = Vector3(0.3, 0.05, 1)
 
-[node name="BalloonVehicle2" type="AnimatableBody3D" unique_id=111051409 groups=["Vehicle"]]
+[node name="PhysicsBalloonVehicle" type="AnimatableBody3D" unique_id=111051409 groups=["Vehicle"]]
 sync_to_physics = false
 script = ExtResource("1_npksa")
 

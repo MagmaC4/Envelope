@@ -46,7 +46,7 @@ func handle_rotation(view_pos: Vector3, delta: float) -> void:
 	add_power(power_sign * signed_angle_to * delta * 10)
 	
 	# Debug prints
-	print_timer += delta
+	# print_timer += delta
 	if (print_timer >= 1.0):
 		print_timer = 0.0
 		print("=================================================")

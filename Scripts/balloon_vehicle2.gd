@@ -1,59 +1,65 @@
 extends AnimatableBody3D
 
+# Nodes
 @onready var left_crank: Node3D = $Crank
 @onready var right_crank: Node3D = $Crank2
 @onready var rope: Node3D = $Rope
-
 @onready var altimeter = $Altimeter
 @onready var thermometer = $Thermometer
 
-@onready var radius_to_fan
-
-var g = 1
-var max_fall = -5
-var max_rise = 10
-var velocity: Vector3
-var air_resistance : float = 1
-var rotation_resistance:= 1.0
-
-var rot_vel: float
-
-func _ready() -> void:
-	velocity = Vector3.ZERO
-	rot_vel = 0
-	var shape : BoxShape3D = $CollisionShape3D.shape
-	radius_to_fan = shape.size
+# Movement
+var GRAVITY = 4
+var MAX_FALL = -5
+var MAX_RISE = 10
+var velocity : Vector3 = Vector3.ZERO
+var rotation_resistance := 1.0
+var rot_vel : float = 0.0
+var print_time : float = 0
 	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	# Move vehicle based on cranks + burner power
+	handle_movement(delta)
+	# Align rope with world
 	rope.global_rotation = Vector3.ZERO
-	velocity.y += -g*delta + rope.power * delta * .05
-	
-	velocity.y = clamp(velocity.y, max_fall, max_rise)
-	print(velocity.y)
-	
-	
-	
-	if move_and_collide(delta*velocity):
-		velocity.y = 0
-	
-	var speed = (-air_resistance + (left_crank.power + right_crank.power))*delta
-	speed = clamp(speed, 0, 20)
-	global_position += -global_transform.basis.z * speed *delta
 	# Set altimeter gauge's value with height
-	
-	var rot_speed = delta*(right_crank.power - left_crank.power)
-	rot_speed = move_toward(rot_speed, 0, rotation_resistance)
-	var local_y = global_transform.basis.y
-	global_transform.basis = global_transform.basis.rotated(local_y, rot_speed*delta)
-	
 	altimeter.value = global_position.y
-	
 	# Set thermometer gauge's value with burner power
 	thermometer.value = rope.power
 	
+# ==============================================================================
+# Movement
+func handle_movement(delta : float) -> void:
+	velocity.y += (rope.power - GRAVITY) * .05 * delta
+	velocity.y = clamp(velocity.y, MAX_FALL, MAX_RISE)
 	
+	if move_and_collide(delta * velocity):
+		# If a collision is detected, stop falling down
+		# This assumes the collision is below the hot air balloon
+		velocity.y = clamp(velocity.y, 0, MAX_RISE)
+	
+	var speed = (left_crank.power + right_crank.power) * delta
+	speed = clamp(speed, 0, 20)
+	# Move vehicle in Forward direction
+	global_position += -global_transform.basis.z * speed * delta
+	
+	var rot_speed = (right_crank.power - left_crank.power) * delta
+	rot_speed = move_toward(rot_speed, 0, rotation_resistance)
+	var local_y = global_transform.basis.y
+	global_transform.basis = global_transform.basis.rotated(local_y, rot_speed * delta)
+	
+	# Debug info prints
+	print_time += delta
+	if print_time / 1.0 > 1.0:
+		print_time = 0
+		print("=================================================")
+		print("Velocity: " + str(velocity))
+		print("Speed (forward): " + str(speed))
+		print("Rotation Speed: " + str(rot_speed))
+		print("Rotation: " + str(rotation))
+	
+# ==============================================================================
+# Vehicle Embark / Disembark
+
 func _on_cabin_trigger_area_entered(area: Area3D) -> void:
 	if area.is_in_group("PlayerTwin"):
 		print("Vehicle entered")
