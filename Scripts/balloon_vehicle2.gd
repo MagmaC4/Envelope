@@ -10,7 +10,7 @@ extends AnimatableBody3D
 @onready var radius_to_fan
 
 var g = 1
-var max_fall = -10
+var max_fall = -5
 var max_rise = 10
 var velocity: Vector3
 var air_resistance : float = 1
@@ -33,11 +33,21 @@ func _physics_process(delta: float) -> void:
 	velocity.y = clamp(velocity.y, max_fall, max_rise)
 	print(velocity.y)
 	
-	velocity.x += (-air_resistance + (left_crank.power + right_crank.power)*.05)*delta
-	velocity.x
 	
-	move_and_collide(delta*velocity)
+	
+	if move_and_collide(delta*velocity):
+		velocity.y = 0
+	
+	var speed = (-air_resistance + (left_crank.power + right_crank.power))*delta
+	speed = clamp(speed, 0, 20)
+	global_position += -global_transform.basis.z * speed *delta
 	# Set altimeter gauge's value with height
+	
+	var rot_speed = delta*(right_crank.power - left_crank.power)
+	rot_speed = move_toward(rot_speed, 0, rotation_resistance)
+	var local_y = global_transform.basis.y
+	global_transform.basis = global_transform.basis.rotated(local_y, rot_speed*delta)
+	
 	altimeter.value = global_position.y
 	
 	# Set thermometer gauge's value with burner power
