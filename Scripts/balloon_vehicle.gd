@@ -20,15 +20,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
-	# Rope falls down to earth
+	# Align rope with world
 	rope.global_rotation = Vector3.ZERO
 	# Set altimeter gauge's value with height
 	altimeter.value = global_position.y
 	# Set thermometer gauge's value with burner power
 	thermometer.value = rope.power
-
+	
+# ==============================================================================
 # Use Tweens (lightweight animation keyframes) to move balloon up and down
+
 func begin_up_down():
 	var tween = create_tween()
 	tween.set_loops()
@@ -42,6 +43,9 @@ func begin_sway():
 	tween.tween_property(self, "rotation:z", 0.0, 3.0 )
 	tween.tween_property(self, "rotation:z", deg_to_rad(-15), 3.0 )
 	tween.tween_property(self, "rotation:z", 0.0, 3.0 )
+	
+# ==============================================================================
+# Vehicle Embark / Disembark
 
 func _on_cabin_trigger_area_entered(area: Area3D) -> void:
 	if area.is_in_group("PlayerTwin"):

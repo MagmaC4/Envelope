@@ -15,10 +15,9 @@ run/main_scene="uid://t36gu0pei00o"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
-[display]
+[editor_plugins]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+enabled=PackedStringArray("res://addons/SunshineClouds2/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
 
 [global_group]
 

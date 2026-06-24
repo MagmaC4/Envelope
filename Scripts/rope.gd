@@ -10,9 +10,8 @@ var MAX_POWER := 100.0
 var power := 0.0
 var is_burner_on := false
 var BURNER_LEVEL_DURATION := 5.0
-var MAX_BURNER_LEVEL := 3
-var burner_level := 0 # States: 0, 1, 2, 3
-
+var MAX_BURNER_LEVEL := 2
+var burner_level := 0 # States: 0, 1, 2
 
 # Tween stuff
 var ON_POSITION_Y = -1.0
@@ -24,7 +23,7 @@ var TWEEN_DURATION = 0.25
 func _ready() -> void:
 	audio_burner.play()
 	audio_burner.volume_db = -100
-	# print_burner_info()
+	# print_burner_info())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,7 +52,7 @@ func handle_grab():
 	
 func handle_burner(delta: float) -> void:
 	power += delta * burner_level * 15
-	power -= delta * 10
+	power -= delta * 5
 	power = clamp(power, 0, MAX_POWER)
 	
 	audio_burner.volume_linear = lerp(0.0, 1.0, power / MAX_POWER)
