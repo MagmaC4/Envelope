@@ -43,7 +43,13 @@ func handle_rotation(view_pos: Vector3, delta: float) -> void:
 	handle.rotate_x(signed_angle_to * delta * 5)
 	
 	# Add power based on rotation amount
-	add_power(power_sign * signed_angle_to * delta * 10)
+	add_power(power_sign * signed_angle_to * delta * 15)
+
+	# Increase volume and pitch of crank audio based on magnitude of angle
+	audio.volume_db = lerp(-40, 0, power_sign * signed_angle_to / (PI / 2))
+	audio.volume_db = clamp(audio.volume_db, -40, 0)
+	audio.pitch_scale = lerp(0.5, 2.0, power_sign * signed_angle_to / (PI / 2))
+	audio.pitch_scale = clamp(audio.pitch_scale, 0.5, 1.5)
 	
 	# Debug prints
 	# print_timer += delta
@@ -58,12 +64,6 @@ func handle_rotation(view_pos: Vector3, delta: float) -> void:
 		print("Power: " + str(power))
 		print("Audio Volume db: " + str(audio.volume_db))
 		print("Audio Pitch: " + str(audio.pitch_scale))
-
-	# Increase volume and pitch of crank audio based on magnitude of angle
-	audio.volume_db = lerp(-40, 0, power_sign * signed_angle_to / (PI / 2))
-	audio.volume_db = clamp(audio.volume_db, -40, 0)
-	audio.pitch_scale = lerp(0.5, 2.0, power_sign * signed_angle_to / (PI / 2))
-	audio.pitch_scale = clamp(audio.pitch_scale, 0.5, 1.5)
 	
 	
 	# Reset crank when no longer grabbing

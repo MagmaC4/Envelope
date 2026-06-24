@@ -44,15 +44,12 @@ func handle_movement(delta : float) -> void:
 		# This assumes the collision is below the hot air balloon
 		velocity.y = clamp(velocity.y, 0, MAX_RISE)
 	
-	var speed = (left_crank.power + right_crank.power) * delta
-	speed = clamp(speed, 0, 20)
+	var speed = (left_crank.power + right_crank.power) * 2 * delta
 	# Move vehicle in Forward direction
 	position += -basis.z * speed * delta
 	
 	var rot_speed = (right_crank.power - left_crank.power) * 0.5 * delta
 	rotation.y += rot_speed * delta
-	#var local_y = global_transform.basis.y
-	#global_transform.basis = global_transform.basis.rotated(local_y, rot_speed * delta)
 	
 	# Debug info prints
 	print_time += delta
