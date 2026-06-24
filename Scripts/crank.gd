@@ -46,10 +46,10 @@ func handle_rotation(view_pos: Vector3, delta: float) -> void:
 	add_power(power_sign * signed_angle_to * delta * 15)
 
 	# Increase volume and pitch of crank audio based on magnitude of angle
-	audio.volume_db = lerp(-40, 0, power_sign * signed_angle_to / (PI / 2))
-	audio.volume_db = clamp(audio.volume_db, -40, 0)
-	audio.pitch_scale = lerp(0.5, 2.0, power_sign * signed_angle_to / (PI / 2))
-	audio.pitch_scale = clamp(audio.pitch_scale, 0.5, 1.5)
+	var volume = lerp(-40, 0, power_sign * signed_angle_to / (PI / 2))
+	audio.volume_db = clamp(volume, -40, 0)
+	var pitch = lerp(0.5, 2.0, power_sign * signed_angle_to / (PI / 2))
+	audio.pitch_scale = clamp(pitch, 0.5, 1.5)
 	
 	# Debug prints
 	# print_timer += delta

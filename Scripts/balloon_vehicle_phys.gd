@@ -8,19 +8,16 @@ extends AnimatableBody3D
 @onready var thermometer = $Thermometer
 
 # Movement
-var GRAVITY = 4
-var MAX_FALL = -5
-var MAX_RISE = 10
+const GRAVITY = -1
+const DRAG = 0.5
+const MAX_BUOYANCY = 6.0
+const MAX_Y_VELOCITY = 3
 var velocity : Vector3 = Vector3.ZERO
-var print_time : float = 0
 
-func _ready() -> void:
-	var tween = create_tween()
-	tween.set_loops()
-	tween.tween_property(self, "rotation:z", deg_to_rad(15), 3.0 )
-	tween.tween_property(self, "rotation:z", 0.0, 3.0 )
-	tween.tween_property(self, "rotation:z", deg_to_rad(-15), 3.0 )
-	tween.tween_property(self, "rotation:z", 0.0, 3.0 )
+const SPEED_MULT = 0.1
+const MAX_PITCH = 30
+const MAX_ROLL = 30
+var print_time : float = 0
 	
 func _physics_process(delta: float) -> void:
 	# Move vehicle based on cranks + burner power
@@ -35,30 +32,46 @@ func _physics_process(delta: float) -> void:
 # ==============================================================================
 # Movement
 func handle_movement(delta : float) -> void:
-	# Y Velocity
-	velocity.y += (rope.power - GRAVITY) * .05 * delta
-	velocity.y = clamp(velocity.y, MAX_FALL, MAX_RISE)
+	# Vertical movement based on rope / burner power
+	var buoyancy = (rope.power / 100) * MAX_BUOYANCY
+	velocity.y += (GRAVITY + buoyancy) * delta
+	velocity.y -= velocity.y * DRAG * delta # simulate drag
 	
-	if move_and_collide(delta * velocity):
+	if move_and_collide(velocity * delta):
 		# If a collision is detected, stop falling down
 		# This assumes the collision is below the hot air balloon
-		velocity.y = clamp(velocity.y, 0, MAX_RISE)
+		if velocity.y < 0:
+			velocity.y = 0
 	
-	var speed = (left_crank.power + right_crank.power) * 2 * delta
-	# Move vehicle in Forward direction
-	position += -basis.z * speed * delta
+	if velocity.y > MAX_Y_VELOCITY:
+		velocity.y = MAX_Y_VELOCITY
 	
-	var rot_speed = (right_crank.power - left_crank.power) * 0.5 * delta
-	rotation.y += rot_speed * delta
+	# Move vehicle in Forward direction based on crank power
+	var power_total = right_crank.power + left_crank.power
+	var forward = -basis.z
+	forward.y = 0
+	forward = forward.normalized()
+	position += forward * power_total * delta * SPEED_MULT
+	# Rotate vehicle (x: pitch) based on forward speed
+	var pitch = -clamp(power_total / 200 * MAX_PITCH, -MAX_PITCH, MAX_PITCH)
+	rotation_degrees.x = lerp(rotation_degrees.x, pitch, delta * 3)
+	
+	# Rotate vehicle (y: yaw) based on crank power
+	var power_diff  = right_crank.power - left_crank.power
+	rotation_degrees.y += power_diff * 0.5 * delta 
+	# Rotate vehicle (z: roll) based on rotation speed
+	var roll = clamp(power_diff / 100 * MAX_ROLL, -MAX_ROLL, MAX_ROLL)
+	rotation_degrees.z = lerp(rotation_degrees.z, roll, delta * 3)
 	
 	# Debug info prints
-	print_time += delta
+	print_time += delta 
 	if print_time / 1.0 > 0.5:
 		print_time = 0
 		print("=================================================")
+		print("Physics Ballon Debug Information")
+		print("Power Total: " + str(power_total))
+		print("Power Difference: " + str(power_diff))
 		print("Velocity: " + str(velocity))
-		print("Speed (forward): " + str(speed))
-		print("Rotation Speed: " + str(rot_speed))
 		print("Rotation: " + str(rotation))
 	
 # ==============================================================================
