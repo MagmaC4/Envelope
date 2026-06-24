@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bq3efham7nrqb"]
 
-[ext_resource type="Script" uid="uid://nwx2gq0nr5td" path="res://Scripts/balloon_vehicle2.gd" id="1_npksa"]
+[ext_resource type="Script" uid="uid://nwx2gq0nr5td" path="res://Scripts/balloon_vehicle_phys.gd" id="1_npksa"]
 [ext_resource type="Material" uid="uid://cp4f1k41unanv" path="res://Assets/Materials/test_grid_brown.tres" id="2_fpift"]
 [ext_resource type="Texture2D" uid="uid://cg1ta2cg0d528" path="res://Assets/Materials/balloon_1.jpeg" id="3_y6crg"]
 [ext_resource type="Texture2D" uid="uid://db5xsek3jdycq" path="res://Assets/Materials/test_grid.png" id="4_10s82"]

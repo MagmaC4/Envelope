@@ -12,9 +12,15 @@ var GRAVITY = 4
 var MAX_FALL = -5
 var MAX_RISE = 10
 var velocity : Vector3 = Vector3.ZERO
-var rotation_resistance := 1.0
-var rot_vel : float = 0.0
 var print_time : float = 0
+
+func _ready() -> void:
+	var tween = create_tween()
+	tween.set_loops()
+	tween.tween_property(self, "rotation:z", deg_to_rad(15), 3.0 )
+	tween.tween_property(self, "rotation:z", 0.0, 3.0 )
+	tween.tween_property(self, "rotation:z", deg_to_rad(-15), 3.0 )
+	tween.tween_property(self, "rotation:z", 0.0, 3.0 )
 	
 func _physics_process(delta: float) -> void:
 	# Move vehicle based on cranks + burner power
@@ -29,6 +35,7 @@ func _physics_process(delta: float) -> void:
 # ==============================================================================
 # Movement
 func handle_movement(delta : float) -> void:
+	# Y Velocity
 	velocity.y += (rope.power - GRAVITY) * .05 * delta
 	velocity.y = clamp(velocity.y, MAX_FALL, MAX_RISE)
 	
@@ -40,16 +47,16 @@ func handle_movement(delta : float) -> void:
 	var speed = (left_crank.power + right_crank.power) * delta
 	speed = clamp(speed, 0, 20)
 	# Move vehicle in Forward direction
-	global_position += -global_transform.basis.z * speed * delta
+	position += -basis.z * speed * delta
 	
-	var rot_speed = (right_crank.power - left_crank.power) * delta
-	rot_speed = move_toward(rot_speed, 0, rotation_resistance)
-	var local_y = global_transform.basis.y
-	global_transform.basis = global_transform.basis.rotated(local_y, rot_speed * delta)
+	var rot_speed = (right_crank.power - left_crank.power) * 0.5 * delta
+	rotation.y += rot_speed * delta
+	#var local_y = global_transform.basis.y
+	#global_transform.basis = global_transform.basis.rotated(local_y, rot_speed * delta)
 	
 	# Debug info prints
 	print_time += delta
-	if print_time / 1.0 > 1.0:
+	if print_time / 1.0 > 0.5:
 		print_time = 0
 		print("=================================================")
 		print("Velocity: " + str(velocity))
@@ -79,6 +86,6 @@ func reparent_player(area: Area3D, parent: Node3D):
 	player.reparent(parent, true)
 	
 	# Smoothly reset local rotation to zero
-	var tween = create_tween()
-	tween.tween_property(player,"rotation", Vector3.ZERO, 0.5).set_trans(Tween.TRANS_SINE)
-	print("trigger")
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(player,"rotation:z", 0, 0.5).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(player,"rotation:x", 0, 0.5).set_trans(Tween.TRANS_SINE)
