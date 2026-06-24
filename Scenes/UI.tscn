@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://bb3tq1pjqb0ab"]
+
+[ext_resource type="Script" uid="uid://d0xmga8sl5anf" path="res://Scripts/pause_menu.gd" id="1_w371h"]
+[ext_resource type="Texture2D" uid="uid://bourgydaa3mas" path="res://Assets/UI_Textures/crosshair_2.png" id="2_dewlx"]
+[ext_resource type="Script" uid="uid://3glqhwc0ug0s" path="res://Scripts/crosshair.gd" id="2_hfhsn"]
+[ext_resource type="Texture2D" uid="uid://dc13tc7i3x8k3" path="res://Assets/UI_Textures/grab_2.png" id="3_hfhsn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3iaii"]
+font_size = 64
+
+[node name="UI" type="CanvasLayer" unique_id=749720162 groups=["UI"]]
+
+[node name="Crosshair" type="Control" parent="." unique_id=3620150]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_hfhsn")
+
+[node name="CrosshairMain" type="TextureRect" parent="Crosshair" unique_id=1380497927]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dewlx")
+expand_mode = 1
+
+[node name="CrosshairGrab" type="TextureRect" parent="Crosshair" unique_id=100249960]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_hfhsn")
+expand_mode = 1
+
+[node name="Main Menu" type="Control" parent="." unique_id=1987966734]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pause Menu" type="Control" parent="." unique_id=1806942351]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w371h")
+
+[node name="CenterContainer" type="CenterContainer" parent="Pause Menu" unique_id=1418426832]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Pause Menu/CenterContainer" unique_id=1749988744]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause Menu/CenterContainer/PanelContainer" unique_id=2082405195]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SettingsLabel" type="Label" parent="Pause Menu/CenterContainer/PanelContainer/VBoxContainer" unique_id=12809836]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_3iaii")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Pause Menu/CenterContainer/PanelContainer/VBoxContainer" unique_id=415511738]
+layout_mode = 2
+text = "Volume"
+
+[node name="Volume" type="HScrollBar" parent="Pause Menu/CenterContainer/PanelContainer/VBoxContainer" unique_id=1515220813]
+layout_mode = 2
+value = 50.0
+
+[node name="Label2" type="Label" parent="Pause Menu/CenterContainer/PanelContainer/VBoxContainer" unique_id=429321412]
+layout_mode = 2
+text = "Mouse Sensitivity"
+
+[node name="MouseSensitivity" type="HScrollBar" parent="Pause Menu/CenterContainer/PanelContainer/VBoxContainer" unique_id=267565621]
+layout_mode = 2
+value = 30.0
+
+[node name="Label3" type="Label" parent="Pause Menu/CenterContainer/PanelContainer/VBoxContainer" unique_id=1931296923]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="OptionButton" type="OptionButton" parent="Pause Menu/CenterContainer/PanelContainer/VBoxContainer" unique_id=114068062]
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen Windowed"
+popup/item_1/id = 1
+popup/item_2/text = "Windowed"
+popup/item_2/id = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Pause Menu/CenterContainer/PanelContainer/VBoxContainer" unique_id=2095059509]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="QuitGame" type="Button" parent="Pause Menu/CenterContainer/PanelContainer/VBoxContainer/PanelContainer" unique_id=1828107499]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Quit Game?"
+
+[node name="Control" type="Control" parent="Pause Menu/CenterContainer/PanelContainer/VBoxContainer" unique_id=810943595]
+layout_mode = 2
+
+[node name="SettingsExit" type="Button" parent="Pause Menu/CenterContainer/PanelContainer" unique_id=1740026360]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "X"
+
+[connection signal="value_changed" from="Pause Menu/CenterContainer/PanelContainer/VBoxContainer/Volume" to="Pause Menu" method="_on_volume_value_changed"]
+[connection signal="value_changed" from="Pause Menu/CenterContainer/PanelContainer/VBoxContainer/MouseSensitivity" to="Pause Menu" method="_on_mouse_sensitivity_value_changed"]
+[connection signal="item_selected" from="Pause Menu/CenterContainer/PanelContainer/VBoxContainer/OptionButton" to="Pause Menu" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="Pause Menu/CenterContainer/PanelContainer/VBoxContainer/PanelContainer/QuitGame" to="Pause Menu" method="_on_quit_game_pressed"]
+[connection signal="pressed" from="Pause Menu/CenterContainer/PanelContainer/SettingsExit" to="Pause Menu" method="_on_exit_pressed"]

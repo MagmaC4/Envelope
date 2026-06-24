@@ -19,12 +19,6 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse_input = event.relative
-	elif event.is_action_pressed("ui_cancel"):
-		# Unlock mouse to window
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	elif event.is_action_pressed("grab"):
-		# Lock mouse to window
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	
 # handle camera rotation with input event (Mouse)

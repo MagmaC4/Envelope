@@ -1,12 +1,12 @@
 extends Node3D
 
-# Local Movement
+# Nodes
 @onready var cabin_trigger: Area3D = $CabinTrigger
 @onready var left_crank: Node3D = $Crank
 @onready var right_crank: Node3D = $Crank2
 @onready var rope: Node3D = $Rope
 
-# Tweem
+# Tween
 @onready var start_pos = position
 @onready var end_pos = start_pos + 3 * Vector3.UP
 
