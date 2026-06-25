@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://t36gu0pei00o"]
 
 [ext_resource type="Material" uid="uid://m8326m50smh5" path="res://Assets/Materials/test_grid_gray.tres" id="1_dla66"]
+[ext_resource type="Texture2D" uid="uid://bn7fvcguvd88d" path="res://Assets/Textures/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="2_ovr7t"]
 [ext_resource type="PackedScene" uid="uid://dkxgf5ykudbxe" path="res://Scenes/player.tscn" id="2_ui57x"]
 [ext_resource type="PackedScene" uid="uid://ymqqkd6ygbrp" path="res://Scenes/player_twin.tscn" id="3_et0fo"]
 [ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/crank.tscn" id="5_et0fo"]
@@ -12,12 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://bpow1is3o58l8" path="res://Assets/Materials/Grass005_1K-PNG_Color.png" id="8_80ytr"]
 [ext_resource type="Texture2D" uid="uid://f24bdk3bclb4" path="res://Assets/Materials/Grass005_1K-PNG_NormalGL.png" id="9_ovr7t"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dla66"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5vn6p"]
+panorama = ExtResource("2_ovr7t")
 
 [sub_resource type="Sky" id="Sky_ui57x"]
-sky_material = SubResource("ProceduralSkyMaterial_dla66")
+sky_material = SubResource("PanoramaSkyMaterial_5vn6p")
 
 [sub_resource type="Environment" id="Environment_2xxif"]
 background_mode = 2
