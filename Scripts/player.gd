@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 		handle_crank(delta)
 	
 func handle_raycast() -> void:
+	ray_cast.force_raycast_update()
 	var col = ray_cast.get_collider()
 	
 	# Change crosshair if item is grabbable (send signal)

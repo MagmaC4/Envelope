@@ -67,7 +67,6 @@ size = Vector3(0.35, 0.05, 0.64160156)
 size = Vector3(0.3, 0.05, 0.65771484)
 
 [node name="PhysicsBalloonVehicle" type="AnimatableBody3D" unique_id=111051409 groups=["Vehicle"]]
-sync_to_physics = false
 script = ExtResource("1_npksa")
 
 [node name="CabinTrigger" type="Area3D" parent="." unique_id=504987787]

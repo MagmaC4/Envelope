@@ -18,6 +18,12 @@ const SPEED_MULT = 0.1
 const MAX_PITCH = 30
 const MAX_ROLL = 30
 var print_time : float = 0
+
+func _ready():
+	# prioritize balloon physics over player
+	# this ensures raycasts get correct world information
+	process_priority = -1
+	
 	
 func _physics_process(delta: float) -> void:
 	# Move vehicle based on cranks + burner power
@@ -64,6 +70,8 @@ func handle_movement(delta : float) -> void:
 	# Rotate vehicle (z: roll) based on rotation speed
 	var roll = clamp(power_diff / 100 * MAX_ROLL, -MAX_ROLL, MAX_ROLL)
 	rotation_degrees.z = lerp(rotation_degrees.z, roll, delta * 3)
+	
+	force_update_transform()
 	
 	# Debug info prints
 	print_time += delta 
