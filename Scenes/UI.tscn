@@ -61,6 +61,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Pause Menu" type="Control" parent="." unique_id=1806942351]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

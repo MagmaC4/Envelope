@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://t36gu0pei00o"]
 
 [ext_resource type="Material" uid="uid://m8326m50smh5" path="res://Assets/Materials/test_grid_gray.tres" id="1_dla66"]
-[ext_resource type="Texture2D" uid="uid://bn7fvcguvd88d" path="res://Assets/Textures/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="2_ovr7t"]
+[ext_resource type="Texture2D" uid="uid://ca774tpvvb1hk" path="res://Assets/Textures/AllSkyFree_Sky_ColdSunset_Equirect.png" id="2_ovr7t"]
 [ext_resource type="PackedScene" uid="uid://dkxgf5ykudbxe" path="res://Scenes/player.tscn" id="2_ui57x"]
 [ext_resource type="PackedScene" uid="uid://ymqqkd6ygbrp" path="res://Scenes/player_twin.tscn" id="3_et0fo"]
 [ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/crank.tscn" id="5_et0fo"]
