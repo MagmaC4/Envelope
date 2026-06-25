@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://bexei880yacly"]
 
 [ext_resource type="Material" uid="uid://cp4f1k41unanv" path="res://Assets/Materials/test_grid_brown.tres" id="1_7b8gh"]
-[ext_resource type="Script" uid="uid://5ypa5onyceiy" path="res://Scripts/Balloon_Scripts/balloon_vehicle.gd" id="1_h2duu"]
+[ext_resource type="Script" uid="uid://5ypa5onyceiy" path="res://Scripts/Vehicle_Scripts/balloon_vehicle.gd" id="1_h2duu"]
 [ext_resource type="Texture2D" uid="uid://cg1ta2cg0d528" path="res://Assets/Materials/balloon_1.jpeg" id="2_qbobt"]
 [ext_resource type="Texture2D" uid="uid://db5xsek3jdycq" path="res://Assets/Materials/test_grid.png" id="4_5tuot"]
-[ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/crank.tscn" id="5_sgw8h"]
+[ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/Vehicle_Scenes/crank.tscn" id="5_sgw8h"]
 [ext_resource type="Texture2D" uid="uid://bn7j868m4rr35" path="res://Assets/Materials/rope.jpg" id="6_3nuav"]
-[ext_resource type="Script" uid="uid://43dqf1odjuoq" path="res://Scripts/Balloon_Scripts/rope.gd" id="6_gmxq1"]
+[ext_resource type="Script" uid="uid://43dqf1odjuoq" path="res://Scripts/Vehicle_Scripts/rope.gd" id="6_gmxq1"]
 [ext_resource type="AudioStream" uid="uid://ca3bucf6klly8" path="res://Assets/Sound/ignite_2.mp3" id="8_5nxuu"]
 [ext_resource type="AudioStream" uid="uid://dqiixept55pe0" path="res://Assets/Sound/burner_loop.mp3" id="9_wwcxu"]
-[ext_resource type="PackedScene" uid="uid://b8e70evoowqxu" path="res://Scenes/altimeter.tscn" id="10_wwcxu"]
-[ext_resource type="PackedScene" uid="uid://ci8ndsk1o5y4u" path="res://Scenes/thermometer.tscn" id="11_yprsc"]
+[ext_resource type="PackedScene" uid="uid://b8e70evoowqxu" path="res://Scenes/Vehicle_Scenes/altimeter.tscn" id="10_wwcxu"]
+[ext_resource type="PackedScene" uid="uid://ci8ndsk1o5y4u" path="res://Scenes/Vehicle_Scenes/thermometer.tscn" id="11_yprsc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbobt"]
 size = Vector3(1.8789711, 3.1889954, 1.9432068)

@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://bq3efham7nrqb"]
 
-[ext_resource type="Script" uid="uid://nwx2gq0nr5td" path="res://Scripts/Balloon_Scripts/balloon_vehicle_phys.gd" id="1_npksa"]
+[ext_resource type="Script" uid="uid://nwx2gq0nr5td" path="res://Scripts/Vehicle_Scripts/balloon_vehicle_phys.gd" id="1_npksa"]
 [ext_resource type="Material" uid="uid://cp4f1k41unanv" path="res://Assets/Materials/test_grid_brown.tres" id="2_fpift"]
 [ext_resource type="PackedScene" uid="uid://b1oiun1vnqc7" path="res://Assets/Models/balloon_model.glb" id="3_47ufq"]
 [ext_resource type="Texture2D" uid="uid://cg1ta2cg0d528" path="res://Assets/Materials/balloon_1.jpeg" id="3_y6crg"]
 [ext_resource type="Texture2D" uid="uid://db5xsek3jdycq" path="res://Assets/Materials/test_grid.png" id="4_10s82"]
-[ext_resource type="Script" uid="uid://cyy5jf5f2kf2p" path="res://Scripts/Balloon_Scripts/burner.gd" id="4_rp5j2"]
-[ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/crank.tscn" id="5_m8yhv"]
+[ext_resource type="Script" uid="uid://cyy5jf5f2kf2p" path="res://Scripts/Vehicle_Scripts/burner.gd" id="4_rp5j2"]
+[ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/Vehicle_Scenes/crank.tscn" id="5_m8yhv"]
 [ext_resource type="Material" uid="uid://o0v082c2ok42" path="res://Assets/Particles/flame_particle.tres" id="5_uahhm"]
-[ext_resource type="Script" uid="uid://43dqf1odjuoq" path="res://Scripts/Balloon_Scripts/rope.gd" id="6_hr7pi"]
+[ext_resource type="Script" uid="uid://43dqf1odjuoq" path="res://Scripts/Vehicle_Scripts/rope.gd" id="6_hr7pi"]
 [ext_resource type="QuadMesh" uid="uid://by4w0cp62tveo" path="res://Assets/Particles/flame_material.tres" id="6_rp5j2"]
 [ext_resource type="Texture2D" uid="uid://bn7j868m4rr35" path="res://Assets/Materials/rope.jpg" id="7_tx8l5"]
 [ext_resource type="AudioStream" uid="uid://ca3bucf6klly8" path="res://Assets/Sound/ignite_2.mp3" id="8_0f7t2"]
 [ext_resource type="AudioStream" uid="uid://dqiixept55pe0" path="res://Assets/Sound/burner_loop.mp3" id="9_8hovq"]
-[ext_resource type="PackedScene" uid="uid://b8e70evoowqxu" path="res://Scenes/altimeter.tscn" id="10_o1fhk"]
-[ext_resource type="PackedScene" uid="uid://ci8ndsk1o5y4u" path="res://Scenes/thermometer.tscn" id="11_ybk2c"]
+[ext_resource type="PackedScene" uid="uid://b8e70evoowqxu" path="res://Scenes/Vehicle_Scenes/altimeter.tscn" id="10_o1fhk"]
+[ext_resource type="PackedScene" uid="uid://ci8ndsk1o5y4u" path="res://Scenes/Vehicle_Scenes/thermometer.tscn" id="11_ybk2c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbobt"]
 size = Vector3(1.8789711, 3.1889954, 1.9432068)
@@ -37,6 +37,9 @@ material = SubResource("StandardMaterial3D_sgw8h")
 [sub_resource type="BoxShape3D" id="BoxShape3D_gmxq1"]
 size = Vector3(2.048706, 0.21690369, 2.080017)
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_yprsc"]
+material = SubResource("StandardMaterial3D_sgw8h")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmxq1"]
 albedo_texture = ExtResource("7_tx8l5")
 
@@ -45,9 +48,6 @@ material = SubResource("StandardMaterial3D_gmxq1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3nuav"]
 size = Vector3(0.21243286, 1.7835693, 0.49944305)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_yprsc"]
-material = SubResource("StandardMaterial3D_sgw8h")
 
 [sub_resource type="BoxMesh" id="BoxMesh_wn7uu"]
 material = ExtResource("2_fpift")
@@ -83,6 +83,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00658226, 1.604701, 0.0022
 shape = SubResource("BoxShape3D_qbobt")
 
 [node name="Balloon" type="StaticBody3D" parent="." unique_id=978523476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42165327, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Balloon" unique_id=559397434]
 transform = Transform3D(9.734291, 0, 0, 0, 9.734291, 0, 0, 0, 9.734291, 0, 8.776963, 0)
@@ -97,11 +98,19 @@ transform = Transform3D(9.734291, 0, 0, 0, 9.734291, 0, 0, 0, 9.734291, 0, 8.776
 shape = SubResource("SphereShape3D_qbobt")
 
 [node name="Burner" type="StaticBody3D" parent="." unique_id=1984842240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42165327, 0)
 script = ExtResource("4_rp5j2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Burner" unique_id=1144893484]
-transform = Transform3D(2.2085514, 0, 0, 0, 0.16790104, 0, 0, 0, 2.2085514, 0, 3.4318733, 0)
-visible = false
+transform = Transform3D(0.3, 0, 0, 0, 0.15, 0, 0, 0, 0.3, 0, 3.4318733, -0.3115149)
+mesh = SubResource("CylinderMesh_3nuav")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Burner" unique_id=461198418]
+transform = Transform3D(0.3, 0, 0, 0, 0.15, 0, 0, 0, 0.3, 0.41738042, 3.4318733, 0.27621275)
+mesh = SubResource("CylinderMesh_3nuav")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Burner" unique_id=762037831]
+transform = Transform3D(0.3, 0, 0, 0, 0.15, 0, 0, 0, 0.3, -0.512204, 3.4318733, 0.28251225)
 mesh = SubResource("CylinderMesh_3nuav")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Burner" unique_id=530969997]
@@ -132,17 +141,33 @@ local_coords = true
 process_material = ExtResource("5_uahhm")
 draw_pass_1 = ExtResource("6_rp5j2")
 
-[node name="Crank" parent="." unique_id=1887970496 instance=ExtResource("5_m8yhv")]
-transform = Transform3D(0.15588367, 0, 0, 0, 0.15588367, 0, 0, 0, 0.15588367, -0.9, 0.5, 0)
-on_left = true
+[node name="AudioBurner" type="AudioStreamPlayer3D" parent="Burner" unique_id=278180898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 3.6, -0.65)
+stream = ExtResource("9_8hovq")
+parameters/looping = true
 
-[node name="Crank2" parent="." unique_id=850255794 groups=["Vehicle"] instance=ExtResource("5_m8yhv")]
-transform = Transform3D(-0.15588367, 1.3627783e-08, 0, -1.3627783e-08, -0.15588367, 0, 0, 0, 0.15588367, 0.9, 0.5, 0)
+[node name="Timer" type="Timer" parent="Burner" unique_id=1848205014]
+wait_time = 2.5
+autostart = true
+
+[node name="Thermometer" parent="." unique_id=618017343 instance=ExtResource("11_ybk2c")]
+transform = Transform3D(0.0052559692, -0.046770148, -0.19438346, -0.18218637, -0.0812071, 0.014612891, -0.082343824, 0.17668605, -0.044738553, 0.272854, 2.516913, -0.8078524)
+MIN_ANGLE = 3.403
+MAX_ANGLE = 9.163
+is_clockwise = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Thermometer" unique_id=1224142684]
+transform = Transform3D(-0.031082336, -0.8789201, -0.09206755, -0.115761906, -0.18872367, 0.37371108, -0.43719327, 0.11245796, -0.09240719, -0.8136836, -0.39547196, 0.0700805)
+mesh = SubResource("CylinderMesh_yprsc")
 
 [node name="Rope" type="Node3D" parent="." unique_id=1534175090 groups=["Grabbable", "Rope"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 3.6, -0.65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 3.1783466, -0.65)
 script = ExtResource("6_hr7pi")
 metadata/_edit_group_ = true
+
+[node name="AudioIgnite" type="AudioStreamPlayer3D" parent="Rope" unique_id=2014797583]
+stream = ExtResource("8_0f7t2")
+volume_db = -12.0
 
 [node name="RopeMesh" type="MeshInstance3D" parent="Rope" unique_id=811256299]
 transform = Transform3D(0.05, 0, 0, 0, 0.75, 0, 0, 0, 0.05, 0, -0.75, 0)
@@ -154,26 +179,15 @@ mesh = SubResource("CylinderMesh_tg7dn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001083374, -0.7272339, -0.14947128)
 shape = SubResource("BoxShape3D_3nuav")
 
-[node name="AudioIgnite" type="AudioStreamPlayer3D" parent="Rope" unique_id=2014797583]
-stream = ExtResource("8_0f7t2")
-volume_db = -12.0
-
-[node name="AudioBurner" type="AudioStreamPlayer3D" parent="Rope" unique_id=278180898]
-stream = ExtResource("9_8hovq")
-parameters/looping = true
-
 [node name="Altimeter" parent="." unique_id=1666856832 instance=ExtResource("10_o1fhk")]
 transform = Transform3D(0, -6.5567085e-09, -0.15, -0.15, -6.5567085e-09, 2.8660284e-16, -6.5567085e-09, 0.15, -6.5567085e-09, -0.6992263, 0.3953445, -0.98064333)
 
-[node name="Thermometer" parent="." unique_id=618017343 instance=ExtResource("11_ybk2c")]
-transform = Transform3D(0.0052559692, -0.046770148, -0.19438346, -0.18218637, -0.0812071, 0.014612891, -0.082343824, 0.17668605, -0.044738553, 0.272854, 2.9385662, -0.8078524)
-MIN_ANGLE = 3.403
-MAX_ANGLE = 9.163
-is_clockwise = true
+[node name="Crank" parent="." unique_id=1887970496 instance=ExtResource("5_m8yhv")]
+transform = Transform3D(0.15588367, 0, 0, 0, 0.15588367, 0, 0, 0, 0.15588367, -0.9, 0.5, 0)
+on_left = true
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Thermometer" unique_id=1224142684]
-transform = Transform3D(-0.031082336, -0.8789201, -0.09206755, -0.115761906, -0.18872367, 0.37371108, -0.43719327, 0.11245796, -0.09240719, -0.8136836, -0.39547196, 0.0700805)
-mesh = SubResource("CylinderMesh_yprsc")
+[node name="Crank2" parent="." unique_id=850255794 groups=["Vehicle"] instance=ExtResource("5_m8yhv")]
+transform = Transform3D(-0.15588367, 1.3627783e-08, 0, -1.3627783e-08, -0.15588367, 0, 0, 0, 0.15588367, 0.9, 0.5, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1886948735]
 transform = Transform3D(2, 0, 0, 0, 0.05, 0, 0, 0, 2, 0, 0, 0)
@@ -224,3 +238,4 @@ shape = SubResource("BoxShape3D_hr7pi")
 
 [connection signal="area_entered" from="CabinTrigger" to="." method="_on_cabin_trigger_area_entered"]
 [connection signal="area_exited" from="CabinTrigger" to="." method="_on_cabin_trigger_area_exited"]
+[connection signal="timeout" from="Burner/Timer" to="Burner" method="_on_timer_timeout"]

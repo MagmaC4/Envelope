@@ -4,6 +4,7 @@ extends AnimatableBody3D
 @onready var left_crank: Node3D = $Crank
 @onready var right_crank: Node3D = $Crank2
 @onready var rope: Node3D = $Rope
+@onready var burner: Node3D = $Burner
 @onready var altimeter = $Altimeter
 @onready var thermometer = $Thermometer
 
@@ -33,13 +34,13 @@ func _physics_process(delta: float) -> void:
 	# Set altimeter gauge's value with height
 	altimeter.value = global_position.y
 	# Set thermometer gauge's value with burner power
-	thermometer.value = rope.power
+	thermometer.value = burner.power
 	
 # ==============================================================================
 # Movement
 func handle_movement(delta : float) -> void:
-	# Vertical movement based on rope / burner power
-	var buoyancy = (rope.power / 100) * MAX_BUOYANCY
+	# Vertical movement based on burner power
+	var buoyancy = (burner.power / 100) * MAX_BUOYANCY
 	velocity.y += (GRAVITY + buoyancy) * delta
 	velocity.y -= velocity.y * DRAG * delta # simulate drag
 	
