@@ -61,7 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08166313, 0.025, -5.4867487
 
 [node name="Environment" type="Node3D" parent="." unique_id=1017786431]
 
-[node name="HTerrain" type="Node3D" parent="Environment" unique_id=201686283]
+[node name="HTerrain" type="Node3D" parent="Environment" unique_id=201686283 groups=["Ground"]]
 script = ExtResource("5_qwuhp")
 map_scale = Vector3(5, 5, 5)
 centered = true
@@ -81,7 +81,7 @@ shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = Vector4(1, 1, 1, 1)
 
-[node name="Ground" type="MeshInstance3D" parent="Environment" unique_id=705273356]
+[node name="Ground" type="MeshInstance3D" parent="Environment" unique_id=705273356 groups=["Ground"]]
 transform = Transform3D(41.62596, 0, 0, 0, 41.62596, 0, 0, 0, 41.62596, 0, 0, 0)
 mesh = SubResource("PlaneMesh_2xxif")
 metadata/_edit_group_ = true

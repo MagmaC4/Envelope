@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b8e70evoowqxu"]
 
-[ext_resource type="Script" uid="uid://dbgax75uq11j7" path="res://Scripts/gauge.gd" id="1_w5wo2"]
+[ext_resource type="Script" uid="uid://dbgax75uq11j7" path="res://Scripts/Balloon_Scripts/gauge.gd" id="1_w5wo2"]
 [ext_resource type="PackedScene" uid="uid://dq6eo8eqdg1k5" path="res://Assets/Models/gauge_1.glb" id="2_gpdat"]
 [ext_resource type="PackedScene" uid="uid://dk1us3db2284u" path="res://Assets/Models/dial_white.glb" id="3_w5wo2"]
 

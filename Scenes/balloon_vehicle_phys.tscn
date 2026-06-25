@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://bq3efham7nrqb"]
 
-[ext_resource type="Script" uid="uid://nwx2gq0nr5td" path="res://Scripts/balloon_vehicle_phys.gd" id="1_npksa"]
+[ext_resource type="Script" uid="uid://nwx2gq0nr5td" path="res://Scripts/Balloon_Scripts/balloon_vehicle_phys.gd" id="1_npksa"]
 [ext_resource type="Material" uid="uid://cp4f1k41unanv" path="res://Assets/Materials/test_grid_brown.tres" id="2_fpift"]
 [ext_resource type="PackedScene" uid="uid://b1oiun1vnqc7" path="res://Assets/Models/balloon_model.glb" id="3_47ufq"]
 [ext_resource type="Texture2D" uid="uid://cg1ta2cg0d528" path="res://Assets/Materials/balloon_1.jpeg" id="3_y6crg"]
 [ext_resource type="Texture2D" uid="uid://db5xsek3jdycq" path="res://Assets/Materials/test_grid.png" id="4_10s82"]
+[ext_resource type="Script" uid="uid://cyy5jf5f2kf2p" path="res://Scripts/Balloon_Scripts/burner.gd" id="4_rp5j2"]
 [ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/crank.tscn" id="5_m8yhv"]
 [ext_resource type="Material" uid="uid://o0v082c2ok42" path="res://Assets/Particles/flame_particle.tres" id="5_uahhm"]
-[ext_resource type="Script" uid="uid://43dqf1odjuoq" path="res://Scripts/rope.gd" id="6_hr7pi"]
+[ext_resource type="Script" uid="uid://43dqf1odjuoq" path="res://Scripts/Balloon_Scripts/rope.gd" id="6_hr7pi"]
 [ext_resource type="QuadMesh" uid="uid://by4w0cp62tveo" path="res://Assets/Particles/flame_material.tres" id="6_rp5j2"]
 [ext_resource type="Texture2D" uid="uid://bn7j868m4rr35" path="res://Assets/Materials/rope.jpg" id="7_tx8l5"]
 [ext_resource type="AudioStream" uid="uid://ca3bucf6klly8" path="res://Assets/Sound/ignite_2.mp3" id="8_0f7t2"]
@@ -96,6 +97,7 @@ transform = Transform3D(9.734291, 0, 0, 0, 9.734291, 0, 0, 0, 9.734291, 0, 8.776
 shape = SubResource("SphereShape3D_qbobt")
 
 [node name="Burner" type="StaticBody3D" parent="." unique_id=1984842240]
+script = ExtResource("4_rp5j2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Burner" unique_id=1144893484]
 transform = Transform3D(2.2085514, 0, 0, 0, 0.16790104, 0, 0, 0, 2.2085514, 0, 3.4318733, 0)

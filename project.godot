@@ -22,12 +22,12 @@ enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
 [global_group]
 
 Player=""
-PlayerTwin=""
 Crank=""
 Grabbable=""
 Vehicle=""
 Rope=""
 UI=""
+Ground=""
 
 [input]
 

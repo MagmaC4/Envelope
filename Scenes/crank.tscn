@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwvqpd34u8etg"]
 
-[ext_resource type="Script" uid="uid://bobw2u4sa5rgm" path="res://Scripts/crank.gd" id="1_tkptf"]
+[ext_resource type="Script" uid="uid://bobw2u4sa5rgm" path="res://Scripts/Balloon_Scripts/crank.gd" id="1_tkptf"]
 [ext_resource type="PackedScene" uid="uid://dt52awidakbkb" path="res://Assets/Models/crank.glb" id="1_vfiox"]
 [ext_resource type="AudioStream" uid="uid://byqyv1eps2syd" path="res://Assets/Sound/crank_2.mp3" id="2_wditd"]
 [ext_resource type="Script" uid="uid://3o67itkl3o0q" path="res://Scripts/progress_bar.gd" id="4_owcch"]

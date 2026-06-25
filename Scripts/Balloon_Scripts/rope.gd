@@ -10,7 +10,7 @@ var MAX_POWER := 100.0
 var power := 0.0
 var is_burner_on := false
 var BURNER_LEVEL_DURATION := 5.0
-var MAX_BURNER_LEVEL := 2
+var MAX_BURNER_LEVEL := 3
 var burner_level := 0 # States: 0, 1, 2
 
 # Tween stuff
@@ -40,7 +40,6 @@ func handle_grab():
 	# decrease ignite volume so sound doesn't clip on repeated rope pulls
 	audio_ignite.play()
 	
-	
 	# move rope down when grabbed
 	var position_tween = create_tween()
 	position_tween.tween_property(RopeMesh, "position:y", ON_POSITION_Y, TWEEN_DURATION).set_trans(TRANS_MODE)
@@ -55,7 +54,9 @@ func handle_burner(delta: float) -> void:
 	power -= delta * 5
 	power = clamp(power, 0, MAX_POWER)
 	
-	audio_burner.volume_linear = lerp(0.0, 1.0, power / MAX_POWER)
+	# audio_burner.volume_linear = lerp(0.0, 1.0, power / MAX_POWER)
+	var t = float(burner_level) / MAX_BURNER_LEVEL
+	audio_burner.volume_linear = lerp(audio_burner.volume_linear, t, delta)
 	
 func increase_burner_level():
 	# Do nothing if burner level = max
