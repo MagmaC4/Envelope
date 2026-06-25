@@ -4,8 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://dkxgf5ykudbxe" path="res://Scenes/player.tscn" id="2_ui57x"]
 [ext_resource type="PackedScene" uid="uid://ymqqkd6ygbrp" path="res://Scenes/player_twin.tscn" id="3_et0fo"]
 [ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/crank.tscn" id="5_et0fo"]
+[ext_resource type="Script" uid="uid://b1g3cwlfw2uy6" path="res://addons/zylann.hterrain/hterrain.gd" id="5_qwuhp"]
+[ext_resource type="Resource" uid="uid://ucquhpg5u2a2" path="res://Terrain_Data/data.hterrain" id="6_4ttbv"]
 [ext_resource type="PackedScene" uid="uid://bb3tq1pjqb0ab" path="res://Scenes/UI.tscn" id="6_selfg"]
+[ext_resource type="Script" uid="uid://dfjwxkr2ghrqf" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="7_80ytr"]
 [ext_resource type="PackedScene" uid="uid://bq3efham7nrqb" path="res://Scenes/balloon_vehicle_phys.tscn" id="7_tdhcf"]
+[ext_resource type="Texture2D" uid="uid://bpow1is3o58l8" path="res://Assets/Materials/Grass005_1K-PNG_Color.png" id="8_80ytr"]
+[ext_resource type="Texture2D" uid="uid://f24bdk3bclb4" path="res://Assets/Materials/Grass005_1K-PNG_NormalGL.png" id="9_ovr7t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dla66"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -19,6 +24,11 @@ background_mode = 2
 sky = SubResource("Sky_ui57x")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="Resource" id="Resource_ovr7t"]
+script = ExtResource("7_80ytr")
+mode = 0
+textures = [[ExtResource("8_80ytr")], [ExtResource("9_ovr7t")]]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2xxif"]
 material = ExtResource("1_dla66")
@@ -50,6 +60,26 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08166313, 0.025, -5.4867487)
 
 [node name="Environment" type="Node3D" parent="." unique_id=1017786431]
+
+[node name="HTerrain" type="Node3D" parent="Environment" unique_id=201686283]
+script = ExtResource("5_qwuhp")
+map_scale = Vector3(5, 5, 5)
+centered = true
+_terrain_data = ExtResource("6_4ttbv")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_ovr7t")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = Vector4(1, 1, 1, 1)
 
 [node name="Ground" type="MeshInstance3D" parent="Environment" unique_id=705273356]
 transform = Transform3D(41.62596, 0, 0, 0, 41.62596, 0, 0, 0, 41.62596, 0, 0, 0)

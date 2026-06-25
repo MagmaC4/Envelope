@@ -10,6 +10,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_selfg"]
 size = Vector3(1.8486938, 0.920166, 0.8748169)
 
+[sub_resource type="BoxMesh" id="BoxMesh_owcch"]
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rrneo"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rh4jp"]
@@ -24,6 +26,10 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Handle" unique_id=254676297]
 transform = Transform3D(0.99997705, 0, 0, 0, 0.99997705, 0, 0, 0, 0.99997705, 0.5756054, 0.004272938, -3.0288944)
 shape = SubResource("BoxShape3D_selfg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Handle/CollisionShape3D" unique_id=1044979188]
+transform = Transform3D(1.8664788, 0, 0, 0, 0.8980554, 0, 0, 0, 0.7938653, 0, 0, 0)
+mesh = SubResource("BoxMesh_owcch")
 
 [node name="Model" parent="Handle" unique_id=584376246 instance=ExtResource("1_vfiox")]
 

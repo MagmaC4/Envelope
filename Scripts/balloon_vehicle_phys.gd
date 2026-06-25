@@ -58,7 +58,9 @@ func handle_movement(delta : float) -> void:
 	
 	# Rotate vehicle (y: yaw) based on crank power
 	var power_diff  = right_crank.power - left_crank.power
-	rotation_degrees.y += power_diff * 0.5 * delta 
+	var yaw = rotation_degrees.y + power_diff * 0.5
+	rotation_degrees.y = lerp(rotation_degrees.y, yaw, delta * 0.5)
+	# rotation_degrees.y += power_diff * 0.5 * delta 
 	# Rotate vehicle (z: roll) based on rotation speed
 	var roll = clamp(power_diff / 100 * MAX_ROLL, -MAX_ROLL, MAX_ROLL)
 	rotation_degrees.z = lerp(rotation_degrees.z, roll, delta * 3)

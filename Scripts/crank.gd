@@ -6,12 +6,15 @@ extends Node3D
 
 # Generate power when cranking, adding power depends on direction
 @export var on_left : bool = false
-var MAX_POWER := 100.0
+const MAX_POWER := 100.0
+const POWER_ADD := 20
+const POWER_SUB := 5
+var power_sign = 1  # directional multiplier
 var power := 0.0
-var power_sign = 1 
+
 
 # Rotating after letting go
-var TWEEN_TIME := 0.5
+const TWEEN_TIME := 0.5
 var floaty_rotation := 0.0
 
 # Miscellaneous
@@ -28,7 +31,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Decrease power 
-	subtract_power(delta * 5)
+	subtract_power(delta * POWER_SUB)
 	handle_floaty_rotation(delta)
 	
 
@@ -43,7 +46,7 @@ func handle_rotation(view_pos: Vector3, delta: float) -> void:
 	handle.rotate_x(signed_angle_to * delta * 5)
 	
 	# Add power based on rotation amount
-	add_power(power_sign * signed_angle_to * delta * 15)
+	add_power(power_sign * signed_angle_to * POWER_ADD * delta)
 
 	# Increase volume and pitch of crank audio based on magnitude of angle
 	var volume = lerp(-40, 0, power_sign * signed_angle_to / (PI / 2))
