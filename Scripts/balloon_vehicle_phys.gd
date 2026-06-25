@@ -14,8 +14,8 @@ const MAX_BUOYANCY = 6.0
 const MAX_Y_VELOCITY = 3
 var velocity : Vector3 = Vector3.ZERO
 
-const SPEED_MULT = 0.1
-const MAX_PITCH = 30
+const SPEED_MULT = 0.05
+const MAX_PITCH = 15
 const MAX_ROLL = 30
 var print_time : float = 0
 
@@ -58,10 +58,19 @@ func handle_movement(delta : float) -> void:
 	forward.y = 0
 	forward = forward.normalized()
 	position += forward * power_total * delta * SPEED_MULT
-	# Rotate vehicle (x: pitch) based on forward speed
-	var pitch = -clamp(power_total / 200 * MAX_PITCH, -MAX_PITCH, MAX_PITCH)
-	rotation_degrees.x = lerp(rotation_degrees.x, pitch, delta * 3)
 	
+	# Simulated sway on x and z axis
+	var t = Time.get_ticks_msec() * 0.001
+	var sway_x = sin(t) * 3.0
+	var sway_z = sin(t * 0.7 + 1.2) * 2.0
+	# Don't sway when not moving
+	if (abs(velocity.y) <= 0.1):
+		sway_x = 0
+		sway_z = 0
+	
+	# Rotate vehicle (x: pitch) based on forward speed
+	var pitch = clamp(power_total / 200 * MAX_PITCH, -MAX_PITCH, MAX_PITCH)
+	rotation_degrees.x = lerp(rotation_degrees.x, pitch + sway_x, delta * 3)
 	# Rotate vehicle (y: yaw) based on crank power
 	var power_diff  = right_crank.power - left_crank.power
 	var yaw = rotation_degrees.y + power_diff * 0.5
@@ -69,9 +78,7 @@ func handle_movement(delta : float) -> void:
 	# rotation_degrees.y += power_diff * 0.5 * delta 
 	# Rotate vehicle (z: roll) based on rotation speed
 	var roll = clamp(power_diff / 100 * MAX_ROLL, -MAX_ROLL, MAX_ROLL)
-	rotation_degrees.z = lerp(rotation_degrees.z, roll, delta * 3)
-	
-	force_update_transform()
+	rotation_degrees.z = lerp(rotation_degrees.z, roll + sway_z, delta * 3)
 	
 	# Debug info prints
 	print_time += delta 

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://rabolwv4efoj" path="res://Assets/Textures/arrow_2_fill.png" id="6_gg46c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_selfg"]
-size = Vector3(1.8486938, 0.920166, 0.8748169)
+size = Vector3(1.9692688, 1.515625, 1.4723663)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rrneo"]
 
@@ -22,7 +22,7 @@ script = ExtResource("1_tkptf")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Handle" unique_id=254676297]
-transform = Transform3D(0.99997705, 0, 0, 0, 0.99997705, 0, 0, 0, 0.99997705, 0.5756054, 0.004272938, -3.0288944)
+transform = Transform3D(0.99997705, 0, 0, 0, 0.99997705, 0, 0, 0, 0.99997705, 0.5153193, -0.0388169, -3.0939791)
 shape = SubResource("BoxShape3D_selfg")
 
 [node name="Model" parent="Handle" unique_id=584376246 instance=ExtResource("1_vfiox")]

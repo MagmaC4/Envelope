@@ -40,7 +40,7 @@ albedo_texture = ExtResource("7_tx8l5")
 material = SubResource("StandardMaterial3D_gmxq1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3nuav"]
-size = Vector3(0.21243286, 1.7835693, 0.19322205)
+size = Vector3(0.21243286, 1.7835693, 0.49944305)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_yprsc"]
 material = SubResource("StandardMaterial3D_sgw8h")
@@ -67,6 +67,7 @@ size = Vector3(0.35, 0.05, 0.64160156)
 size = Vector3(0.3, 0.05, 0.65771484)
 
 [node name="PhysicsBalloonVehicle" type="AnimatableBody3D" unique_id=111051409 groups=["Vehicle"]]
+sync_to_physics = false
 script = ExtResource("1_npksa")
 
 [node name="CabinTrigger" type="Area3D" parent="." unique_id=504987787]
@@ -116,7 +117,7 @@ mesh = SubResource("CylinderMesh_tg7dn")
 [node name="Area3D" type="Area3D" parent="Rope" unique_id=1582674911 groups=["Grabbable", "Rope"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rope/Area3D" unique_id=1747535117]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001083374, -0.7272339, 0.0036392212)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001083374, -0.7272339, -0.14947128)
 shape = SubResource("BoxShape3D_3nuav")
 
 [node name="AudioIgnite" type="AudioStreamPlayer3D" parent="Rope" unique_id=2014797583]
