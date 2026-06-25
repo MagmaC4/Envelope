@@ -13,11 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://bpow1is3o58l8" path="res://Assets/Materials/Grass005_1K-PNG_Color.png" id="8_80ytr"]
 [ext_resource type="Texture2D" uid="uid://f24bdk3bclb4" path="res://Assets/Materials/Grass005_1K-PNG_NormalGL.png" id="9_ovr7t"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5vn6p"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ovr7t"]
 panorama = ExtResource("2_ovr7t")
 
 [sub_resource type="Sky" id="Sky_ui57x"]
-sky_material = SubResource("PanoramaSkyMaterial_5vn6p")
+sky_material = SubResource("PanoramaSkyMaterial_ovr7t")
 
 [sub_resource type="Environment" id="Environment_2xxif"]
 background_mode = 2
