@@ -10,6 +10,5 @@ func _ready() -> void:
 
 # Swap crosshair
 func _on_player_hovering_grabbable(is_hovering: bool) -> void:
-	print("is hovering")
 	crosshair_main.visible = !is_hovering
 	crosshair_grab.visible = is_hovering
