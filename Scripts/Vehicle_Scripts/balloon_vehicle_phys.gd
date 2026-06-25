@@ -15,7 +15,7 @@ const MAX_BUOYANCY = 6.0
 const MAX_Y_VELOCITY = 3
 var velocity : Vector3 = Vector3.ZERO
 
-const SPEED_MULT = 0.05
+const SPEED_MULT = 0.1
 const MAX_PITCH = 15
 const MAX_ROLL = 30
 var print_time : float = 0
@@ -44,14 +44,14 @@ func handle_movement(delta : float) -> void:
 	velocity.y += (GRAVITY + buoyancy) * delta
 	velocity.y -= velocity.y * DRAG * delta # simulate drag
 	
+	if velocity.y > MAX_Y_VELOCITY:
+		velocity.y = MAX_Y_VELOCITY
+	
 	if move_and_collide(velocity * delta):
 		# If a collision is detected, stop falling down
 		# This assumes the collision is below the hot air balloon
 		if velocity.y < 0:
 			velocity.y = 0
-	
-	if velocity.y > MAX_Y_VELOCITY:
-		velocity.y = MAX_Y_VELOCITY
 	
 	# Move vehicle in Forward direction based on crank power
 	var power_total = right_crank.power + left_crank.power

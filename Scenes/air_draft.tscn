@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bs1xtct5e8mfn"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_y2bba"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2bba"]
+transparency = 1
+blend_mode = 3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_y2bba"]
+material = SubResource("StandardMaterial3D_y2bba")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y2bba"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 1)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21wm4"]
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_gareg"]
+material = SubResource("StandardMaterial3D_21wm4")
+
+[node name="AirDraft" type="Node3D" unique_id=59339213]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=396343484]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1786474847]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_y2bba")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1244557596]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_y2bba")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=116203336]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.8229432, 0, 3.597199e-08)
+lifetime = 5.0
+trail_enabled = true
+trail_lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_y2bba")
+draw_pass_1 = SubResource("QuadMesh_gareg")
