@@ -2,10 +2,13 @@
 
 [ext_resource type="Script" uid="uid://nwx2gq0nr5td" path="res://Scripts/balloon_vehicle_phys.gd" id="1_npksa"]
 [ext_resource type="Material" uid="uid://cp4f1k41unanv" path="res://Assets/Materials/test_grid_brown.tres" id="2_fpift"]
+[ext_resource type="PackedScene" uid="uid://b1oiun1vnqc7" path="res://Assets/Models/balloon_model.glb" id="3_47ufq"]
 [ext_resource type="Texture2D" uid="uid://cg1ta2cg0d528" path="res://Assets/Materials/balloon_1.jpeg" id="3_y6crg"]
 [ext_resource type="Texture2D" uid="uid://db5xsek3jdycq" path="res://Assets/Materials/test_grid.png" id="4_10s82"]
 [ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/crank.tscn" id="5_m8yhv"]
+[ext_resource type="Material" uid="uid://o0v082c2ok42" path="res://Assets/Particles/flame_particle.tres" id="5_uahhm"]
 [ext_resource type="Script" uid="uid://43dqf1odjuoq" path="res://Scripts/rope.gd" id="6_hr7pi"]
+[ext_resource type="QuadMesh" uid="uid://by4w0cp62tveo" path="res://Assets/Particles/flame_material.tres" id="6_rp5j2"]
 [ext_resource type="Texture2D" uid="uid://bn7j868m4rr35" path="res://Assets/Materials/rope.jpg" id="7_tx8l5"]
 [ext_resource type="AudioStream" uid="uid://ca3bucf6klly8" path="res://Assets/Sound/ignite_2.mp3" id="8_0f7t2"]
 [ext_resource type="AudioStream" uid="uid://dqiixept55pe0" path="res://Assets/Sound/burner_loop.mp3" id="9_8hovq"]
@@ -82,7 +85,11 @@ shape = SubResource("BoxShape3D_qbobt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Balloon" unique_id=559397434]
 transform = Transform3D(9.734291, 0, 0, 0, 9.734291, 0, 0, 0, 9.734291, 0, 8.776963, 0)
+visible = false
 mesh = SubResource("SphereMesh_5tuot")
+
+[node name="BalloonModel" parent="Balloon" unique_id=769067981 instance=ExtResource("3_47ufq")]
+transform = Transform3D(4.5, 0, 0, 0, 4.5, 0, 0, 0, 4.5, 0, 9, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Balloon" unique_id=705873064]
 transform = Transform3D(9.734291, 0, 0, 0, 9.734291, 0, 0, 0, 9.734291, 0, 8.776963, 0)
@@ -92,11 +99,36 @@ shape = SubResource("SphereShape3D_qbobt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Burner" unique_id=1144893484]
 transform = Transform3D(2.2085514, 0, 0, 0, 0.16790104, 0, 0, 0, 2.2085514, 0, 3.4318733, 0)
+visible = false
 mesh = SubResource("CylinderMesh_3nuav")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Burner" unique_id=530969997]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005493164, 3.5459557, 0.02432251)
 shape = SubResource("BoxShape3D_gmxq1")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Burner" unique_id=1979358208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5166864, -0.31836772)
+amount = 200
+lifetime = 0.5
+local_coords = true
+process_material = ExtResource("5_uahhm")
+draw_pass_1 = ExtResource("6_rp5j2")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Burner" unique_id=348473993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5159753, 3.5166864, 0.2795154)
+amount = 200
+lifetime = 0.5
+local_coords = true
+process_material = ExtResource("5_uahhm")
+draw_pass_1 = ExtResource("6_rp5j2")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Burner" unique_id=1697520657]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4166003, 3.5166864, 0.28912842)
+amount = 200
+lifetime = 0.5
+local_coords = true
+process_material = ExtResource("5_uahhm")
+draw_pass_1 = ExtResource("6_rp5j2")
 
 [node name="Crank" parent="." unique_id=1887970496 instance=ExtResource("5_m8yhv")]
 transform = Transform3D(0.15588367, 0, 0, 0, 0.15588367, 0, 0, 0, 0.15588367, -0.9, 0.5, 0)
