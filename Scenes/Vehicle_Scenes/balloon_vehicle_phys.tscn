@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://dqiixept55pe0" path="res://Assets/Sound/burner_loop.mp3" id="9_8hovq"]
 [ext_resource type="PackedScene" uid="uid://b8e70evoowqxu" path="res://Scenes/Vehicle_Scenes/altimeter.tscn" id="10_o1fhk"]
 [ext_resource type="PackedScene" uid="uid://ci8ndsk1o5y4u" path="res://Scenes/Vehicle_Scenes/thermometer.tscn" id="11_ybk2c"]
+[ext_resource type="PackedScene" uid="uid://d1iuhldv7w0am" path="res://Scenes/Vehicle_Scenes/radio.tscn" id="16_ly78e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbobt"]
 size = Vector3(1.8789711, 3.1889954, 1.9432068)
@@ -180,7 +181,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001083374, -0.7272339, -0.1
 shape = SubResource("BoxShape3D_3nuav")
 
 [node name="Altimeter" parent="." unique_id=1666856832 instance=ExtResource("10_o1fhk")]
-transform = Transform3D(0, -6.5567085e-09, -0.15, -0.15, -6.5567085e-09, 2.8660284e-16, -6.5567085e-09, 0.15, -6.5567085e-09, -0.6992263, 0.3953445, -0.98064333)
+transform = Transform3D(0, -6.5567085e-09, -0.15, -0.15, -6.5567085e-09, 2.8660284e-16, -6.5567085e-09, 0.15, -6.5567085e-09, -0.6123569, 0.32063082, -0.98064333)
 
 [node name="Crank" parent="." unique_id=1887970496 instance=ExtResource("5_m8yhv")]
 transform = Transform3D(0.15588367, 0, 0, 0, 0.15588367, 0, 0, 0, 0.15588367, -0.9, 0.5, 0)
@@ -235,6 +236,9 @@ mesh = SubResource("BoxMesh_wn7uu")
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="." unique_id=1258277450]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.8472728, 0.32885742, 1.0063438)
 shape = SubResource("BoxShape3D_hr7pi")
+
+[node name="Radio" parent="." unique_id=1346443475 instance=ExtResource("16_ly78e")]
+transform = Transform3D(-9.081935e-09, 0, -0.20777047, 0, 0.20777047, 0, 0.20777047, 0, -9.081935e-09, -0.58759356, 0.75933987, -0.9774854)
 
 [connection signal="area_entered" from="CabinTrigger" to="." method="_on_cabin_trigger_area_entered"]
 [connection signal="area_exited" from="CabinTrigger" to="." method="_on_cabin_trigger_area_exited"]

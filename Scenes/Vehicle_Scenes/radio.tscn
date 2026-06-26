@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://d1iuhldv7w0am"]
+
+[ext_resource type="PackedScene" uid="uid://3ygb6v4adnja" path="res://Assets/Models/radio.glb" id="1_2m1gq"]
+[ext_resource type="Script" uid="uid://fta3aqju538w" path="res://Scripts/Vehicle_Scripts/radio.gd" id="1_wciyu"]
+[ext_resource type="AudioStream" uid="uid://b8ende7hxpfct" path="res://Assets/Sound/music_waltz.mp3" id="3_5tiyu"]
+[ext_resource type="AudioStream" uid="uid://qt1nm56yopry" path="res://Assets/Sound/music_8bit.mp3" id="4_5tiyu"]
+[ext_resource type="AudioStream" uid="uid://cto3oimofmepd" path="res://Assets/Sound/music_static.mp3" id="5_5tiyu"]
+[ext_resource type="AudioStream" uid="uid://cysjlapbvj501" path="res://Assets/Sound/radio_switch.mp3" id="6_4n7o6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jtsbl"]
+size = Vector3(1, 1.3894043, 2.3375244)
+
+[node name="Radio" type="Node3D" unique_id=1346443475]
+script = ExtResource("1_wciyu")
+
+[node name="RadioModel" parent="." unique_id=1144301814 instance=ExtResource("1_2m1gq")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1920502359 groups=["Grabbable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=490543935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1348877, -0.0026245117)
+shape = SubResource("BoxShape3D_jtsbl")
+
+[node name="Station1" type="AudioStreamPlayer3D" parent="." unique_id=430332830]
+stream = ExtResource("3_5tiyu")
+parameters/looping = true
+
+[node name="Station2" type="AudioStreamPlayer3D" parent="." unique_id=541462713]
+stream = ExtResource("4_5tiyu")
+parameters/looping = true
+
+[node name="Station3" type="AudioStreamPlayer3D" parent="." unique_id=389448938]
+stream = ExtResource("5_5tiyu")
+parameters/looping = true
+
+[node name="Switch" type="AudioStreamPlayer3D" parent="." unique_id=720007171]
+stream = ExtResource("6_4n7o6")
