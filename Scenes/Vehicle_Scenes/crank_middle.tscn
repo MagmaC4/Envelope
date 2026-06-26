@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://bx7a1nustheb7"]
 
 [ext_resource type="Script" uid="uid://dd0qn58ap15ej" path="res://Scripts/Vehicle_Scripts/crank_middle.gd" id="1_wdo0c"]
-[ext_resource type="PackedScene" uid="uid://dt52awidakbkb" path="res://Assets/Models/crank.glb" id="2_4lole"]
+[ext_resource type="PackedScene" uid="uid://7kprfe1dtrfu" path="res://Assets/Models/crank_metal.glb" id="2_wdo0c"]
 [ext_resource type="AudioStream" uid="uid://byqyv1eps2syd" path="res://Assets/Sound/crank_2.mp3" id="3_ociau"]
 [ext_resource type="Script" uid="uid://b6ktii1mlcych" path="res://Scripts/progress_bar_middle.gd" id="4_wdo0c"]
 [ext_resource type="Texture2D" uid="uid://b0egrw8oifi5i" path="res://Assets/Textures/arrow_3_under.png" id="5_4lole"]
 [ext_resource type="Texture2D" uid="uid://dk0fr0smv8e84" path="res://Assets/Textures/arrow_3_fill.png" id="6_ociau"]
+[ext_resource type="PackedScene" uid="uid://7l18qoysggvl" path="res://Assets/Models/metal_plate.glb" id="7_4lole"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_selfg"]
 size = Vector3(1.9692688, 2.600586, 3.018116)
@@ -25,7 +26,8 @@ metadata/_edit_group_ = true
 transform = Transform3D(0.99997705, 0, 0, 0, 0.99997705, 0, 0, 0, 0.99997705, 0.5153193, 0.006592229, -3.1039639)
 shape = SubResource("BoxShape3D_selfg")
 
-[node name="Model" parent="Handle" unique_id=584376246 instance=ExtResource("2_4lole")]
+[node name="Model" parent="Handle" unique_id=555180605 instance=ExtResource("2_wdo0c")]
+transform = Transform3D(0.36294317, 0, 0, 0, 0.36294317, 0, 0, 0, 0.36294317, 0, 0, 0)
 
 [node name="GrabPlane" type="Area3D" parent="." unique_id=976073909]
 collision_layer = 2
@@ -62,3 +64,6 @@ texture_progress = ExtResource("6_ociau")
 [node name="Sprite3D" type="Sprite3D" parent="ProgressBar" unique_id=905794194]
 transform = Transform3D(-2.636387e-08, 0, 0.60313505, 0, 0.60313505, 0, -0.60313505, 0, -2.636387e-08, -0.346, 0.17587543, -0.30188277)
 texture = SubResource("ViewportTexture_rh4jp")
+
+[node name="metal_plate" parent="." unique_id=1741406510 instance=ExtResource("7_4lole")]
+transform = Transform3D(-2.1221896e-07, 0, -4.855004, 0, 4.855004, 0, 4.855004, 0, -2.1221896e-07, -0.8107681, 0, 0.042898756)

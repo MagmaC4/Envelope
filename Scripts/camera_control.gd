@@ -1,8 +1,10 @@
 extends Camera3D
 
+@onready var UI = get_tree().get_first_node_in_group("UI")
 @export var camera_sensitivity_controller := 100
 @export var camera_sensitivity_mouse := 7.5 # 0 - 10
 var mouse_input : Vector2 = Vector2.ZERO
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,7 +22,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse_input = event.relative
 		
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed and not UI.get_node("PauseMenu").in_menu:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	

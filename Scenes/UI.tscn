@@ -52,7 +52,7 @@ grow_vertical = 2
 texture = ExtResource("3_hfhsn")
 expand_mode = 1
 
-[node name="Main Menu" type="Control" parent="." unique_id=1987966734]
+[node name="MainMenu" type="Control" parent="." unique_id=1987966734]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,7 +60,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Pause Menu" type="Control" parent="." unique_id=1806942351]
+[node name="PauseMenu" type="Control" parent="." unique_id=1806942351]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -70,7 +70,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w371h")
 
-[node name="CenterContainer" type="CenterContainer" parent="Pause Menu" unique_id=1418426832]
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu" unique_id=1418426832]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,51 +78,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Pause Menu/CenterContainer" unique_id=1749988744]
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/CenterContainer" unique_id=1749988744]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Pause Menu/CenterContainer/PanelContainer" unique_id=1594135731]
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/CenterContainer/PanelContainer" unique_id=1594135731]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer" unique_id=2082405195]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer" unique_id=2082405195]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="MarginContainer2" type="MarginContainer" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=222990841]
+[node name="MarginContainer2" type="MarginContainer" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=222990841]
 layout_mode = 2
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="SettingsLabel" type="Label" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2" unique_id=12809836]
+[node name="SettingsLabel" type="Label" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2" unique_id=12809836]
 layout_mode = 2
 text = "Settings"
 label_settings = SubResource("LabelSettings_3iaii")
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=415511738]
+[node name="Label" type="Label" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=415511738]
 layout_mode = 2
 text = "Volume"
 
-[node name="Volume" type="HScrollBar" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1515220813]
+[node name="Volume" type="HScrollBar" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1515220813]
 layout_mode = 2
 value = 50.0
 
-[node name="Label2" type="Label" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=429321412]
+[node name="Label2" type="Label" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=429321412]
 layout_mode = 2
 text = "Mouse Sensitivity"
 
-[node name="MouseSensitivity" type="HScrollBar" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=267565621]
+[node name="MouseSensitivity" type="HScrollBar" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=267565621]
 layout_mode = 2
 value = 30.0
 
-[node name="Label3" type="Label" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1931296923]
+[node name="Label3" type="Label" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1931296923]
 layout_mode = 2
 text = "Fullscreen"
 
-[node name="OptionButton" type="OptionButton" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=114068062]
+[node name="OptionButton" type="OptionButton" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=114068062]
 layout_mode = 2
 selected = 2
 item_count = 3
@@ -133,43 +133,43 @@ popup/item_1/id = 1
 popup/item_2/text = "Windowed"
 popup/item_2/id = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=330378068]
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=330378068]
 layout_mode = 2
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=214591646]
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=214591646]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=2095059509]
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=2095059509]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="QuitGame" type="Button" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1828107499]
+[node name="QuitGame" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1828107499]
 layout_mode = 2
 size_flags_vertical = 4
 text = "Quit Game"
 
-[node name="PanelContainer2" type="PanelContainer" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1406136408]
+[node name="PanelContainer2" type="PanelContainer" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1406136408]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Restart" type="Button" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2" unique_id=1736244009]
+[node name="Restart" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2" unique_id=1736244009]
 layout_mode = 2
 size_flags_vertical = 4
 text = "Restart"
 
-[node name="SettingsExit" type="Button" parent="Pause Menu/CenterContainer/PanelContainer" unique_id=1740026360]
+[node name="SettingsExit" type="Button" parent="PauseMenu/CenterContainer/PanelContainer" unique_id=1740026360]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "X"
 
-[connection signal="value_changed" from="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Volume" to="Pause Menu" method="_on_volume_value_changed"]
-[connection signal="value_changed" from="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MouseSensitivity" to="Pause Menu" method="_on_mouse_sensitivity_value_changed"]
-[connection signal="item_selected" from="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/OptionButton" to="Pause Menu" method="_on_option_button_item_selected"]
-[connection signal="pressed" from="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/QuitGame" to="Pause Menu" method="_on_quit_game_pressed"]
-[connection signal="pressed" from="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/Restart" to="Pause Menu" method="_on_restart_pressed"]
-[connection signal="pressed" from="Pause Menu/CenterContainer/PanelContainer/SettingsExit" to="Pause Menu" method="_on_exit_pressed"]
+[connection signal="value_changed" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Volume" to="PauseMenu" method="_on_volume_value_changed"]
+[connection signal="value_changed" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MouseSensitivity" to="PauseMenu" method="_on_mouse_sensitivity_value_changed"]
+[connection signal="item_selected" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/OptionButton" to="PauseMenu" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/QuitGame" to="PauseMenu" method="_on_quit_game_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/Restart" to="PauseMenu" method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/PanelContainer/SettingsExit" to="PauseMenu" method="_on_exit_pressed"]

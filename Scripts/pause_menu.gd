@@ -1,6 +1,7 @@
 extends Control
 
 @onready var player = get_tree().get_first_node_in_group("Player")
+var in_menu := false
 
 func _process(delta):
 	# Turn on settings menu when player presses ESC
@@ -12,10 +13,12 @@ func _process(delta):
 		
 func settings_on():
 	visible = true
+	in_menu = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 func settings_off():
 	visible = false
+	in_menu = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_exit_pressed() -> void:
