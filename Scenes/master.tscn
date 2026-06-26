@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://bq3efham7nrqb" path="res://Scenes/Vehicle_Scenes/balloon_vehicle_phys.tscn" id="7_tdhcf"]
 [ext_resource type="Texture2D" uid="uid://bpow1is3o58l8" path="res://Assets/Materials/Grass005_1K-PNG_Color.png" id="8_80ytr"]
 [ext_resource type="Texture2D" uid="uid://f24bdk3bclb4" path="res://Assets/Materials/Grass005_1K-PNG_NormalGL.png" id="9_ovr7t"]
-[ext_resource type="PackedScene" uid="uid://bs1xtct5e8mfn" path="res://Scenes/air_draft.tscn" id="13_5vn6p"]
 
 [sub_resource type="Resource" id="Resource_ovr7t"]
 script = ExtResource("7_80ytr")
@@ -100,11 +99,3 @@ mesh = SubResource("BoxMesh_et0fo")
 [node name="Crank" parent="Environment" unique_id=1887970496 instance=ExtResource("5_et0fo")]
 transform = Transform3D(0.31617248, 0, 0, 0, 0.31617248, 0, 0, 0, 0.31617248, -12.229397, 1.9744546, -5.3874636)
 on_left = true
-
-[node name="AirDraft" parent="." unique_id=59339213 instance=ExtResource("13_5vn6p")]
-transform = Transform3D(-0.09492218, 0, -9.96056, 0, 9.961012, 0, 9.96056, 0, -0.09492218, -3.0841541, 4.2925777, -28.175068)
-visible = false
-
-[node name="AirDraft2" parent="." unique_id=632713488 instance=ExtResource("13_5vn6p")]
-transform = Transform3D(-0.21180734, 0, -22.225782, -11.11289, 19.248968, 0.10590366, 19.248089, 11.113395, -0.18343052, -0.9164562, 15.273483, -85.62018)
-visible = false
