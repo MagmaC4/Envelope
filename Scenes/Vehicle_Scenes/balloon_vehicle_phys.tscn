@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://nwx2gq0nr5td" path="res://Scripts/Vehicle_Scripts/balloon_vehicle_phys.gd" id="1_npksa"]
 [ext_resource type="PackedScene" uid="uid://b1oiun1vnqc7" path="res://Assets/Models/balloon_model.glb" id="3_47ufq"]
-[ext_resource type="Texture2D" uid="uid://cg1ta2cg0d528" path="res://Assets/Materials/balloon_1.jpeg" id="3_y6crg"]
 [ext_resource type="Texture2D" uid="uid://db5xsek3jdycq" path="res://Assets/Materials/test_grid.png" id="4_10s82"]
 [ext_resource type="Script" uid="uid://cyy5jf5f2kf2p" path="res://Scripts/Vehicle_Scripts/burner.gd" id="4_rp5j2"]
 [ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/Vehicle_Scenes/crank.tscn" id="5_m8yhv"]
@@ -22,16 +21,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbobt"]
 size = Vector3(1.8789711, 3.1889954, 1.9432068)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2duu"]
-albedo_texture = ExtResource("3_y6crg")
-
-[sub_resource type="SphereMesh" id="SphereMesh_5tuot"]
-material = SubResource("StandardMaterial3D_h2duu")
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_qbobt"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_gmxq1"]
-size = Vector3(0.768898, 0.08513641, 1.2316275)
+size = Vector3(0.768898, 0.025112152, 1.2316275)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgw8h"]
 albedo_color = Color(0.45262197, 0.45262197, 0.45262197, 1)
@@ -47,7 +38,7 @@ albedo_texture = ExtResource("7_tx8l5")
 material = SubResource("StandardMaterial3D_gmxq1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3nuav"]
-size = Vector3(0.3209381, 0.89482117, 0.7165184)
+size = Vector3(0.2346878, 0.89482117, 0.7165184)
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_ly78e"]
 radius = 0.1
@@ -76,27 +67,15 @@ metadata/_edit_group_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00658226, 1.604701, 0.0022125244)
 shape = SubResource("BoxShape3D_qbobt")
 
-[node name="Balloon" type="StaticBody3D" parent="." unique_id=978523476]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4423113, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Balloon" unique_id=559397434]
-transform = Transform3D(9.734291, 0, 0, 0, 9.734291, 0, 0, 0, 9.734291, 0, 8.776963, 0)
-visible = false
-mesh = SubResource("SphereMesh_5tuot")
-
-[node name="BalloonModel" parent="Balloon" unique_id=769067981 instance=ExtResource("3_47ufq")]
-transform = Transform3D(4.5, 0, 0, 0, 4.5, 0, 0, 0, 4.5, 0, 9, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Balloon" unique_id=705873064]
-transform = Transform3D(9.734291, 0, 0, 0, 9.734291, 0, 0, 0, 9.734291, 0, 8.776963, 0)
-shape = SubResource("SphereShape3D_qbobt")
+[node name="BalloonModel" parent="." unique_id=769067981 instance=ExtResource("3_47ufq")]
+transform = Transform3D(4.5, 0, 0, 0, 4.5, 0, 0, 0, 4.5, 0, 9.442311, 0)
 
 [node name="Burner" type="StaticBody3D" parent="." unique_id=1984842240]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42165327, 0)
 script = ExtResource("4_rp5j2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Burner" unique_id=530969997]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0272789, 2.8235345, 0.001595974)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0272789, 2.8157046, 0.001595974)
 shape = SubResource("BoxShape3D_gmxq1")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Burner" unique_id=1979358208]
@@ -162,7 +141,7 @@ mesh = SubResource("CylinderMesh_tg7dn")
 [node name="Area3D" type="Area3D" parent="Rope" unique_id=1582674911 groups=["Grabbable", "Rope"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rope/Area3D" unique_id=1747535117]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055336, -0.6609726, -0.25800896)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09846115, -0.6609726, -0.25800896)
 shape = SubResource("BoxShape3D_3nuav")
 
 [node name="Altimeter" parent="." unique_id=1666856832 instance=ExtResource("10_o1fhk")]

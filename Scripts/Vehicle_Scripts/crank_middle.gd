@@ -90,5 +90,5 @@ func handle_grab():
 	
 		
 func add_power(num : float):
-	crank_1.add_power(num/2)
-	crank_2.add_power(num/2)
+	crank_1.add_power(num)
+	crank_2.add_power(num)

@@ -45,7 +45,7 @@ func handle_movement(delta : float) -> void:
 	velocity.y += (GRAVITY + buoyancy) * delta
 	velocity.y -= velocity.y * DRAG * delta # simulate drag
 	
-	# cap upwards velocity
+	# Cap upwards velocity
 	if velocity.y > MAX_Y_VELOCITY:
 		velocity.y = MAX_Y_VELOCITY
 		
