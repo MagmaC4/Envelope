@@ -29,6 +29,12 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 [sub_resource type="BoxMesh" id="BoxMesh_et0fo"]
 material = ExtResource("1_dla66")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_selfg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_selfg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tdhcf"]
+
 [node name="Master" type="Node3D" unique_id=925668592]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1096933158]
@@ -63,8 +69,22 @@ shape = SubResource("ConcavePolygonShape3D_et0fo")
 transform = Transform3D(3.6584747, 0, 0, 0, 3.6584747, 0, 0, 0, 3.6584747, -14.277925, 1.8381014, -5.363006)
 mesh = SubResource("BoxMesh_et0fo")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Box" unique_id=243084484]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Box/StaticBody3D" unique_id=2016243467]
+shape = SubResource("BoxShape3D_selfg")
+
 [node name="Crank" parent="Environment" unique_id=1887970496 instance=ExtResource("5_et0fo")]
 transform = Transform3D(0.31617248, 0, 0, 0, 0.31617248, 0, 0, 0, 0.31617248, -12.229397, 1.9744546, -5.3874636)
 on_left = true
 
 [node name="UI" parent="." unique_id=749720162 instance=ExtResource("6_selfg")]
+
+[node name="PlaceholderItem" type="MeshInstance3D" parent="." unique_id=1505450807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55432427, 3.960947)
+mesh = SubResource("BoxMesh_selfg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PlaceholderItem" unique_id=1729837622 groups=["Item"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlaceholderItem/StaticBody3D" unique_id=813973076]
+shape = SubResource("BoxShape3D_tdhcf")

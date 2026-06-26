@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://b84k3a30m8dio"]
+
+[ext_resource type="Script" uid="uid://ckiv28yu1a7e2" path="res://Scripts/hookshot.gd" id="1_4d14g"]
+[ext_resource type="PackedScene" uid="uid://bcexxyy5j6wei" path="res://Assets/Models/HookshotHandleB.glb" id="1_obgo7"]
+[ext_resource type="PackedScene" uid="uid://dmbcwb2x6v6rh" path="res://Assets/Models/HookshotHook.glb" id="2_ifrka"]
+
+[sub_resource type="Animation" id="Animation_4d14g"]
+resource_name = "Down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Handle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.68),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 1.5707964)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hook:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.68),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 1.5707964)]
+}
+
+[sub_resource type="Animation" id="Animation_rm6nv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Handle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hook:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rj6er"]
+resource_name = "Up"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Handle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5707964), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hook:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5707964), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rj6er"]
+_data = {
+&"Down": SubResource("Animation_4d14g"),
+&"RESET": SubResource("Animation_rm6nv"),
+&"Up": SubResource("Animation_rj6er")
+}
+
+[node name="Hookshot" type="Node3D" unique_id=933987336]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_4d14g")
+
+[node name="Handle" parent="." unique_id=2008677186 instance=ExtResource("1_obgo7")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.866, 0, 0)
+
+[node name="Hookshot BOX" parent="Handle" index="2" unique_id=503294779]
+transform = Transform3D(-2.1907165e-07, -2.8779864, 0, 1.3446522, -4.688835e-07, 0, 0, 0, 1.3446522, -4.9538093, 0, 0)
+
+[node name="Body Lower" parent="Handle/Hookshot BOX" index="0" unique_id=1970851000]
+layers = 2
+
+[node name="Body Upper" parent="Handle/Hookshot BOX" index="1" unique_id=610222964]
+layers = 2
+
+[node name="Body Void" parent="Handle/Hookshot BOX" index="2" unique_id=1743181586]
+layers = 2
+
+[node name="Chain 1" parent="Handle/Hookshot BOX" index="3" unique_id=350963221]
+layers = 2
+
+[node name="Chain 2" parent="Handle/Hookshot BOX" index="4" unique_id=1654625783]
+layers = 2
+
+[node name="Grip Outer" parent="Handle/Hookshot BOX" index="6" unique_id=655237821]
+layers = 2
+
+[node name="Grip Void" parent="Handle/Hookshot BOX" index="7" unique_id=196400083]
+layers = 2
+
+[node name="Grips Inner" parent="Handle/Hookshot BOX" index="8" unique_id=1490533141]
+layers = 2
+
+[node name="Handle Bar" parent="Handle/Hookshot BOX" index="9" unique_id=406797322]
+layers = 2
+
+[node name="Upper Void" parent="Handle/Hookshot BOX" index="11" unique_id=238340746]
+layers = 2
+
+[node name="Hook" parent="." unique_id=1349535131 instance=ExtResource("2_ifrka")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.863, 0, 0)
+
+[node name="Hookshot BOX" parent="Hook" index="4" unique_id=1938285739]
+transform = Transform3D(-2.1907165e-07, -2.8779864, 0, 1.3446522, -4.688835e-07, 0, 0, 0, 1.3446522, -4.9538093, 0, 0)
+
+[node name="Hook" parent="Hook/Hookshot BOX" index="0" unique_id=54326008]
+layers = 2
+
+[node name="Upper Void" parent="Hook/Hookshot BOX" index="2" unique_id=1094464647]
+layers = 2
+
+[node name="RayCast3D" type="RayCast3D" parent="Hook" unique_id=1469341342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1997113, 0, 0)
+target_position = Vector3(-6, 0, 0)
+hit_from_inside = true
+
+[node name="Item_Holder" type="Node3D" parent="Hook" unique_id=2073049825]
+
+[node name="Length" type="Timer" parent="." unique_id=1515150516]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1023469818]
+libraries/ = SubResource("AnimationLibrary_rj6er")
+
+[connection signal="timeout" from="Length" to="." method="_on_length_timeout"]
+
+[editable path="Handle"]
+[editable path="Hook"]

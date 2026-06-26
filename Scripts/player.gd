@@ -7,6 +7,7 @@ extends CharacterBody3D
 signal hovering_grabbable(is_hovering: bool)
 var was_hovering := false
 var is_cranking := false
+var stuck := false
 var crank : Node3D
 
 
@@ -41,7 +42,7 @@ func handle_raycast() -> void:
 	# Check if player is looking at crank
 	if col and col.is_in_group("Crank"):
 		# Enable player's cranking state
-		if Input.is_action_pressed("grab"):
+		if Input.is_action_pressed("grab") and $Camera3D/Hookshot.state == -1:
 			crank = col.get_parent()
 			is_cranking = true
 
@@ -77,7 +78,7 @@ func handle_movement(delta):
 	if (Input.is_action_pressed("sprint")):
 		sprint_speed = 1.5
 	
-	if direction:
+	if direction and stuck == false:
 		velocity.x = direction.x * SPEED * sprint_speed
 		velocity.z = direction.z * SPEED * sprint_speed
 	else:

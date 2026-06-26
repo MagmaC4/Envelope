@@ -2,6 +2,7 @@ extends Camera3D
 
 @export var camera_sensitivity_controller := 100
 @export var camera_sensitivity_mouse := 7.5 # 0 - 10
+@onready var hookcam = $SubViewportContainer/SubViewport/HookCam
 var mouse_input : Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
@@ -13,6 +14,7 @@ func _physics_process(delta: float) -> void:
 	# Camera rotates only when mouse is focused
 	if (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED):
 		handle_camera(delta)
+	hookcam.global_transform = global_transform
 		
 # Override _input function to keep track of MouseMotion
 # event is a variable that records all InputEvents

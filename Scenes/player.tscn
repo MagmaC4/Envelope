@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b17vxcw4ug5jq" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://4w1m8h5kodfe" path="res://Scripts/camera_control.gd" id="2_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://b84k3a30m8dio" path="res://Scenes/Hookshot.tscn" id="3_6t5aa"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_f60y1"]
 
@@ -24,6 +25,26 @@ target_position = Vector3(0, 0, -5)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Target" type="RayCast3D" parent="Camera3D" unique_id=664159698]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.24168336, -0.8343602)
+target_position = Vector3(-50, 0, 0)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Camera3D" unique_id=422240099]
+offset_right = 1920.0
+offset_bottom = 1079.0
+
+[node name="SubViewport" type="SubViewport" parent="Camera3D/SubViewportContainer" unique_id=1463699539]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="HookCam" type="Camera3D" parent="Camera3D/SubViewportContainer/SubViewport" unique_id=1988969284]
+cull_mask = 1047554
+
+[node name="Hookshot" parent="Camera3D" unique_id=933987336 instance=ExtResource("3_6t5aa")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.725, -0.45, -0.74)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1771865676]
 mesh = SubResource("CapsuleMesh_f60y1")
