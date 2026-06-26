@@ -67,8 +67,8 @@ func handle_movement(delta : float) -> void:
 	
 	# Simulated sway on x and z axis
 	var t = Time.get_ticks_msec() * 0.001
-	var sway_x = sin(t) * 3.0
-	var sway_z = sin(t * 0.7 + 1.2) * 2.0
+	var sway_x = sin(t) * 3.5
+	var sway_z = sin(t * 0.7 + 1.2) * 5.0
 	# Don't sway when not moving
 	if (abs(velocity.y) <= 0.1):
 		sway_x = 0

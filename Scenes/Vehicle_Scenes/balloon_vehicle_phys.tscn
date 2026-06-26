@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ci8ndsk1o5y4u" path="res://Scenes/Vehicle_Scenes/thermometer.tscn" id="11_ybk2c"]
 [ext_resource type="PackedScene" uid="uid://d1iuhldv7w0am" path="res://Scenes/Vehicle_Scenes/radio.tscn" id="16_ly78e"]
 [ext_resource type="PackedScene" uid="uid://cis4jm781sl7v" path="res://Assets/Models/basket.glb" id="16_xq7sx"]
+[ext_resource type="PackedScene" uid="uid://7l18qoysggvl" path="res://Assets/Models/metal_plate.glb" id="17_ujuic"]
 [ext_resource type="PackedScene" uid="uid://dna6ltnu0iyxu" path="res://Scenes/Vehicle_Scenes/propeller.tscn" id="17_xq7sx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbobt"]
@@ -144,7 +145,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09846115, -0.6609726, -0.25
 shape = SubResource("BoxShape3D_3nuav")
 
 [node name="Altimeter" parent="." unique_id=1666856832 instance=ExtResource("10_o1fhk")]
-transform = Transform3D(0, -6.5567085e-09, -0.15, -0.15, -6.5567085e-09, 2.8660284e-16, -6.5567085e-09, 0.15, -6.5567085e-09, -0.54812205, 0.5961199, -0.98064333)
+transform = Transform3D(0, -6.5567085e-09, -0.15, -0.15, -6.5567085e-09, 2.8660284e-16, -6.5567085e-09, 0.15, -6.5567085e-09, -0.54812205, 0.5128125, -0.98064333)
 
 [node name="Crank" parent="." unique_id=1887970496 instance=ExtResource("5_m8yhv")]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -0.9, 0.59529024, 0)
@@ -228,6 +229,9 @@ crank = NodePath("../Crank")
 [node name="Propeller2" parent="." unique_id=1288330406 node_paths=PackedStringArray("crank") instance=ExtResource("17_xq7sx")]
 transform = Transform3D(-3.0195828e-08, 0, -0.6908, 0, 0.6908, 0, 0.6908, 0, -3.0195828e-08, 1.7821512, 0.5860985, 1.058363)
 crank = NodePath("../Crank2")
+
+[node name="metal_plate" parent="." unique_id=1741406510 instance=ExtResource("17_ujuic")]
+transform = Transform3D(0.7150797, 0, 0, 0, 0.7150797, 0, 0, 0, 0.7150797, -0.552255, 0.5115498, -1.0119587)
 
 [connection signal="area_entered" from="CabinTrigger" to="." method="_on_cabin_trigger_area_entered"]
 [connection signal="area_exited" from="CabinTrigger" to="." method="_on_cabin_trigger_area_exited"]
