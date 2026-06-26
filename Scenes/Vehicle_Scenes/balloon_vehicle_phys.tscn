@@ -171,7 +171,7 @@ on_left = true
 [node name="Crank2" parent="." unique_id=850255794 groups=["Vehicle"] instance=ExtResource("5_m8yhv")]
 transform = Transform3D(-0.15588367, 1.3627783e-08, 0, -1.3627783e-08, -0.15588367, 0, 0, 0, 0.15588367, 0.9, 0.6361338, 0)
 
-[node name="Crank3" parent="." unique_id=1855029249 instance=ExtResource("15_ujuic")]
+[node name="CrankMiddle" parent="." unique_id=1855029249 instance=ExtResource("15_ujuic")]
 transform = Transform3D(-5.060551e-09, 0, -0.11577192, 0, 0.11577192, 0, 0.11577192, 0, -5.060551e-09, 0, 0.6391547, -0.92235345)
 
 [node name="Radio" parent="." unique_id=1346443475 instance=ExtResource("16_ly78e")]

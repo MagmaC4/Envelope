@@ -1,8 +1,11 @@
 extends Node3D
 
-# Children
+# Nodes
+@onready var crank_1 := get_tree().get_first_node_in_group("Vehicle").get_node("Crank")
+@onready var crank_2 := get_tree().get_first_node_in_group("Vehicle").get_node("Crank2")
 @onready var handle := $Handle
 @onready var audio := $AudioStreamPlayer3D
+
 
 # Generate power when cranking, adding power depends on direction
 const MAX_POWER := 100.0
@@ -26,8 +29,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# Decrease power 
-	subtract_power(delta * POWER_SUB)
+	# Adjust power to equal left and right cranks
+	power = (crank_1.power + crank_2.power) / 2.0
+	
 	handle_floaty_rotation(delta)
 	
 
@@ -86,11 +90,5 @@ func handle_grab():
 	
 		
 func add_power(num : float):
-	power += num
-	if power > MAX_POWER:
-		power = MAX_POWER
-	
-func subtract_power(num : float):
-	power -= num
-	if power < 0:
-		power = 0
+	crank_1.add_power(num/2)
+	crank_2.add_power(num/2)
