@@ -45,3 +45,6 @@ func _on_option_button_item_selected(index: int) -> void:
 
 func _on_quit_game_pressed() -> void:
 	get_tree().quit()
+
+func _on_restart_pressed() -> void:
+	get_tree().reload_current_scene()

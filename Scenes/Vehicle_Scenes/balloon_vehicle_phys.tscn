@@ -47,7 +47,7 @@ albedo_texture = ExtResource("7_tx8l5")
 material = SubResource("StandardMaterial3D_gmxq1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3nuav"]
-size = Vector3(0.21243286, 1.1089783, 0.49944305)
+size = Vector3(0.3209381, 0.89482117, 0.7165184)
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_ly78e"]
 radius = 0.1
@@ -132,6 +132,10 @@ parameters/looping = true
 wait_time = 2.5
 autostart = true
 
+[node name="BoxMesh" type="MeshInstance3D" parent="Burner" unique_id=995475909]
+transform = Transform3D(0.31356055, 0, 0, 0, 0.1788248, 0, 0, 0, 0.33962053, 0.67364883, 2.8205233, -0.44750816)
+mesh = SubResource("CylinderMesh_yprsc")
+
 [node name="Thermometer" parent="." unique_id=618017343 instance=ExtResource("11_ybk2c")]
 transform = Transform3D(0.003847452, -0.034236483, -0.14229175, -0.13336329, -0.05944487, 0.010696866, -0.060276974, 0.12933697, -0.032749325, 0.22224578, 1.9592304, -0.8206179)
 MIN_ANGLE = 3.403
@@ -143,7 +147,7 @@ transform = Transform3D(-0.031082336, -0.8789201, -0.09206755, -0.115761906, -0.
 mesh = SubResource("CylinderMesh_yprsc")
 
 [node name="Rope" type="Node3D" parent="." unique_id=1534175090 groups=["Grabbable", "Rope"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5765375, 2.7363508, -0.61394614)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67364883, 2.2366166, -0.44750816)
 script = ExtResource("6_hr7pi")
 metadata/_edit_group_ = true
 
@@ -152,13 +156,13 @@ stream = ExtResource("8_0f7t2")
 volume_db = -12.0
 
 [node name="RopeMesh" type="MeshInstance3D" parent="Rope" unique_id=811256299]
-transform = Transform3D(0.05, 0, 0, 0, 0.62812895, 0, 0, 0, 0.05, 0, -0.5523429, 0)
+transform = Transform3D(0.035, 0, 0, 0, 0.628, 0, 0, 0, 0.035, 0, -0.29813254, 0)
 mesh = SubResource("CylinderMesh_tg7dn")
 
 [node name="Area3D" type="Area3D" parent="Rope" unique_id=1582674911 groups=["Grabbable", "Rope"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rope/Area3D" unique_id=1747535117]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001083374, -0.76805115, -0.14947128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055336, -0.6609726, -0.25800896)
 shape = SubResource("BoxShape3D_3nuav")
 
 [node name="Altimeter" parent="." unique_id=1666856832 instance=ExtResource("10_o1fhk")]

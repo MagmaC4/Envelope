@@ -138,15 +138,28 @@ layout_mode = 2
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="PanelContainer" type="PanelContainer" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=2095059509]
+[node name="HBoxContainer" type="HBoxContainer" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=214591646]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=2095059509]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="QuitGame" type="Button" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/PanelContainer" unique_id=1828107499]
+[node name="QuitGame" type="Button" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1828107499]
 layout_mode = 2
 size_flags_vertical = 4
-text = "Quit Game?"
+text = "Quit Game"
+
+[node name="PanelContainer2" type="PanelContainer" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1406136408]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Restart" type="Button" parent="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2" unique_id=1736244009]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Restart"
 
 [node name="SettingsExit" type="Button" parent="Pause Menu/CenterContainer/PanelContainer" unique_id=1740026360]
 layout_mode = 2
@@ -157,5 +170,6 @@ text = "X"
 [connection signal="value_changed" from="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Volume" to="Pause Menu" method="_on_volume_value_changed"]
 [connection signal="value_changed" from="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MouseSensitivity" to="Pause Menu" method="_on_mouse_sensitivity_value_changed"]
 [connection signal="item_selected" from="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/OptionButton" to="Pause Menu" method="_on_option_button_item_selected"]
-[connection signal="pressed" from="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/QuitGame" to="Pause Menu" method="_on_quit_game_pressed"]
+[connection signal="pressed" from="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/QuitGame" to="Pause Menu" method="_on_quit_game_pressed"]
+[connection signal="pressed" from="Pause Menu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/Restart" to="Pause Menu" method="_on_restart_pressed"]
 [connection signal="pressed" from="Pause Menu/CenterContainer/PanelContainer/SettingsExit" to="Pause Menu" method="_on_exit_pressed"]

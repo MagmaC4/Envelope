@@ -7,8 +7,8 @@ extends Node3D
 signal rope_pulled()
 
 # Tween stuff
-var ON_POSITION_Y = -1.0
-var OFF_POSITION_Y = -0.75
+@onready var ON_POSITION_Y = RopeMesh.position.y - 0.25
+@onready var OFF_POSITION_Y = RopeMesh.position.y
 var TRANS_MODE = Tween.TRANS_BACK
 var TWEEN_DURATION = 0.25
 	
