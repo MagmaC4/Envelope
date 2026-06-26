@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://dqiixept55pe0" path="res://Assets/Sound/burner_loop.mp3" id="9_8hovq"]
 [ext_resource type="PackedScene" uid="uid://b8e70evoowqxu" path="res://Scenes/Vehicle_Scenes/altimeter.tscn" id="10_o1fhk"]
 [ext_resource type="PackedScene" uid="uid://ci8ndsk1o5y4u" path="res://Scenes/Vehicle_Scenes/thermometer.tscn" id="11_ybk2c"]
+[ext_resource type="PackedScene" uid="uid://bx7a1nustheb7" path="res://Scenes/Vehicle_Scenes/crank_middle.tscn" id="15_ujuic"]
 [ext_resource type="PackedScene" uid="uid://d1iuhldv7w0am" path="res://Scenes/Vehicle_Scenes/radio.tscn" id="16_ly78e"]
 [ext_resource type="PackedScene" uid="uid://cis4jm781sl7v" path="res://Assets/Models/basket.glb" id="16_xq7sx"]
 [ext_resource type="PackedScene" uid="uid://dna6ltnu0iyxu" path="res://Scenes/Vehicle_Scenes/propeller.tscn" id="17_xq7sx"]
@@ -30,7 +31,7 @@ material = SubResource("StandardMaterial3D_h2duu")
 [sub_resource type="SphereShape3D" id="SphereShape3D_qbobt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gmxq1"]
-size = Vector3(0.768898, 0.21690369, 1.2316275)
+size = Vector3(0.768898, 0.08513641, 1.2316275)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgw8h"]
 albedo_color = Color(0.45262197, 0.45262197, 0.45262197, 1)
@@ -95,7 +96,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42165327, 0)
 script = ExtResource("4_rp5j2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Burner" unique_id=530969997]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0272789, 2.7576509, 0.001595974)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0272789, 2.8235345, 0.001595974)
 shape = SubResource("BoxShape3D_gmxq1")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Burner" unique_id=1979358208]
@@ -169,6 +170,9 @@ on_left = true
 
 [node name="Crank2" parent="." unique_id=850255794 groups=["Vehicle"] instance=ExtResource("5_m8yhv")]
 transform = Transform3D(-0.15588367, 1.3627783e-08, 0, -1.3627783e-08, -0.15588367, 0, 0, 0, 0.15588367, 0.9, 0.6361338, 0)
+
+[node name="Crank3" parent="." unique_id=1855029249 instance=ExtResource("15_ujuic")]
+transform = Transform3D(-5.060551e-09, 0, -0.11577192, 0, 0.11577192, 0, 0.11577192, 0, -5.060551e-09, 0, 0.6391547, -0.92235345)
 
 [node name="Radio" parent="." unique_id=1346443475 instance=ExtResource("16_ly78e")]
 transform = Transform3D(0.022172272, 0, -0.20658404, 0, 0.2077705, 0, 0.20658404, 0, 0.022172272, -0.5614868, 1.1745116, -1.0234895)

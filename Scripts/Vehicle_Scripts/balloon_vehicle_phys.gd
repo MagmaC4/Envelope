@@ -9,7 +9,8 @@ extends AnimatableBody3D
 @onready var thermometer = $Thermometer
 
 # Movement
-const GRAVITY = -1
+var BASELINE_GRAVITY = -1 # temp var for embark/disembark
+var GRAVITY = BASELINE_GRAVITY
 const DRAG = 0.5
 const MAX_BUOYANCY = 6.0
 const MAX_Y_VELOCITY = 3
@@ -100,12 +101,14 @@ func _on_cabin_trigger_area_entered(area: Area3D) -> void:
 		print("Vehicle entered")
 		var vehicle_node = self
 		reparent_player(area, vehicle_node)
+		GRAVITY = BASELINE_GRAVITY
 		
 func _on_cabin_trigger_area_exited(area: Area3D) -> void:
 	if area.is_in_group("PlayerTwin"):
 		print("Vehicle exited")
 		var world_node = get_tree().current_scene
 		reparent_player(area, world_node)
+		GRAVITY = BASELINE_GRAVITY * 3
 		 
 func reparent_player(area: Area3D, parent: Node3D):
 # Turn off Area3D monitoring so when scene tree changes,

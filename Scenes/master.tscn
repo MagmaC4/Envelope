@@ -5,13 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://dkxgf5ykudbxe" path="res://Scenes/player.tscn" id="2_ui57x"]
 [ext_resource type="PackedScene" uid="uid://ymqqkd6ygbrp" path="res://Scenes/player_twin.tscn" id="3_et0fo"]
 [ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/Vehicle_Scenes/crank.tscn" id="5_et0fo"]
-[ext_resource type="Script" uid="uid://b1g3cwlfw2uy6" path="res://addons/zylann.hterrain/hterrain.gd" id="5_qwuhp"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="5_qwuhp"]
 [ext_resource type="Resource" uid="uid://ucquhpg5u2a2" path="res://Terrain_Data/data.hterrain" id="6_4ttbv"]
 [ext_resource type="PackedScene" uid="uid://bb3tq1pjqb0ab" path="res://Scenes/UI.tscn" id="6_selfg"]
-[ext_resource type="Script" uid="uid://dfjwxkr2ghrqf" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="7_80ytr"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="7_80ytr"]
 [ext_resource type="PackedScene" uid="uid://bq3efham7nrqb" path="res://Scenes/Vehicle_Scenes/balloon_vehicle_phys.tscn" id="7_tdhcf"]
 [ext_resource type="Texture2D" uid="uid://bpow1is3o58l8" path="res://Assets/Materials/Grass005_1K-PNG_Color.png" id="8_80ytr"]
 [ext_resource type="Texture2D" uid="uid://f24bdk3bclb4" path="res://Assets/Materials/Grass005_1K-PNG_NormalGL.png" id="9_ovr7t"]
+[ext_resource type="Script" uid="uid://e7ma3iiiovm4" path="res://Scripts/path_follow.gd" id="13_87sye"]
+[ext_resource type="PackedScene" uid="uid://uh8rjjve65c0" path="res://Assets/Models/envelope.glb" id="14_kdmug"]
 
 [sub_resource type="Resource" id="Resource_ovr7t"]
 script = ExtResource("7_80ytr")
@@ -38,6 +40,14 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_et0fo"]
 material = ExtResource("1_dla66")
+
+[sub_resource type="Curve3D" id="Curve3D_6ykup"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 5, -10, 0, 0, 0, 0, 0, 0, -15, 10, -15, 0, 0, 0, 0, 0, 0, -30, 20, -30, 0, 0, 0, 0, 0, 0, -20, 10, -40, 0, 0, 0, 0, 0, 0, -15, 20, -50),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [node name="Master" type="Node3D" unique_id=925668592]
 
@@ -99,3 +109,15 @@ mesh = SubResource("BoxMesh_et0fo")
 [node name="Crank" parent="Environment" unique_id=1887970496 instance=ExtResource("5_et0fo")]
 transform = Transform3D(0.31617248, 0, 0, 0, 0.31617248, 0, 0, 0, 0.31617248, -12.229397, 1.9744546, -5.3874636)
 on_left = true
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1355881562]
+curve = SubResource("Curve3D_6ykup")
+script = ExtResource("13_87sye")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1587252612]
+transform = Transform3D(0.3162279, 0.28603876, 0.9045337, -4.4703484e-08, 0.9534626, -0.30151123, -0.94868326, 0.09534626, 0.30151138, 0, 5, -10)
+
+[node name="Node3D" type="Node3D" parent="Path3D/PathFollow3D" unique_id=1524248258]
+
+[node name="envelope" parent="Path3D/PathFollow3D/Node3D" unique_id=1972784126 instance=ExtResource("14_kdmug")]
+transform = Transform3D(0.31781197, -0.3385782, -0.28146473, 0.053237, 0.37413332, -0.38993883, 0.43706223, 0.20062694, 0.25216553, 0.32461452, -0.807559, -0.7828288)

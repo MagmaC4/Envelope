@@ -41,7 +41,7 @@ func handle_raycast() -> void:
 	# Check if player is looking at crank
 	if col and col.is_in_group("Crank"):
 		# Enable player's cranking state
-		if Input.is_action_pressed("grab"):
+		if Input.is_action_pressed("grab") and !is_cranking:
 			crank = col.get_parent()
 			is_cranking = true
 

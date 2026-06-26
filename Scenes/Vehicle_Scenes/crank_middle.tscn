@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bx7a1nustheb7"]
+
+[ext_resource type="Script" uid="uid://dd0qn58ap15ej" path="res://Scripts/Vehicle_Scripts/crank_middle.gd" id="1_wdo0c"]
+[ext_resource type="PackedScene" uid="uid://dt52awidakbkb" path="res://Assets/Models/crank.glb" id="2_4lole"]
+[ext_resource type="AudioStream" uid="uid://byqyv1eps2syd" path="res://Assets/Sound/crank_2.mp3" id="3_ociau"]
+[ext_resource type="Script" uid="uid://b6ktii1mlcych" path="res://Scripts/progress_bar_middle.gd" id="4_wdo0c"]
+[ext_resource type="Texture2D" uid="uid://b0egrw8oifi5i" path="res://Assets/Textures/arrow_3_under.png" id="5_4lole"]
+[ext_resource type="Texture2D" uid="uid://dk0fr0smv8e84" path="res://Assets/Textures/arrow_3_fill.png" id="6_ociau"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_selfg"]
+size = Vector3(1.9692688, 2.600586, 3.018116)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rrneo"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rh4jp"]
+viewport_path = NodePath("ProgressBar/SubViewport")
+
+[node name="CrankMiddle" type="Node3D" unique_id=1887970496 groups=["Crank", "Grabbable"]]
+script = ExtResource("1_wdo0c")
+
+[node name="Handle" type="Area3D" parent="." unique_id=1337888276 groups=["Crank", "Grabbable"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Handle" unique_id=254676297]
+transform = Transform3D(0.99997705, 0, 0, 0, 0.99997705, 0, 0, 0, 0.99997705, 0.5153193, 0.006592229, -3.1039639)
+shape = SubResource("BoxShape3D_selfg")
+
+[node name="Model" parent="Handle" unique_id=584376246 instance=ExtResource("2_4lole")]
+
+[node name="GrabPlane" type="Area3D" parent="." unique_id=976073909]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrabPlane" unique_id=528486645]
+transform = Transform3D(-2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_rrneo")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=311791073]
+stream = ExtResource("3_ociau")
+attenuation_model = 1
+max_db = 0.0
+pitch_scale = 3.0
+parameters/looping = true
+
+[node name="ProgressBar" type="Node3D" parent="." unique_id=466959004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.34729695)
+script = ExtResource("4_wdo0c")
+
+[node name="SubViewport" type="SubViewport" parent="ProgressBar" unique_id=997462020]
+transparent_bg = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ProgressBar/SubViewport" unique_id=115856287]
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+fill_mode = 8
+radial_initial_angle = 180.0
+radial_fill_degrees = 195.0
+texture_under = ExtResource("5_4lole")
+texture_progress = ExtResource("6_ociau")
+
+[node name="Sprite3D" type="Sprite3D" parent="ProgressBar" unique_id=905794194]
+transform = Transform3D(-2.636387e-08, 0, 0.60313505, 0, 0.60313505, 0, -0.60313505, 0, -2.636387e-08, -0.346, 0.17587543, -0.30188277)
+texture = SubResource("ViewportTexture_rh4jp")

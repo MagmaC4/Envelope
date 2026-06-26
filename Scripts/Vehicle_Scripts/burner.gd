@@ -39,7 +39,7 @@ func handle_burner(delta: float) -> void:
 	
 	# audio_burner.volume_linear = lerp(0.0, 1.0, power / MAX_POWER)
 	var t = float(burner_level) / MAX_BURNER_LEVEL
-	audio_burner.volume_linear = lerp(audio_burner.volume_linear, t, delta)
+	audio_burner.volume_linear = lerp(audio_burner.volume_linear, t * 0.5, delta)
 	
 func _on_rope_pulled(): 
 	# Increment burner level
