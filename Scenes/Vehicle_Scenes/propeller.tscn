@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dna6ltnu0iyxu"]
+
+[ext_resource type="Script" uid="uid://ba0uc0bukhnvx" path="res://Scripts/Vehicle_Scripts/propeller.gd" id="1_qgcvk"]
+[ext_resource type="Texture2D" uid="uid://b2ygbbofhu4do" path="res://Assets/Textures/propeller_blade.png" id="2_qgcvk"]
+[ext_resource type="AudioStream" uid="uid://c46nwqqbnyumj" path="res://Assets/Sound/propeller.mp3" id="4_86tre"]
+[ext_resource type="PackedScene" uid="uid://uxnchmig88xx" path="res://Assets/Models/propeller_2.glb" id="4_nswpq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_86tre"]
+height = 1.3852539
+
+[node name="Propeller" type="Node3D" unique_id=1288330406]
+script = ExtResource("1_qgcvk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=299555281]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=722785968]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.30737305, -1.3435702e-08, 0)
+shape = SubResource("CapsuleShape3D_86tre")
+
+[node name="Blade" type="Sprite3D" parent="." unique_id=24775989]
+transform = Transform3D(-9.987338e-09, 0, 0.22848366, 0, 0.22848366, 0, -0.22848366, 0, -9.987338e-09, 0.17341432, -0.03942839, 0)
+texture = ExtResource("2_qgcvk")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1585764738]
+stream = ExtResource("4_86tre")
+doppler_tracking = 2
+parameters/looping = true
+
+[node name="propeller_2" parent="." unique_id=1355218660 instance=ExtResource("4_nswpq")]
