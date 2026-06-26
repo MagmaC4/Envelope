@@ -45,8 +45,17 @@ func handle_movement(delta : float) -> void:
 	velocity.y += (GRAVITY + buoyancy) * delta
 	velocity.y -= velocity.y * DRAG * delta # simulate drag
 	
+	# cap upwards velocity
 	if velocity.y > MAX_Y_VELOCITY:
 		velocity.y = MAX_Y_VELOCITY
+		
+	# Move vehicle in Forward direction based on crank power
+	var power_total = right_crank.power + left_crank.power
+	var forward = -basis.z
+	forward.y = 0
+	forward = forward.normalized()
+	velocity.x = forward.x * power_total * SPEED_MULT
+	velocity.z = forward.z * power_total * SPEED_MULT
 	
 	if move_and_collide(velocity * delta):
 		# If a collision is detected, stop falling down
@@ -54,12 +63,7 @@ func handle_movement(delta : float) -> void:
 		if velocity.y < 0:
 			velocity.y = 0
 	
-	# Move vehicle in Forward direction based on crank power
-	var power_total = right_crank.power + left_crank.power
-	var forward = -basis.z
-	forward.y = 0
-	forward = forward.normalized()
-	position += forward * power_total * delta * SPEED_MULT
+	
 	
 	# Simulated sway on x and z axis
 	var t = Time.get_ticks_msec() * 0.001
