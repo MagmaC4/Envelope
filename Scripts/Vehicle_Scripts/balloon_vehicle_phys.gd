@@ -7,6 +7,7 @@ extends AnimatableBody3D
 @onready var burner: Node3D = $Burner
 @onready var altimeter = $Altimeter
 @onready var thermometer = $Thermometer
+@onready var radio = $Radio
 
 # Movement
 var BASELINE_GRAVITY = -1 # temp var for embark/disembark
@@ -57,11 +58,19 @@ func handle_movement(delta : float) -> void:
 	velocity.x = forward.x * power_total * SPEED_MULT
 	velocity.z = forward.z * power_total * SPEED_MULT
 	
-	if move_and_collide(velocity * delta):
+	var col : KinematicCollision3D = move_and_collide(velocity * delta)
+	if col:
 		# If a collision is detected, stop falling down
 		# This assumes the collision is below the hot air balloon
 		if velocity.y < 0:
 			velocity.y = 0
+			
+		for i in col.get_collision_count():
+			var speed = abs(velocity.x) + abs(velocity.z)
+			if not col.get_collider(i).is_in_group("Player") and speed > 10.0:
+				radio.crash()
+				print("hullo")
+				break
 	
 	
 	

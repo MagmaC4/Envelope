@@ -36,5 +36,5 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1771865676]
 mesh = SubResource("CapsuleMesh_f60y1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1217961235]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1217961235 groups=["Player"]]
 shape = SubResource("CapsuleShape3D_v0iea")

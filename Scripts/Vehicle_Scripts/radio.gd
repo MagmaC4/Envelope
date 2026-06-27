@@ -7,6 +7,7 @@ extends Node3D
 	$Station2,
 	$Station3
 ]
+var switch_on_crash := true
 
 # Channel Control
 const MAX_STATION := 3
@@ -33,11 +34,23 @@ func switch_station():
 	var tween = create_tween()
 	tween.tween_property(stations[current_station], "volume_db", 0, 0.8)
 	
-func handle_grab():
+func initialize_stations():
 	if not has_started:
 		for station in stations:
 			station.play() 
 		has_started = true
-			
 	
+func handle_grab():
+	initialize_stations()
 	switch_station()
+	
+func crash():
+	initialize_stations()
+	if switch_on_crash:
+		switch_on_crash = false
+		switch_station()
+		await get_tree().create_timer(10.0).timeout
+		switch_on_crash = true
+		
+	
+	
