@@ -38,7 +38,7 @@ albedo_texture = ExtResource("7_tx8l5")
 material = SubResource("StandardMaterial3D_gmxq1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3nuav"]
-size = Vector3(0.2346878, 0.89482117, 0.7165184)
+size = Vector3(0.2346878, 0.7315903, 0.7165184)
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_ly78e"]
 radius = 0.1
@@ -141,7 +141,7 @@ mesh = SubResource("CylinderMesh_tg7dn")
 [node name="Area3D" type="Area3D" parent="Rope" unique_id=1582674911 groups=["Grabbable", "Rope"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rope/Area3D" unique_id=1747535117]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09846115, -0.6609726, -0.25800896)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09846115, -0.57935715, -0.25800896)
 shape = SubResource("BoxShape3D_3nuav")
 
 [node name="Altimeter" parent="." unique_id=1666856832 instance=ExtResource("10_o1fhk")]

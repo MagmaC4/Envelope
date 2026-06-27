@@ -4,21 +4,27 @@
 [ext_resource type="Texture2D" uid="uid://ca774tpvvb1hk" path="res://Assets/Textures/AllSkyFree_Sky_ColdSunset_Equirect.png" id="2_ovr7t"]
 [ext_resource type="PackedScene" uid="uid://dkxgf5ykudbxe" path="res://Scenes/player.tscn" id="2_ui57x"]
 [ext_resource type="PackedScene" uid="uid://ymqqkd6ygbrp" path="res://Scenes/player_twin.tscn" id="3_et0fo"]
+[ext_resource type="Texture2D" uid="uid://qde0ayndygau" path="res://Scenes/master_slot0_albedo_bump.png" id="4_vi0oq"]
 [ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/Vehicle_Scenes/crank.tscn" id="5_et0fo"]
+[ext_resource type="Texture2D" uid="uid://bg506hiwur3gb" path="res://Scenes/master_slot1_albedo_bump.png" id="5_g7ab3"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="5_qwuhp"]
+[ext_resource type="Texture2D" uid="uid://dayce27juk74l" path="res://Scenes/master_slot2_albedo_bump.png" id="6_2yu0k"]
 [ext_resource type="Resource" uid="uid://ucquhpg5u2a2" path="res://Terrain_Data/data.hterrain" id="6_4ttbv"]
 [ext_resource type="PackedScene" uid="uid://bb3tq1pjqb0ab" path="res://Scenes/UI.tscn" id="6_selfg"]
+[ext_resource type="Texture2D" uid="uid://cquhse1sagqwe" path="res://Scenes/master_slot3_albedo_bump.png" id="7_5to37"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="7_80ytr"]
 [ext_resource type="PackedScene" uid="uid://bq3efham7nrqb" path="res://Scenes/Vehicle_Scenes/balloon_vehicle_phys.tscn" id="7_tdhcf"]
-[ext_resource type="Texture2D" uid="uid://bpow1is3o58l8" path="res://Assets/Materials/Grass005_1K-PNG_Color.png" id="8_80ytr"]
-[ext_resource type="Texture2D" uid="uid://f24bdk3bclb4" path="res://Assets/Materials/Grass005_1K-PNG_NormalGL.png" id="9_ovr7t"]
+[ext_resource type="Texture2D" uid="uid://qfi5hhvqjd3h" path="res://Scenes/master_slot0_normal_roughness.png" id="8_yf7u1"]
+[ext_resource type="Texture2D" uid="uid://dp263d834pk2s" path="res://Scenes/master_slot1_normal_roughness.png" id="9_u8bos"]
+[ext_resource type="Texture2D" uid="uid://bqw5mg7bmxvmf" path="res://Scenes/master_slot2_normal_roughness.png" id="10_r0be3"]
+[ext_resource type="Texture2D" uid="uid://b3is6y8616m6r" path="res://Scenes/master_slot3_normal_roughness.png" id="11_agr8a"]
 [ext_resource type="Script" uid="uid://e7ma3iiiovm4" path="res://Scripts/path_follow.gd" id="13_87sye"]
 [ext_resource type="PackedScene" uid="uid://uh8rjjve65c0" path="res://Assets/Models/envelope.glb" id="14_kdmug"]
 
 [sub_resource type="Resource" id="Resource_ovr7t"]
 script = ExtResource("7_80ytr")
 mode = 0
-textures = [[ExtResource("8_80ytr")], [ExtResource("9_ovr7t")]]
+textures = [[ExtResource("4_vi0oq"), ExtResource("5_g7ab3"), ExtResource("6_2yu0k"), ExtResource("7_5to37")], [ExtResource("8_yf7u1"), ExtResource("9_u8bos"), ExtResource("10_r0be3"), ExtResource("11_agr8a")]]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ovr7t"]
 panorama = ExtResource("2_ovr7t")
@@ -53,7 +59,6 @@ point_count = 5
 
 [node name="HTerrain" type="Node3D" parent="." unique_id=201686283 groups=["Ground"]]
 script = ExtResource("5_qwuhp")
-map_scale = Vector3(2, 2, 2)
 centered = true
 _terrain_data = ExtResource("6_4ttbv")
 chunk_size = 32
@@ -68,7 +73,7 @@ render_layers = 1
 cast_shadow = 1
 shader_params/u_ground_uv_scale = 20
 shader_params/u_depth_blending = true
-shader_params/u_triplanar = null
+shader_params/u_triplanar = false
 shader_params/u_tile_reduction = Vector4(1, 1, 1, 1)
 
 [node name="UI" parent="." unique_id=749720162 instance=ExtResource("6_selfg")]
@@ -80,16 +85,8 @@ environment = SubResource("Environment_2xxif")
 transform = Transform3D(-0.77714586, -0.30028582, 0.5530576, 0, 0.8788171, 0.47715878, -0.6293205, 0.37082198, -0.68296903, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." unique_id=674056149 instance=ExtResource("2_ui57x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 0
-
-[node name="PlayerTwin" parent="." unique_id=41360756 instance=ExtResource("3_et0fo")]
-
-[node name="PhysicsBalloonVehicle" parent="." unique_id=111051409 instance=ExtResource("7_tdhcf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08166313, 0.025, -5.4867487)
-
 [node name="Environment" type="Node3D" parent="." unique_id=1017786431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.84949, -42.655758, 363.10593)
 
 [node name="Ground" type="MeshInstance3D" parent="Environment" unique_id=705273356 groups=["Ground"]]
 transform = Transform3D(41.62596, 0, 0, 0, 41.62596, 0, 0, 0, 41.62596, 0, 0, 0)
@@ -110,14 +107,23 @@ mesh = SubResource("BoxMesh_et0fo")
 transform = Transform3D(0.31617248, 0, 0, 0, 0.31617248, 0, 0, 0, 0.31617248, -12.229397, 1.9744546, -5.3874636)
 on_left = true
 
-[node name="Path3D" type="Path3D" parent="." unique_id=1355881562]
+[node name="Player" parent="Environment" unique_id=674056149 instance=ExtResource("2_ui57x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
+
+[node name="PlayerTwin" parent="Environment" unique_id=41360756 instance=ExtResource("3_et0fo")]
+
+[node name="PhysicsBalloonVehicle" parent="Environment" unique_id=111051409 instance=ExtResource("7_tdhcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08166313, 0.025, -5.4867487)
+
+[node name="Path3D" type="Path3D" parent="Environment" unique_id=1355881562]
 curve = SubResource("Curve3D_6ykup")
 script = ExtResource("13_87sye")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1587252612]
+[node name="PathFollow3D" type="PathFollow3D" parent="Environment/Path3D" unique_id=1587252612]
 transform = Transform3D(0.3162279, 0.28603876, 0.9045337, -4.4703484e-08, 0.9534626, -0.30151123, -0.94868326, 0.09534626, 0.30151138, 0, 5, -10)
 
-[node name="Node3D" type="Node3D" parent="Path3D/PathFollow3D" unique_id=1524248258]
+[node name="Node3D" type="Node3D" parent="Environment/Path3D/PathFollow3D" unique_id=1524248258]
 
-[node name="envelope" parent="Path3D/PathFollow3D/Node3D" unique_id=1972784126 instance=ExtResource("14_kdmug")]
+[node name="envelope" parent="Environment/Path3D/PathFollow3D/Node3D" unique_id=1972784126 instance=ExtResource("14_kdmug")]
 transform = Transform3D(0.31781197, -0.3385782, -0.28146473, 0.053237, 0.37413332, -0.38993883, 0.43706223, 0.20062694, 0.25216553, 0.32461452, -0.807559, -0.7828288)
