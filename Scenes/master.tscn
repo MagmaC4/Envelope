@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://t36gu0pei00o"]
 
 [ext_resource type="Material" uid="uid://m8326m50smh5" path="res://Assets/Materials/test_grid_gray.tres" id="1_dla66"]
-[ext_resource type="Texture2D" uid="uid://ca774tpvvb1hk" path="res://Assets/Textures/AllSkyFree_Sky_ColdSunset_Equirect.png" id="2_ovr7t"]
+[ext_resource type="Texture2D" uid="uid://ca774tpvvb1hk" path="res://Assets/Textures/skybox.png" id="2_ovr7t"]
 [ext_resource type="PackedScene" uid="uid://dkxgf5ykudbxe" path="res://Scenes/player.tscn" id="2_ui57x"]
 [ext_resource type="PackedScene" uid="uid://ymqqkd6ygbrp" path="res://Scenes/player_twin.tscn" id="3_et0fo"]
 [ext_resource type="Texture2D" uid="uid://qde0ayndygau" path="res://Scenes/master_slot0_albedo_bump.png" id="4_vi0oq"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://b3is6y8616m6r" path="res://Scenes/master_slot3_normal_roughness.png" id="11_agr8a"]
 [ext_resource type="Script" uid="uid://e7ma3iiiovm4" path="res://Scripts/path_follow.gd" id="13_87sye"]
 [ext_resource type="PackedScene" uid="uid://uh8rjjve65c0" path="res://Assets/Models/envelope.glb" id="14_kdmug"]
+[ext_resource type="PackedScene" uid="uid://drsyw0lur7ns3" path="res://Scenes/pinwheel.tscn" id="21_g7ab3"]
 
 [sub_resource type="Resource" id="Resource_ovr7t"]
 script = ExtResource("7_80ytr")
@@ -117,7 +118,7 @@ collision_layer = 0
 [node name="PlayerTwin" parent="Environment" unique_id=41360756 instance=ExtResource("3_et0fo")]
 
 [node name="PhysicsBalloonVehicle" parent="Environment" unique_id=111051409 instance=ExtResource("7_tdhcf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08166313, 0.025, -5.4867487)
+transform = Transform3D(0.998664, 0, -0.05167363, 0, 1, 0, 0.05167363, 0, 0.998664, -0.30641174, 0.025001526, -12.116486)
 
 [node name="Path3D" type="Path3D" parent="Environment" unique_id=1355881562]
 curve = SubResource("Curve3D_6ykup")
@@ -130,3 +131,35 @@ transform = Transform3D(0.3162279, 0.28603876, 0.9045337, -4.4703484e-08, 0.9534
 
 [node name="envelope" parent="Environment/Path3D/PathFollow3D/Node3D" unique_id=1972784126 instance=ExtResource("14_kdmug")]
 transform = Transform3D(0.31781197, -0.3385782, -0.28146473, 0.053237, 0.37413332, -0.38993883, 0.43706223, 0.20062694, 0.25216553, 0.32461452, -0.807559, -0.7828288)
+
+[node name="Pinwheels" type="Node3D" parent="." unique_id=997643224]
+
+[node name="Pinwheel" parent="Pinwheels" unique_id=1044131999 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(0.8823016, 0.2847886, -0.37475225, -0.3071739, 0.9516534, 0, 0.35663426, 0.115114115, 0.927125, 132.32059, -51.960754, 326.10733)
+
+[node name="Pinwheel2" parent="Pinwheels" unique_id=2042931785 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(0.9298471, 0, -0.36794606, 0, 1, 0, 0.36794606, 0, 0.9298471, 194.27563, -28.908958, 225.07704)
+
+[node name="Pinwheel3" parent="Pinwheels" unique_id=1242195326 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(0.9298471, 0, -0.36794606, 0, 1, 0, 0.36794606, 0, 0.9298471, 295.29965, -35.502655, 59.46862)
+
+[node name="Pinwheel4" parent="Pinwheels" unique_id=706897213 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(-4.222196e-08, 0.9659258, 0.25881904, -1, -4.371139e-08, 0, 1.131334e-08, -0.25881904, 0.9659258, 227.65189, 3.4691963, -198.43524)
+
+[node name="Pinwheel5" parent="Pinwheels" unique_id=1146591848 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(0.15733083, 1.6381883e-15, 0.9875461, 0, 1, 1.7763568e-15, -0.9875461, 3.2752058e-15, 0.15733083, -93.72848, -28.415674, -296.26074)
+
+[node name="Pinwheel6" parent="Pinwheels" unique_id=1328922247 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(0.15733083, 1.6381881e-15, 0.9875461, -0.69830054, 0.70710677, 0.11124969, -0.69830054, -0.70710677, 0.11124969, -329.2204, -19.554667, -346.39233)
+
+[node name="Pinwheel7" parent="Pinwheels" unique_id=264470161 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(-0.89791596, -0.27493262, -0.34374303, -0.25676107, 0.9614635, -0.09829408, 0.3575206, -3.0563164e-15, -0.9339054, -363.03278, 3.8870168, -125.9448)
+
+[node name="Pinwheel8" parent="Pinwheels" unique_id=654116733 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(-0.3557298, 0.27328518, -0.8937402, 0.63874406, 0.76918364, -0.01903665, 0.6822479, -0.5776433, -0.44818056, -173.9143, -0.26156616, -67.93129)
+
+[node name="Pinwheel9" parent="Pinwheels" unique_id=217151096 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(-0.9659257, 0, -0.2588189, 0, 1, 0, 0.25881892, 0, -0.9659256, -102.19314, -21.876663, 57.199593)
+
+[node name="Pinwheel10" parent="Pinwheels" unique_id=200900139 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(-0.8660252, 0, 0.49999988, 0, 1, 0, -0.5, 0, -0.8660251, -262.88525, -26.802868, 339.01337)

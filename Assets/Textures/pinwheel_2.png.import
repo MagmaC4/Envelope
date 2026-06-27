@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca774tpvvb1hk"
-path.s3tc="res://.godot/imported/AllSkyFree_Sky_ColdSunset_Equirect.png-fa93fc4ea0b9974a5f70aaf5a9301c5a.s3tc.ctex"
+uid="uid://oej4e0r2h3wa"
+path.s3tc="res://.godot/imported/pinwheel_2.png-dffc4180a1033400b0ba9730e5f233eb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/AllSkyFree_Sky_ColdSunset_Equirect.png"
-dest_files=["res://.godot/imported/AllSkyFree_Sky_ColdSunset_Equirect.png-fa93fc4ea0b9974a5f70aaf5a9301c5a.s3tc.ctex"]
+source_file="res://Assets/Textures/pinwheel_2.png"
+dest_files=["res://.godot/imported/pinwheel_2.png-dffc4180a1033400b0ba9730e5f233eb.s3tc.ctex"]
 
 [params]
 
