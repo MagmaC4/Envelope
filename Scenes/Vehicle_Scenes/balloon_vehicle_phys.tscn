@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://cis4jm781sl7v" path="res://Assets/Models/basket.glb" id="16_xq7sx"]
 [ext_resource type="PackedScene" uid="uid://7l18qoysggvl" path="res://Assets/Models/metal_plate.glb" id="17_ujuic"]
 [ext_resource type="PackedScene" uid="uid://dna6ltnu0iyxu" path="res://Scenes/Vehicle_Scenes/propeller.tscn" id="17_xq7sx"]
+[ext_resource type="PackedScene" uid="uid://uh8rjjve65c0" path="res://Assets/Models/envelope.glb" id="18_mkx2g"]
+[ext_resource type="PackedScene" uid="uid://ohmtlw2tqacr" path="res://Assets/Models/folder.glb" id="19_k81ti"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbobt"]
 size = Vector3(1.8789711, 3.1889954, 1.9432068)
@@ -232,6 +234,12 @@ crank = NodePath("../Crank2")
 
 [node name="metal_plate" parent="." unique_id=1741406510 instance=ExtResource("17_ujuic")]
 transform = Transform3D(0.7150797, 0, 0, 0, 0.7150797, 0, 0, 0, 0.7150797, -0.552255, 0.5115498, -1.0119587)
+
+[node name="envelope" parent="." unique_id=1972784126 instance=ExtResource("18_mkx2g")]
+transform = Transform3D(-0.19999994, -7.450578e-09, 8.742276e-09, 9.795253e-09, -0.031124828, 0.19756325, -5.999293e-09, 0.19756322, 0.031124836, 0.57566637, 0.56965023, -0.9818649)
+
+[node name="folder" parent="." unique_id=398903467 instance=ExtResource("19_k81ti")]
+transform = Transform3D(-6.708879e-09, 0, -0.15348126, 0, 0.15348126, 0, 0.15348126, 0, -6.708879e-09, 0.57701707, 0.48076534, -0.9827778)
 
 [connection signal="area_entered" from="CabinTrigger" to="." method="_on_cabin_trigger_area_entered"]
 [connection signal="area_exited" from="CabinTrigger" to="." method="_on_cabin_trigger_area_exited"]
