@@ -86,10 +86,11 @@ transform = Transform3D(-0.77714586, -0.30028582, 0.5530576, 0, 0.8788171, 0.477
 shadow_enabled = true
 
 [node name="Environment" type="Node3D" parent="." unique_id=1017786431]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.84949, -42.655758, 363.10593)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.49397, -52.52313, 335.0861)
 
 [node name="Ground" type="MeshInstance3D" parent="Environment" unique_id=705273356 groups=["Ground"]]
 transform = Transform3D(41.62596, 0, 0, 0, 41.62596, 0, 0, 0, 41.62596, 0, 0, 0)
+visible = false
 mesh = SubResource("PlaneMesh_2xxif")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
@@ -101,10 +102,12 @@ shape = SubResource("ConcavePolygonShape3D_et0fo")
 
 [node name="Box" type="MeshInstance3D" parent="Environment" unique_id=1569352948]
 transform = Transform3D(3.6584747, 0, 0, 0, 3.6584747, 0, 0, 0, 3.6584747, -14.277925, 1.8381014, -5.363006)
+visible = false
 mesh = SubResource("BoxMesh_et0fo")
 
 [node name="Crank" parent="Environment" unique_id=1887970496 instance=ExtResource("5_et0fo")]
 transform = Transform3D(0.31617248, 0, 0, 0, 0.31617248, 0, 0, 0, 0.31617248, -12.229397, 1.9744546, -5.3874636)
+visible = false
 on_left = true
 
 [node name="Player" parent="Environment" unique_id=674056149 instance=ExtResource("2_ui57x")]
