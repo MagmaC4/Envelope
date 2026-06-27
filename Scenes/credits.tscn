@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://fj18v3j7evb"]
+
+[node name="Credits" type="Control" unique_id=1848114056]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=9332933]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer" unique_id=1949222955]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer3" unique_id=1071202348]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer3/VBoxContainer" unique_id=86189389]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Thanks for playing!"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer3/VBoxContainer" unique_id=619677417]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "A game by: [color=#FFAA00]Benjamin Stortroen[/color]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer3" unique_id=1437745124]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer3/HBoxContainer" unique_id=95839586]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="CenterContainer/VBoxContainer3/HBoxContainer/VBoxContainer2" unique_id=1202901584]
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=red]Matthew Smeaton[/color]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer3/HBoxContainer/VBoxContainer2" unique_id=143081885]
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/VBoxContainer3/HBoxContainer" unique_id=405076087]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="CenterContainer/VBoxContainer3/HBoxContainer/VBoxContainer3" unique_id=1929482184]
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=green]Luke Golobitsh[/color]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer3/HBoxContainer/VBoxContainer3" unique_id=669011992]
+layout_mode = 2
+text = "Vehicle Programming"
+horizontal_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="CenterContainer/VBoxContainer3/HBoxContainer" unique_id=1534031673]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="CenterContainer/VBoxContainer3/HBoxContainer/VBoxContainer4" unique_id=1287120353]
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=blue]Marcy Curtin[/color]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer3/HBoxContainer/VBoxContainer4" unique_id=30356117]
+layout_mode = 2
+text = "Hookshot Mechanic"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer3/HBoxContainer/VBoxContainer4" unique_id=763725193]
+layout_mode = 2
+text = "(scrapped :c)"
+horizontal_alignment = 1

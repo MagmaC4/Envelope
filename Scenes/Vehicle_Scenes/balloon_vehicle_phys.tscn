@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://nwx2gq0nr5td" path="res://Scripts/Vehicle_Scripts/balloon_vehicle_phys.gd" id="1_npksa"]
 [ext_resource type="PackedScene" uid="uid://b1oiun1vnqc7" path="res://Assets/Models/balloon_model.glb" id="3_47ufq"]
-[ext_resource type="Texture2D" uid="uid://db5xsek3jdycq" path="res://Assets/Materials/test_grid.png" id="4_10s82"]
 [ext_resource type="Script" uid="uid://cyy5jf5f2kf2p" path="res://Scripts/Vehicle_Scripts/burner.gd" id="4_rp5j2"]
 [ext_resource type="PackedScene" uid="uid://cwvqpd34u8etg" path="res://Scenes/Vehicle_Scenes/crank.tscn" id="5_m8yhv"]
 [ext_resource type="Material" uid="uid://o0v082c2ok42" path="res://Assets/Particles/flame_particle.tres" id="5_uahhm"]
 [ext_resource type="Script" uid="uid://43dqf1odjuoq" path="res://Scripts/Vehicle_Scripts/rope.gd" id="6_hr7pi"]
 [ext_resource type="QuadMesh" uid="uid://by4w0cp62tveo" path="res://Assets/Particles/flame_material.tres" id="6_rp5j2"]
+[ext_resource type="Material" uid="uid://bg67u2wbeh20k" path="res://Assets/Materials/metal.tres" id="7_k81ti"]
 [ext_resource type="Texture2D" uid="uid://bn7j868m4rr35" path="res://Assets/Materials/rope.jpg" id="7_tx8l5"]
 [ext_resource type="AudioStream" uid="uid://ca3bucf6klly8" path="res://Assets/Sound/ignite_2.mp3" id="8_0f7t2"]
 [ext_resource type="AudioStream" uid="uid://dqiixept55pe0" path="res://Assets/Sound/burner_loop.mp3" id="9_8hovq"]
@@ -17,8 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://cis4jm781sl7v" path="res://Assets/Models/basket.glb" id="16_xq7sx"]
 [ext_resource type="PackedScene" uid="uid://7l18qoysggvl" path="res://Assets/Models/metal_plate.glb" id="17_ujuic"]
 [ext_resource type="PackedScene" uid="uid://dna6ltnu0iyxu" path="res://Scenes/Vehicle_Scenes/propeller.tscn" id="17_xq7sx"]
-[ext_resource type="PackedScene" uid="uid://uh8rjjve65c0" path="res://Assets/Models/envelope.glb" id="18_mkx2g"]
 [ext_resource type="PackedScene" uid="uid://ohmtlw2tqacr" path="res://Assets/Models/folder.glb" id="19_k81ti"]
+[ext_resource type="Script" uid="uid://cigjmxl6qwv1t" path="res://Scripts/folder.gd" id="19_mkx2g"]
+[ext_resource type="AudioStream" uid="uid://cgr8bgk0yd1hm" path="res://Assets/Sound/paper.mp3" id="20_k81ti"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbobt"]
 size = Vector3(1.8789711, 3.1889954, 1.9432068)
@@ -26,12 +27,11 @@ size = Vector3(1.8789711, 3.1889954, 1.9432068)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gmxq1"]
 size = Vector3(0.768898, 0.025112152, 1.2316275)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgw8h"]
-albedo_color = Color(0.45262197, 0.45262197, 0.45262197, 1)
-albedo_texture = ExtResource("4_10s82")
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_yprsc"]
-material = SubResource("StandardMaterial3D_sgw8h")
+material = ExtResource("7_k81ti")
+
+[sub_resource type="BoxMesh" id="BoxMesh_20g7f"]
+material = ExtResource("7_k81ti")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmxq1"]
 albedo_texture = ExtResource("7_tx8l5")
@@ -56,6 +56,9 @@ size = Vector3(0.06068039, 1.0655212, 2.2504883)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mkx2g"]
 size = Vector3(0.047374725, 1.0655212, 0.51586914)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k81ti"]
+size = Vector3(1, 2.5630493, 2.157959)
 
 [node name="PhysicsBalloonVehicle" type="AnimatableBody3D" unique_id=111051409 groups=["Vehicle"]]
 sync_to_physics = false
@@ -114,8 +117,12 @@ wait_time = 2.5
 autostart = true
 
 [node name="BoxMesh" type="MeshInstance3D" parent="Burner" unique_id=995475909]
-transform = Transform3D(0.31356055, 0, 0, 0, 0.1788248, 0, 0, 0, 0.33962053, 0.67364883, 2.8205233, -0.44750816)
+transform = Transform3D(0.21343099, 0, 0, 0, 0.13774604, 0, 0, 0, 0.23116921, 0.67364883, 2.8658857, -0.44750816)
 mesh = SubResource("CylinderMesh_yprsc")
+
+[node name="BoxMesh2" type="MeshInstance3D" parent="Burner" unique_id=2105133553]
+transform = Transform3D(0.21343099, 0, 0, 0, 0.19912452, 0, 0, 0, 0.16872057, 0.5022156, 2.9038513, -0.44750816)
+mesh = SubResource("BoxMesh_20g7f")
 
 [node name="Thermometer" parent="." unique_id=618017343 instance=ExtResource("11_ybk2c")]
 transform = Transform3D(0.003847452, -0.034236483, -0.14229175, -0.13336329, -0.05944487, 0.010696866, -0.060276974, 0.12933697, -0.032749325, 0.22224578, 1.9592304, -0.8206179)
@@ -235,11 +242,22 @@ crank = NodePath("../Crank2")
 [node name="metal_plate" parent="." unique_id=1741406510 instance=ExtResource("17_ujuic")]
 transform = Transform3D(0.7150797, 0, 0, 0, 0.7150797, 0, 0, 0, 0.7150797, -0.552255, 0.5115498, -1.0119587)
 
-[node name="envelope" parent="." unique_id=1972784126 instance=ExtResource("18_mkx2g")]
-transform = Transform3D(-0.19999994, -7.450578e-09, 8.742276e-09, 9.795253e-09, -0.031124828, 0.19756325, -5.999293e-09, 0.19756322, 0.031124836, 0.57566637, 0.56965023, -0.9818649)
-
 [node name="folder" parent="." unique_id=398903467 instance=ExtResource("19_k81ti")]
 transform = Transform3D(-6.708879e-09, 0, -0.15348126, 0, 0.15348126, 0, 0.15348126, 0, -6.708879e-09, 0.57701707, 0.48076534, -0.9827778)
+script = ExtResource("19_mkx2g")
+
+[node name="Marker3D" type="Marker3D" parent="folder" unique_id=1207215109]
+transform = Transform3D(1.787176e-08, 1.2872139, 0.20279242, 6.382051e-08, -0.20279236, 1.2872142, 1.3030903, -7.722001e-09, -6.582423e-08, 0.00594759, 0.5791254, 0.008800268)
+
+[node name="Area3D" type="Area3D" parent="folder" unique_id=840742061 groups=["Grabbable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="folder/Area3D" unique_id=507846498]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, 0.14926171, 0.0582273)
+shape = SubResource("BoxShape3D_k81ti")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="folder" unique_id=1247808138]
+stream = ExtResource("20_k81ti")
+volume_db = -12.0
 
 [connection signal="area_entered" from="CabinTrigger" to="." method="_on_cabin_trigger_area_entered"]
 [connection signal="area_exited" from="CabinTrigger" to="." method="_on_cabin_trigger_area_exited"]

@@ -21,6 +21,9 @@
 [ext_resource type="Script" uid="uid://e7ma3iiiovm4" path="res://Scripts/path_follow.gd" id="13_87sye"]
 [ext_resource type="PackedScene" uid="uid://uh8rjjve65c0" path="res://Assets/Models/envelope.glb" id="14_kdmug"]
 [ext_resource type="PackedScene" uid="uid://drsyw0lur7ns3" path="res://Scenes/pinwheel.tscn" id="21_g7ab3"]
+[ext_resource type="PackedScene" uid="uid://b4ovi1oesmove" path="res://Assets/Models/mailbox.glb" id="22_2yu0k"]
+[ext_resource type="Script" uid="uid://bquuf5gbyg0pw" path="res://Scripts/mailbox.gd" id="23_5to37"]
+[ext_resource type="AudioStream" uid="uid://rkuluriyd6nj" path="res://Assets/Sound/party_horn.mp3" id="24_yf7u1"]
 
 [sub_resource type="Resource" id="Resource_ovr7t"]
 script = ExtResource("7_80ytr")
@@ -38,6 +41,7 @@ background_mode = 2
 sky = SubResource("Sky_ui57x")
 tonemap_mode = 2
 glow_enabled = true
+fog_depth_end = 1003.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2xxif"]
 material = ExtResource("1_dla66")
@@ -55,6 +59,9 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yf7u1"]
+size = Vector3(2.5775146, 3.1007996, 5.197998)
 
 [node name="Master" type="Node3D" unique_id=925668592]
 
@@ -112,7 +119,7 @@ visible = false
 on_left = true
 
 [node name="Player" parent="Environment" unique_id=674056149 instance=ExtResource("2_ui57x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54351807, 1.0000038, 3.3018188)
 collision_layer = 0
 
 [node name="PlayerTwin" parent="Environment" unique_id=41360756 instance=ExtResource("3_et0fo")]
@@ -121,6 +128,7 @@ collision_layer = 0
 transform = Transform3D(0.998664, 0, -0.05167363, 0, 1, 0, 0.05167363, 0, 0.998664, -0.30641174, 0.025001526, -12.116486)
 
 [node name="Path3D" type="Path3D" parent="Environment" unique_id=1355881562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.13347, 102.51547, -313.88184)
 curve = SubResource("Curve3D_6ykup")
 script = ExtResource("13_87sye")
 
@@ -143,11 +151,20 @@ transform = Transform3D(0.9298471, 0, -0.36794606, 0, 1, 0, 0.36794606, 0, 0.929
 [node name="Pinwheel3" parent="Pinwheels" unique_id=1242195326 instance=ExtResource("21_g7ab3")]
 transform = Transform3D(0.9298471, 0, -0.36794606, 0, 1, 0, 0.36794606, 0, 0.9298471, 295.29965, -35.502655, 59.46862)
 
+[node name="Pinwheel12" parent="Pinwheels" unique_id=470184705 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(0.70094657, 0, -0.7132138, 0, 1, 0, 0.7132138, 0, 0.70094657, 360.71738, -22.434029, -65.51564)
+
+[node name="Pinwheel13" parent="Pinwheels" unique_id=195125301 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(0.9959223, 0, 0.090215325, 0, 1, 0, -0.090215325, 0, 0.9959223, 257.29706, -42.10149, -105.67449)
+
 [node name="Pinwheel4" parent="Pinwheels" unique_id=706897213 instance=ExtResource("21_g7ab3")]
 transform = Transform3D(-4.222196e-08, 0.9659258, 0.25881904, -1, -4.371139e-08, 0, 1.131334e-08, -0.25881904, 0.9659258, 227.65189, 3.4691963, -198.43524)
 
 [node name="Pinwheel5" parent="Pinwheels" unique_id=1146591848 instance=ExtResource("21_g7ab3")]
 transform = Transform3D(0.15733083, 1.6381883e-15, 0.9875461, 0, 1, 1.7763568e-15, -0.9875461, 3.2752058e-15, 0.15733083, -93.72848, -28.415674, -296.26074)
+
+[node name="Pinwheel14" parent="Pinwheels" unique_id=822346752 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(0.15733083, 1.6381883e-15, 0.9875461, 0, 1, 1.7763568e-15, -0.9875461, 3.2752058e-15, 0.15733083, 75.657555, -48.985165, -315.84647)
 
 [node name="Pinwheel6" parent="Pinwheels" unique_id=1328922247 instance=ExtResource("21_g7ab3")]
 transform = Transform3D(0.15733083, 1.6381881e-15, 0.9875461, -0.69830054, 0.70710677, 0.11124969, -0.69830054, -0.70710677, 0.11124969, -329.2204, -19.554667, -346.39233)
@@ -155,11 +172,37 @@ transform = Transform3D(0.15733083, 1.6381881e-15, 0.9875461, -0.69830054, 0.707
 [node name="Pinwheel7" parent="Pinwheels" unique_id=264470161 instance=ExtResource("21_g7ab3")]
 transform = Transform3D(-0.89791596, -0.27493262, -0.34374303, -0.25676107, 0.9614635, -0.09829408, 0.3575206, -3.0563164e-15, -0.9339054, -363.03278, 3.8870168, -125.9448)
 
+[node name="Pinwheel15" parent="Pinwheels" unique_id=1912627019 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(-0.8779513, 0.34093744, -0.33610007, 0.3184033, 0.9400859, 0.12189216, 0.35752058, -1.5357095e-08, -0.9339054, -414.84024, -31.606274, -175.03772)
+
+[node name="Pinwheel16" parent="Pinwheels" unique_id=2026332317 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(-0.8672026, -0.37114093, -0.33198515, -0.34661055, 0.92857647, -0.13269053, 0.35752058, -1.3487238e-09, -0.9339054, -403.58118, -61.149902, -241.09677)
+
 [node name="Pinwheel8" parent="Pinwheels" unique_id=654116733 instance=ExtResource("21_g7ab3")]
 transform = Transform3D(-0.3557298, 0.27328518, -0.8937402, 0.63874406, 0.76918364, -0.01903665, 0.6822479, -0.5776433, -0.44818056, -173.9143, -0.26156616, -67.93129)
+
+[node name="Pinwheel17" parent="Pinwheels" unique_id=725503814 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(0.43269742, 0.087467045, -0.89728606, 0.07557091, 0.98826075, 0.13277757, 0.89836633, -0.12526146, 0.42100817, -199.18698, -38.46129, -149.15074)
 
 [node name="Pinwheel9" parent="Pinwheels" unique_id=217151096 instance=ExtResource("21_g7ab3")]
 transform = Transform3D(-0.9659257, 0, -0.2588189, 0, 1, 0, 0.25881892, 0, -0.9659256, -102.19314, -21.876663, 57.199593)
 
 [node name="Pinwheel10" parent="Pinwheels" unique_id=200900139 instance=ExtResource("21_g7ab3")]
-transform = Transform3D(-0.8660252, 0, 0.49999988, 0, 1, 0, -0.5, 0, -0.8660251, -262.88525, -26.802868, 339.01337)
+transform = Transform3D(-0.8809071, 0, 0.47328877, 0, 1, 0, -0.47328895, 0, -0.88090694, -198.96172, -38.49218, 201.50877)
+
+[node name="Pinwheel11" parent="Pinwheels" unique_id=784664505 instance=ExtResource("21_g7ab3")]
+transform = Transform3D(-4.4357963, 0, 2.085719, 0, 4.901686, 0, -2.0857208, 0, -4.435796, -273.55478, -21.292133, 359.0655)
+
+[node name="mailbox" parent="." unique_id=1248757402 instance=ExtResource("22_2yu0k")]
+transform = Transform3D(-0.3351739, 0, 0.13790242, 0, 0.36243433, 0, -0.13790242, 0, -0.3351739, -267.33566, -21.275568, 353.08484)
+script = ExtResource("23_5to37")
+
+[node name="Area3D" type="Area3D" parent="mailbox" unique_id=1029039874 groups=["Grabbable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mailbox/Area3D" unique_id=452622187]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.012542725, -0.22044373, -0.036865234)
+shape = SubResource("BoxShape3D_yf7u1")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="mailbox" unique_id=448057248]
+stream = ExtResource("24_yf7u1")
+volume_db = -12.0

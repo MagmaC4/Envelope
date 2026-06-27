@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bourgydaa3mas" path="res://Assets/UI_Textures/crosshair_2.png" id="2_dewlx"]
 [ext_resource type="Script" uid="uid://3glqhwc0ug0s" path="res://Scripts/crosshair.gd" id="2_hfhsn"]
 [ext_resource type="Texture2D" uid="uid://dc13tc7i3x8k3" path="res://Assets/UI_Textures/grab_2.png" id="3_hfhsn"]
+[ext_resource type="PackedScene" uid="uid://fj18v3j7evb" path="res://Scenes/credits.tscn" id="5_qwshj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3iaii"]
 font_size = 64
@@ -51,14 +52,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_hfhsn")
 expand_mode = 1
-
-[node name="MainMenu" type="Control" parent="." unique_id=1987966734]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="PauseMenu" type="Control" parent="." unique_id=1806942351]
 visible = false
@@ -166,6 +159,9 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "X"
+
+[node name="Credits" parent="." unique_id=1848114056 instance=ExtResource("5_qwshj")]
+visible = false
 
 [connection signal="value_changed" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Volume" to="PauseMenu" method="_on_volume_value_changed"]
 [connection signal="value_changed" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MouseSensitivity" to="PauseMenu" method="_on_mouse_sensitivity_value_changed"]

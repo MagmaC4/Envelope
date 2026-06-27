@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dsbhd3q0uqdbt"]
+
+[ext_resource type="PackedScene" uid="uid://uh8rjjve65c0" path="res://Assets/Models/envelope.glb" id="1_0rxeo"]
+[ext_resource type="Script" uid="uid://d26qfv8bjsn2l" path="res://Scripts/envelope.gd" id="1_3sg7h"]
+
+[node name="Envelope" type="Node3D" unique_id=97881991]
+script = ExtResource("1_3sg7h")
+
+[node name="envelope" parent="." unique_id=1972784126 instance=ExtResource("1_0rxeo")]
